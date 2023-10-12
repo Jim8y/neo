@@ -29,7 +29,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 7.0.X  # Adjust according to the actual .NET Core version of neo-devpack-dotnet
+        dotnet-version: '7.x'  # Adjust according to the actual .NET Core version of neo-devpack-dotnet
 
     - name: Restore and build neo-devpack-dotnet
       run: |

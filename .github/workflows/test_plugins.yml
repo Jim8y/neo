@@ -29,26 +29,6 @@ jobs:
       with:
         dotnet-version: '7.x'
 
-    - name: Clean neo-modules
-      run: |
-        cd neo-modules/
-        dotnet clean
-
-    - name: Remove problematic file if it exists
-      run: |
-        FILE_PATH="./neo/src/Neo.Json/bin/Debug/net7.0/Neo.Json.deps.json"
-        if [ -f "$FILE_PATH" ]; then
-          rm $FILE_PATH
-        fi
-
-    - name: Introduce a short delay
-      run: sleep 10
-
-    - name: Restore and build neo-modules
-      run: |
-        cd neo-modules/
-        dotnet restore
-        dotnet build -v detailed
 
     - name: Test neo-modules
       run: |

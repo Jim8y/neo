@@ -1,30 +1,36 @@
-name: Generate Documentation
+name: Generate Markdown Documentation
+
 on:
   push:
     branches:
-      - doc
+      - doc  # adjust if your default branch is different
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup .NET Core
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 7.0.x  # Or your required .NET version
+          dotnet-version: 7.0.x  # adjust to the compatible .NET version for docfx
 
       - name: Install DocFx
         run: dotnet tool install --global docfx
 
-      - name: Generate Documentation
+      - name: Generate Markdown Documentation
         run: |
           export PATH="$PATH:/home/runner/.dotnet/tools"
           docfx docfx.json
 
-      - name: Publish Documentation to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # Optional: Push Generated Documentation to Repository
+      - name: Push Generated Documentation to Repository
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site  # or your DocFx output directory
+          commit_message: 'Update generated markdown documentation'
+          branch: 'docs'  # change to your preference
+          file_pattern: _site/markdown/*  # or wherever your markdown docs are generated

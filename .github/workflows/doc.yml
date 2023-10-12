@@ -27,6 +27,12 @@ jobs:
           export PATH="$PATH:/home/runner/.dotnet/tools"
           docfx docfx.json
 
+      - name: Ensure branch exists
+        run: |
+          git fetch
+          git checkout ${{ github.ref }}
+          git checkout -b docs || git checkout docs
+
       # Optional: Push Generated Documentation to Repository
       - name: Push Generated Documentation to Repository
         uses: stefanzweifel/git-auto-commit-action@v4

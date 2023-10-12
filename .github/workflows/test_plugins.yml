@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout neo
@@ -20,30 +20,38 @@ jobs:
 
     - name: Patch neo-modules Directory.Build.props to use local neo
       run: |
-        # Path to Directory.Build.props in neo-modules
         props_path="./neo-modules/src/Directory.Build.props"
-        # Remove the PackageReference to Neo
         sed -i '/<PackageReference Include="Neo"/d' $props_path
-        # Add a ProjectReference to the local Neo project
-        # Assuming the neo project's main .csproj is in its src/neo directory
-        # Adding the ProjectReference to the Directory.Build.props is unconventional, but for the sake of this example, let's do it.
         sed -i '/<\/ItemGroup>/i \    <ProjectReference Include="../../../neo/src/Neo/Neo.csproj" />' $props_path
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '7.x'  # Adjust according to the actual .NET Core version of neo-modules
+        dotnet-version: '7.x'
+
+    - name: Clean neo-modules
+      run: |
+        cd neo-modules/
+        dotnet clean
+
+    - name: Remove problematic file if it exists
+      run: |
+        FILE_PATH="./neo/src/Neo.Json/bin/Debug/net7.0/Neo.Json.deps.json"
+        if [ -f "$FILE_PATH" ]; then
+          rm $FILE_PATH
+        fi
+
+    - name: Introduce a short delay
+      run: sleep 10
 
     - name: Restore and build neo-modules
       run: |
         cd neo-modules/
         dotnet restore
-        dotnet build
+        dotnet build -v detailed
 
-    # Add test steps
     - name: Test neo-modules
       run: |
         sudo apt-get --assume-yes install libleveldb-dev libsnappy-dev libc6-dev
         cd neo-modules/tests
         dotnet test
-

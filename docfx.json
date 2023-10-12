@@ -3,8 +3,8 @@
     {
       "src": [
         {
-          "files": [ "src/**.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**" ]
+          "files": ["src/**.csproj"],
+          "exclude": ["**/bin/**", "**/obj/**"]
         }
       ],
       "dest": "api"
@@ -13,22 +13,16 @@
   "build": {
     "content": [
       {
-        "files": [ "api/**.yml", "toc.yml", "*.md" ],
-        "exclude": [ "**/bin/**", "**/obj/**" ]
+        "files": ["api/**.yml", "toc.yml", "*.md"],
+        "exclude": ["**/bin/**", "**/obj/**"]
       }
     ],
     "resource": [
       {
-        "files": [ "images/**" ]
+        "files": ["images/**"]
       }
     ],
-    "overwrite": [
-      {
-        "files": [ "apidoc/**.md" ],
-        "exclude": [ "**/bin/**", "**/obj/**" ]
-      }
-    ],
-    "dest": "_site",
-    "template": [ "default" ]
+    "dest": "_site/markdown",
+    "template": ["markdown"]
   }
 }

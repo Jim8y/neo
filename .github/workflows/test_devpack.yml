@@ -33,7 +33,7 @@ jobs:
 
     - name: Restore and build neo-devpack-dotnet
       run: |
-        cd neo-devpack-dotnet/src/
+        cd neo-devpack-dotnet/
         dotnet restore
         dotnet build
 

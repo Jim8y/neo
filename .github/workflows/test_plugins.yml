@@ -43,6 +43,7 @@ jobs:
     # Add test steps
     - name: Test neo-modules
       run: |
+        sudo apt-get --assume-yes install libleveldb-dev libsnappy-dev libc6-dev
         cd neo-modules/tests
         dotnet test
 

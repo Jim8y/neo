@@ -24,7 +24,7 @@ jobs:
         sed -i '/<PackageReference Include="Neo"/d' ./neo-devpack-dotnet/src/Neo.Compiler.CSharp/Neo.Compiler.CSharp.csproj
         # Add a ProjectReference to the local Neo project
         # Assuming the neo project's main .csproj is in its root directory
-        sed -i '/<\/ItemGroup>/i \    <ProjectReference Include="../../neo/src/Neo/Neo.csproj" />' ./neo-devpack-dotnet/src/Neo.Compiler.CSharp/Neo.Compiler.CSharp.csproj
+        sed -i '/<\/ItemGroup>/i \    <ProjectReference Include="../../../../neo/src/Neo/Neo.csproj" />' ./neo-devpack-dotnet/src/Neo.Compiler.CSharp/Neo.Compiler.CSharp.csproj
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

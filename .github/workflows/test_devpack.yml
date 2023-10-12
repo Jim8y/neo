@@ -39,5 +39,5 @@ jobs:
 
     - name: Test neo-devpack-dotnet
       run: |
-        cd neo-devpack-dotnet/tests
+        cd neo-devpack-dotnet
         dotnet test

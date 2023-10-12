@@ -1,0 +1,757 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CryptoLib
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CryptoLib
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.SmartContract.Native.CryptoLib">
+
+
+
+  <h1 id="Neo_SmartContract_Native_CryptoLib" data-uid="Neo.SmartContract.Native.CryptoLib" class="text-break">Class CryptoLib
+</h1>
+  <div class="markdown level0 summary"><p>A native contract library that provides cryptographic algorithms.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Neo.SmartContract.Native.NativeContract.html">NativeContract</a></div>
+    <div class="level2"><span class="xref">CryptoLib</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_ContractManagement">NativeContract.ContractManagement</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_StdLib">NativeContract.StdLib</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_CryptoLib">NativeContract.CryptoLib</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Ledger">NativeContract.Ledger</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_NEO">NativeContract.NEO</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_GAS">NativeContract.GAS</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Policy">NativeContract.Policy</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_RoleManagement">NativeContract.RoleManagement</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Oracle">NativeContract.Oracle</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Contracts">NativeContract.Contracts</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Name">NativeContract.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Nef">NativeContract.Nef</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Hash">NativeContract.Hash</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Id">NativeContract.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Manifest">NativeContract.Manifest</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_GetContract_Neo_UInt160_">NativeContract.GetContract(UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_IsNative_Neo_UInt160_">NativeContract.IsNative(UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.SmartContract.html">SmartContract</a>.<a class="xref" href="Neo.SmartContract.Native.html">Native</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_SmartContract_Native_CryptoLib_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CryptoLib : NativeContract</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Bls12381Add_Neo_VM_Types_InteropInterface_Neo_VM_Types_InteropInterface_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Bls12381Add(Neo.VM.Types.InteropInterface%2CNeo.VM.Types.InteropInterface)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.BLS12_381.cs/#L71">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Bls12381Add_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Add*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Bls12381Add_Neo_VM_Types_InteropInterface_Neo_VM_Types_InteropInterface_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Add(Neo.VM.Types.InteropInterface,Neo.VM.Types.InteropInterface)">Bls12381Add(InteropInterface, InteropInterface)</h4>
+  <div class="markdown level1 summary"><p>Add operation of two points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static InteropInterface Bls12381Add(InteropInterface x, InteropInterface y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first point.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Bls12381Deserialize_System_Byte___.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Bls12381Deserialize(System.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.BLS12_381.cs/#L33">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Bls12381Deserialize_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Deserialize*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Bls12381Deserialize_System_Byte___" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Deserialize(System.Byte[])">Bls12381Deserialize(byte[])</h4>
+  <div class="markdown level1 summary"><p>Deserialize a bls12381 point.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static InteropInterface Bls12381Deserialize(byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The point as byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Bls12381Equal_Neo_VM_Types_InteropInterface_Neo_VM_Types_InteropInterface_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Bls12381Equal(Neo.VM.Types.InteropInterface%2CNeo.VM.Types.InteropInterface)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.BLS12_381.cs/#L51">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Bls12381Equal_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Equal*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Bls12381Equal_Neo_VM_Types_InteropInterface_Neo_VM_Types_InteropInterface_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Equal(Neo.VM.Types.InteropInterface,Neo.VM.Types.InteropInterface)">Bls12381Equal(InteropInterface, InteropInterface)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified points are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Bls12381Equal(InteropInterface x, InteropInterface y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first point.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>Teh second point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> if the specified points are equal; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Bls12381Mul_Neo_VM_Types_InteropInterface_System_Byte___System_Boolean_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Bls12381Mul(Neo.VM.Types.InteropInterface%2CSystem.Byte%5B%5D%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.BLS12_381.cs/#L96">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Bls12381Mul_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Mul*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Bls12381Mul_Neo_VM_Types_InteropInterface_System_Byte___System_Boolean_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Mul(Neo.VM.Types.InteropInterface,System.Byte[],System.Boolean)">Bls12381Mul(InteropInterface, byte[], bool)</h4>
+  <div class="markdown level1 summary"><p>Mul operation of gt point and multiplier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static InteropInterface Bls12381Mul(InteropInterface x, byte[] mul, bool neg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The point</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">mul</span></td>
+        <td><p>Multiplier,32 bytes,little-endian</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">neg</span></td>
+        <td><p>negative number</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Bls12381Pairing_Neo_VM_Types_InteropInterface_Neo_VM_Types_InteropInterface_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Bls12381Pairing(Neo.VM.Types.InteropInterface%2CNeo.VM.Types.InteropInterface)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.BLS12_381.cs/#L117">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Bls12381Pairing_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Pairing*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Bls12381Pairing_Neo_VM_Types_InteropInterface_Neo_VM_Types_InteropInterface_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Pairing(Neo.VM.Types.InteropInterface,Neo.VM.Types.InteropInterface)">Bls12381Pairing(InteropInterface, InteropInterface)</h4>
+  <div class="markdown level1 summary"><p>Pairing operation of g1 and g2</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static InteropInterface Bls12381Pairing(InteropInterface g1, InteropInterface g2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">g1</span></td>
+        <td><p>The g1 point.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">g2</span></td>
+        <td><p>The g2 point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Bls12381Serialize_Neo_VM_Types_InteropInterface_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Bls12381Serialize(Neo.VM.Types.InteropInterface)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.BLS12_381.cs/#L14">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Bls12381Serialize_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Serialize*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Bls12381Serialize_Neo_VM_Types_InteropInterface_" data-uid="Neo.SmartContract.Native.CryptoLib.Bls12381Serialize(Neo.VM.Types.InteropInterface)">Bls12381Serialize(InteropInterface)</h4>
+  <div class="markdown level1 summary"><p>Serialize a bls12381 point.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Bls12381Serialize(InteropInterface g)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InteropInterface</span></td>
+        <td><span class="parametername">g</span></td>
+        <td><p>The point to be serialized.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Murmur32_System_Byte___System_UInt32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Murmur32(System.Byte%5B%5D%2CSystem.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.cs/#L59">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Murmur32_" data-uid="Neo.SmartContract.Native.CryptoLib.Murmur32*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Murmur32_System_Byte___System_UInt32_" data-uid="Neo.SmartContract.Native.CryptoLib.Murmur32(System.Byte[],System.UInt32)">Murmur32(byte[], uint)</h4>
+  <div class="markdown level1 summary"><p>Computes the hash value for the specified byte array using the murmur32 algorithm.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Murmur32(byte[] data, uint seed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The input to compute the hash code for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">seed</span></td>
+        <td><p>The seed of the murmur32 hash function</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The computed hash code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_RIPEMD160_System_Byte___.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.RIPEMD160(System.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.cs/#L36">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_RIPEMD160_" data-uid="Neo.SmartContract.Native.CryptoLib.RIPEMD160*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_RIPEMD160_System_Byte___" data-uid="Neo.SmartContract.Native.CryptoLib.RIPEMD160(System.Byte[])">RIPEMD160(byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes the hash value for the specified byte array using the ripemd160 algorithm.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] RIPEMD160(byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The input to compute the hash code for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The computed hash code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_Sha256_System_Byte___.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.Sha256(System.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.cs/#L47">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_Sha256_" data-uid="Neo.SmartContract.Native.CryptoLib.Sha256*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_Sha256_System_Byte___" data-uid="Neo.SmartContract.Native.CryptoLib.Sha256(System.Byte[])">Sha256(byte[])</h4>
+  <div class="markdown level1 summary"><p>Computes the hash value for the specified byte array using the sha256 algorithm.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Sha256(byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The input to compute the hash code for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The computed hash code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib_VerifyWithECDsa_System_Byte___System_Byte___System_Byte___Neo_SmartContract_Native_NamedCurve_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib.VerifyWithECDsa(System.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D%2CNeo.SmartContract.Native.NamedCurve)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.cs/#L74">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_CryptoLib_VerifyWithECDsa_" data-uid="Neo.SmartContract.Native.CryptoLib.VerifyWithECDsa*"></a>
+  <h4 id="Neo_SmartContract_Native_CryptoLib_VerifyWithECDsa_System_Byte___System_Byte___System_Byte___Neo_SmartContract_Native_NamedCurve_" data-uid="Neo.SmartContract.Native.CryptoLib.VerifyWithECDsa(System.Byte[],System.Byte[],System.Byte[],Neo.SmartContract.Native.NamedCurve)">VerifyWithECDsa(byte[], byte[], byte[], NamedCurve)</h4>
+  <div class="markdown level1 summary"><p>Verifies that a digital signature is appropriate for the provided key and message using the ECDSA algorithm.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool VerifyWithECDsa(byte[] message, byte[] pubkey, byte[] signature, NamedCurve curve)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The signed message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">pubkey</span></td>
+        <td><p>The public key to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">signature</span></td>
+        <td><p>The signature to be verified.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.Native.NamedCurve.html">NamedCurve</a></td>
+        <td><span class="parametername">curve</span></td>
+        <td><p>The curve to be used by the ECDSA algorithm.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the signature is valid; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_CryptoLib.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.CryptoLib%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/CryptoLib.cs/#L21" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

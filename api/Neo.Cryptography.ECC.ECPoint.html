@@ -1,0 +1,1017 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ECPoint
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ECPoint
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.Cryptography.ECC.ECPoint">
+
+
+
+  <h1 id="Neo_Cryptography_ECC_ECPoint" data-uid="Neo.Cryptography.ECC.ECPoint" class="text-break">Class ECPoint
+</h1>
+  <div class="markdown level0 summary"><p>Represents a (X,Y) coordinate pair for elliptic curve cryptography (ECC) structures.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">ECPoint</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>&gt;</div>
+    <div><a class="xref" href="Neo.IO.ISerializable.html">ISerializable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.Cryptography.html">Cryptography</a>.<a class="xref" href="Neo.Cryptography.ECC.html">ECC</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_Cryptography_ECC_ECPoint_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ECPoint : IComparable&lt;ECPoint&gt;, IEquatable&lt;ECPoint&gt;, ISerializable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint__ctor.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L45">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint__ctor_" data-uid="Neo.Cryptography.ECC.ECPoint.#ctor*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint__ctor" data-uid="Neo.Cryptography.ECC.ECPoint.#ctor">ECPoint()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> class with the secp256r1 curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ECPoint()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_IsInfinity.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.IsInfinity%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L32">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_IsInfinity_" data-uid="Neo.Cryptography.ECC.ECPoint.IsInfinity*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_IsInfinity" data-uid="Neo.Cryptography.ECC.ECPoint.IsInfinity">IsInfinity</h4>
+  <div class="markdown level1 summary"><p>Indicates whether it is a point at infinity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInfinity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_Size.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.Size%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L37">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_Size_" data-uid="Neo.Cryptography.ECC.ECPoint.Size*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_Size" data-uid="Neo.Cryptography.ECC.ECPoint.Size">Size</h4>
+  <div class="markdown level1 summary"><p>The size of the object in bytes after serialization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Size { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_CompareTo_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.CompareTo(Neo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L56">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_CompareTo_" data-uid="Neo.Cryptography.ECC.ECPoint.CompareTo*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_CompareTo_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.Cryptography.ECC.ECPoint.CompareTo(Neo.Cryptography.ECC.ECPoint)">CompareTo(ECPoint)</h4>
+  <div class="markdown level1 summary"><p>Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(ECPoint other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>An object to compare with this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>A value that indicates the relative order of the objects being compared. The return value has these meanings:</p>
+ <table><thead><tr><th class="term"> Value</th><th class="description"> Meaning</th></tr></thead><tbody><tr><td class="term"> Less than zero</td><td class="description"> This instance precedes <code class="paramref">other</code> in the sort order.</td></tr><tr><td class="term"> Zero</td><td class="description"> This instance occurs in the same position in the sort order as <code class="paramref">other</code>.</td></tr><tr><td class="term"> Greater than zero</td><td class="description"> This instance follows <code class="paramref">other</code> in the sort order.</td></tr></tbody></table>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_DecodePoint_System_ReadOnlySpan_System_Byte__Neo_Cryptography_ECC_ECCurve_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.DecodePoint(System.ReadOnlySpan%7BSystem.Byte%7D%2CNeo.Cryptography.ECC.ECCurve)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L71">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_DecodePoint_" data-uid="Neo.Cryptography.ECC.ECPoint.DecodePoint*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_DecodePoint_System_ReadOnlySpan_System_Byte__Neo_Cryptography_ECC_ECCurve_" data-uid="Neo.Cryptography.ECC.ECPoint.DecodePoint(System.ReadOnlySpan{System.Byte},Neo.Cryptography.ECC.ECCurve)">DecodePoint(ReadOnlySpan&lt;byte&gt;, ECCurve)</h4>
+  <div class="markdown level1 summary"><p>Decode an <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> object from a sequence of byte.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint DecodePoint(ReadOnlySpan&lt;byte&gt; encoded, ECCurve curve)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
+        <td><span class="parametername">encoded</span></td>
+        <td><p>The sequence of byte to be decoded.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a></td>
+        <td><span class="parametername">curve</span></td>
+        <td><p>The <a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a> object used to construct the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><p>The decoded point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_DeserializeFrom_Neo_IO_MemoryReader__Neo_Cryptography_ECC_ECCurve_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.DeserializeFrom(Neo.IO.MemoryReader%40%2CNeo.Cryptography.ECC.ECCurve)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L159">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_DeserializeFrom_" data-uid="Neo.Cryptography.ECC.ECPoint.DeserializeFrom*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_DeserializeFrom_Neo_IO_MemoryReader__Neo_Cryptography_ECC_ECCurve_" data-uid="Neo.Cryptography.ECC.ECPoint.DeserializeFrom(Neo.IO.MemoryReader@,Neo.Cryptography.ECC.ECCurve)">DeserializeFrom(ref MemoryReader, ECCurve)</h4>
+  <div class="markdown level1 summary"><p>Deserializes an <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> object from a <a class="xref" href="Neo.IO.MemoryReader.html">MemoryReader</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint DeserializeFrom(ref MemoryReader reader, ECCurve curve)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.IO.MemoryReader.html">MemoryReader</a></td>
+        <td><span class="parametername">reader</span></td>
+        <td><p>The <a class="xref" href="Neo.IO.MemoryReader.html">MemoryReader</a> for reading data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a></td>
+        <td><span class="parametername">curve</span></td>
+        <td><p>The <a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a> object used to construct the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><p>The deserialized point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_EncodePoint_System_Boolean_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.EncodePoint(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L176">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_EncodePoint_" data-uid="Neo.Cryptography.ECC.ECPoint.EncodePoint*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_EncodePoint_System_Boolean_" data-uid="Neo.Cryptography.ECC.ECPoint.EncodePoint(System.Boolean)">EncodePoint(bool)</h4>
+  <div class="markdown level1 summary"><p>Encodes an <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> object to a byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] EncodePoint(bool commpressed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">commpressed</span></td>
+        <td><p>Indicates whether to encode it in a compressed format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The encoded point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Neo_Cryptography_ECC_ECPoint_EncodePoint_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note: The return should't be modified because it could be cached.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_Equals_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.Equals(Neo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L200">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_Equals_" data-uid="Neo.Cryptography.ECC.ECPoint.Equals*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_Equals_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.Cryptography.ECC.ECPoint.Equals(Neo.Cryptography.ECC.ECPoint)">Equals(ECPoint)</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(ECPoint other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>An object to compare with this object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L209">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_Equals_" data-uid="Neo.Cryptography.ECC.ECPoint.Equals*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_Equals_System_Object_" data-uid="Neo.Cryptography.ECC.ECPoint.Equals(System.Object)">Equals(object)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to compare with the current object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_FromBytes_System_Byte___Neo_Cryptography_ECC_ECCurve_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.FromBytes(System.Byte%5B%5D%2CNeo.Cryptography.ECC.ECCurve)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L220">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_FromBytes_" data-uid="Neo.Cryptography.ECC.ECPoint.FromBytes*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_FromBytes_System_Byte___Neo_Cryptography_ECC_ECCurve_" data-uid="Neo.Cryptography.ECC.ECPoint.FromBytes(System.Byte[],Neo.Cryptography.ECC.ECCurve)">FromBytes(byte[], ECCurve)</h4>
+  <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> object from a byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint FromBytes(byte[] bytes, ECCurve curve)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">bytes</span></td>
+        <td><p>The byte array to be used to construct the object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a></td>
+        <td><span class="parametername">curve</span></td>
+        <td><p>The <a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a> object used to construct the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><p>The decoded point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_GetHashCode.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L231">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_GetHashCode_" data-uid="Neo.Cryptography.ECC.ECPoint.GetHashCode*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_GetHashCode" data-uid="Neo.Cryptography.ECC.ECPoint.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>A hash code for the current object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_Parse_System_String_Neo_Cryptography_ECC_ECCurve_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.Parse(System.String%2CNeo.Cryptography.ECC.ECCurve)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L341">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_Parse_" data-uid="Neo.Cryptography.ECC.ECPoint.Parse*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_Parse_System_String_Neo_Cryptography_ECC_ECCurve_" data-uid="Neo.Cryptography.ECC.ECPoint.Parse(System.String,Neo.Cryptography.ECC.ECCurve)">Parse(string, ECCurve)</h4>
+  <div class="markdown level1 summary"><p>Parse the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> object from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint Parse(string value, ECCurve curve)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> to be parsed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a></td>
+        <td><span class="parametername">curve</span></td>
+        <td><p>The <a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a> object used to construct the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><p>The parsed point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_ToString.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L351">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_ToString_" data-uid="Neo.Cryptography.ECC.ECPoint.ToString*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_ToString" data-uid="Neo.Cryptography.ECC.ECPoint.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>A string that represents the current object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_TryParse_System_String_Neo_Cryptography_ECC_ECCurve_Neo_Cryptography_ECC_ECPoint__.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.TryParse(System.String%2CNeo.Cryptography.ECC.ECCurve%2CNeo.Cryptography.ECC.ECPoint%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L363">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_TryParse_" data-uid="Neo.Cryptography.ECC.ECPoint.TryParse*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_TryParse_System_String_Neo_Cryptography_ECC_ECCurve_Neo_Cryptography_ECC_ECPoint__" data-uid="Neo.Cryptography.ECC.ECPoint.TryParse(System.String,Neo.Cryptography.ECC.ECCurve,Neo.Cryptography.ECC.ECPoint@)">TryParse(string, ECCurve, out ECPoint)</h4>
+  <div class="markdown level1 summary"><p>Try parse the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a> object from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryParse(string value, ECCurve curve, out ECPoint point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> to be parsed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a></td>
+        <td><span class="parametername">curve</span></td>
+        <td><p>The <a class="xref" href="Neo.Cryptography.ECC.ECCurve.html">ECCurve</a> object used to construct the <a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>The parsed point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">value</code> was converted successfully; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_op_Addition_Neo_Cryptography_ECC_ECPoint_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.op_Addition(Neo.Cryptography.ECC.ECPoint%2CNeo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L445">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_op_Addition_" data-uid="Neo.Cryptography.ECC.ECPoint.op_Addition*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_op_Addition_Neo_Cryptography_ECC_ECPoint_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.Cryptography.ECC.ECPoint.op_Addition(Neo.Cryptography.ECC.ECPoint,Neo.Cryptography.ECC.ECPoint)">operator +(ECPoint, ECPoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint operator +(ECPoint x, ECPoint y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_op_Multiply_Neo_Cryptography_ECC_ECPoint_System_Byte___.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.op_Multiply(Neo.Cryptography.ECC.ECPoint%2CSystem.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L431">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_op_Multiply_" data-uid="Neo.Cryptography.ECC.ECPoint.op_Multiply*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_op_Multiply_Neo_Cryptography_ECC_ECPoint_System_Byte___" data-uid="Neo.Cryptography.ECC.ECPoint.op_Multiply(Neo.Cryptography.ECC.ECPoint,System.Byte[])">operator *(ECPoint, byte[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint operator *(ECPoint p, byte[] n)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">p</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">n</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_op_Subtraction_Neo_Cryptography_ECC_ECPoint_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.op_Subtraction(Neo.Cryptography.ECC.ECPoint%2CNeo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L463">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_op_Subtraction_" data-uid="Neo.Cryptography.ECC.ECPoint.op_Subtraction*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_op_Subtraction_Neo_Cryptography_ECC_ECPoint_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.Cryptography.ECC.ECPoint.op_Subtraction(Neo.Cryptography.ECC.ECPoint,Neo.Cryptography.ECC.ECPoint)">operator -(ECPoint, ECPoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint operator -(ECPoint x, ECPoint y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint_op_UnaryNegation_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint.op_UnaryNegation(Neo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L426">View Source</a>
+  </span>
+  <a id="Neo_Cryptography_ECC_ECPoint_op_UnaryNegation_" data-uid="Neo.Cryptography.ECC.ECPoint.op_UnaryNegation*"></a>
+  <h4 id="Neo_Cryptography_ECC_ECPoint_op_UnaryNegation_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.Cryptography.ECC.ECPoint.op_UnaryNegation(Neo.Cryptography.ECC.ECPoint)">operator -(ECPoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ECPoint operator -(ECPoint x)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Neo.IO.ISerializable.html">ISerializable</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Neo.IO.Helper.html#Neo_IO_Helper_ToArray_Neo_IO_ISerializable_">Helper.ToArray(ISerializable)</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Cryptography_ECC_ECPoint.md&amp;value=---%0Auid%3A%20Neo.Cryptography.ECC.ECPoint%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Cryptography/ECC/ECPoint.cs/#L23" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

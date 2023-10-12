@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class MemoryPool
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class MemoryPool
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.Ledger.MemoryPool">
+
+
+
+  <h1 id="Neo_Ledger_MemoryPool" data-uid="Neo.Ledger.MemoryPool" class="text-break">Class MemoryPool
+</h1>
+  <div class="markdown level0 summary"><p>Used to cache verified transactions before being written into the block.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">MemoryPool</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.Ledger.html">Ledger</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_Ledger_MemoryPool_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MemoryPool : IReadOnlyCollection&lt;Transaction&gt;, IEnumerable&lt;Transaction&gt;, IEnumerable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool__ctor_Neo_NeoSystem_.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.%23ctor(Neo.NeoSystem)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L123">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool__ctor_" data-uid="Neo.Ledger.MemoryPool.#ctor*"></a>
+  <h4 id="Neo_Ledger_MemoryPool__ctor_Neo_NeoSystem_" data-uid="Neo.Ledger.MemoryPool.#ctor(Neo.NeoSystem)">MemoryPool(NeoSystem)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MemoryPool(NeoSystem system)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.NeoSystem.html">NeoSystem</a></td>
+        <td><span class="parametername">system</span></td>
+        <td><p>The <a class="xref" href="Neo.NeoSystem.html">NeoSystem</a> object that contains the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_Capacity.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.Capacity%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L83">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_Capacity_" data-uid="Neo.Ledger.MemoryPool.Capacity*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_Capacity" data-uid="Neo.Ledger.MemoryPool.Capacity">Capacity</h4>
+  <div class="markdown level1 summary"><p>Total maximum capacity of transactions the pool can hold.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Capacity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_Count.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.Count%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L93">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_Count_" data-uid="Neo.Ledger.MemoryPool.Count*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_Count" data-uid="Neo.Ledger.MemoryPool.Count">Count</h4>
+  <div class="markdown level1 summary"><p>Total count of transactions in the pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_UnVerifiedCount.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.UnVerifiedCount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L117">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_UnVerifiedCount_" data-uid="Neo.Ledger.MemoryPool.UnVerifiedCount*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_UnVerifiedCount" data-uid="Neo.Ledger.MemoryPool.UnVerifiedCount">UnVerifiedCount</h4>
+  <div class="markdown level1 summary"><p>Total count of unverified transactions in the pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UnVerifiedCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_VerifiedCount.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.VerifiedCount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L112">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_VerifiedCount_" data-uid="Neo.Ledger.MemoryPool.VerifiedCount*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_VerifiedCount" data-uid="Neo.Ledger.MemoryPool.VerifiedCount">VerifiedCount</h4>
+  <div class="markdown level1 summary"><p>Total count of verified transactions in the pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int VerifiedCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_ContainsKey_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.ContainsKey(Neo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L140">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_ContainsKey_" data-uid="Neo.Ledger.MemoryPool.ContainsKey*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_ContainsKey_Neo_UInt256_" data-uid="Neo.Ledger.MemoryPool.ContainsKey(Neo.UInt256)">ContainsKey(UInt256)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the pool is holding this transaction and has at some point verified it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsKey(UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The transaction hash.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a> contains the transaction; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Neo_Ledger_MemoryPool_ContainsKey_Neo_UInt256__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note: The pool may not have verified it since the last block was persisted. To get only the
+transactions that have been verified during this block use <a class="xref" href="Neo.Ledger.MemoryPool.html#Neo_Ledger_MemoryPool_GetVerifiedTransactions">GetVerifiedTransactions()</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_GetEnumerator.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.GetEnumerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L176">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_GetEnumerator_" data-uid="Neo.Ledger.MemoryPool.GetEnumerator*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_GetEnumerator" data-uid="Neo.Ledger.MemoryPool.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;Transaction&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</td>
+        <td><p>An enumerator that can be used to iterate through the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_GetSortedVerifiedTransactions.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.GetSortedVerifiedTransactions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L235">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_GetSortedVerifiedTransactions_" data-uid="Neo.Ledger.MemoryPool.GetSortedVerifiedTransactions*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_GetSortedVerifiedTransactions" data-uid="Neo.Ledger.MemoryPool.GetSortedVerifiedTransactions">GetSortedVerifiedTransactions()</h4>
+  <div class="markdown level1 summary"><p>Gets the sorted verified transactions in the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Transaction&gt; GetSortedVerifiedTransactions()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</td>
+        <td><p>The sorted verified transactions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_GetVerifiedAndUnverifiedTransactions_System_Collections_Generic_IEnumerable_Neo_Network_P2P_Payloads_Transaction___System_Collections_Generic_IEnumerable_Neo_Network_P2P_Payloads_Transaction___.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.GetVerifiedAndUnverifiedTransactions(System.Collections.Generic.IEnumerable%7BNeo.Network.P2P.Payloads.Transaction%7D%40%2CSystem.Collections.Generic.IEnumerable%7BNeo.Network.P2P.Payloads.Transaction%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L216">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_GetVerifiedAndUnverifiedTransactions_" data-uid="Neo.Ledger.MemoryPool.GetVerifiedAndUnverifiedTransactions*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_GetVerifiedAndUnverifiedTransactions_System_Collections_Generic_IEnumerable_Neo_Network_P2P_Payloads_Transaction___System_Collections_Generic_IEnumerable_Neo_Network_P2P_Payloads_Transaction___" data-uid="Neo.Ledger.MemoryPool.GetVerifiedAndUnverifiedTransactions(System.Collections.Generic.IEnumerable{Neo.Network.P2P.Payloads.Transaction}@,System.Collections.Generic.IEnumerable{Neo.Network.P2P.Payloads.Transaction}@)">GetVerifiedAndUnverifiedTransactions(out IEnumerable&lt;Transaction&gt;, out IEnumerable&lt;Transaction&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets both the verified and the unverified transactions in the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GetVerifiedAndUnverifiedTransactions(out IEnumerable&lt;Transaction&gt; verifiedTransactions, out IEnumerable&lt;Transaction&gt; unverifiedTransactions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</td>
+        <td><span class="parametername">verifiedTransactions</span></td>
+        <td><p>The verified transactions.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</td>
+        <td><span class="parametername">unverifiedTransactions</span></td>
+        <td><p>The unverified transactions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_GetVerifiedTransactions.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.GetVerifiedTransactions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L198">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_GetVerifiedTransactions_" data-uid="Neo.Ledger.MemoryPool.GetVerifiedTransactions*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_GetVerifiedTransactions" data-uid="Neo.Ledger.MemoryPool.GetVerifiedTransactions">GetVerifiedTransactions()</h4>
+  <div class="markdown level1 summary"><p>Gets the verified transactions in the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Transaction&gt; GetVerifiedTransactions()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</td>
+        <td><p>The verified transactions.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_TryGetValue_Neo_UInt256_Neo_Network_P2P_Payloads_Transaction__.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.TryGetValue(Neo.UInt256%2CNeo.Network.P2P.Payloads.Transaction%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L159">View Source</a>
+  </span>
+  <a id="Neo_Ledger_MemoryPool_TryGetValue_" data-uid="Neo.Ledger.MemoryPool.TryGetValue*"></a>
+  <h4 id="Neo_Ledger_MemoryPool_TryGetValue_Neo_UInt256_Neo_Network_P2P_Payloads_Transaction__" data-uid="Neo.Ledger.MemoryPool.TryGetValue(Neo.UInt256,Neo.Network.P2P.Payloads.Transaction@)">TryGetValue(UInt256, out Transaction)</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a> associated with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(UInt256 hash, out Transaction tx)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the <a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a> to get.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a></td>
+        <td><span class="parametername">tx</span></td>
+        <td><p>When this method returns, contains the <a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a> associated with the specified hash, if the hash is found; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="Neo.Ledger.MemoryPool.html">MemoryPool</a> contains a <a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a> with the specified hash; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_TransactionAdded.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.TransactionAdded%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L29">View Source</a>
+  </span>
+  <h4 id="Neo_Ledger_MemoryPool_TransactionAdded" data-uid="Neo.Ledger.MemoryPool.TransactionAdded">TransactionAdded</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;Transaction&gt; TransactionAdded</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool_TransactionRemoved.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool.TransactionRemoved%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L30">View Source</a>
+  </span>
+  <h4 id="Neo_Ledger_MemoryPool_TransactionRemoved" data-uid="Neo.Ledger.MemoryPool.TransactionRemoved">TransactionRemoved</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TransactionRemovedEventArgs&gt; TransactionRemoved</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="Neo.Ledger.TransactionRemovedEventArgs.html">TransactionRemovedEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Neo.IO.Helper.html#Neo_IO_Helper_GetVarSize__1_System_Collections_Generic_IReadOnlyCollection___0__">Helper.GetVarSize&lt;T&gt;(IReadOnlyCollection&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Neo.IO.Helper.html#Neo_IO_Helper_ToByteArray__1_System_Collections_Generic_IReadOnlyCollection___0__">Helper.ToByteArray&lt;T&gt;(IReadOnlyCollection&lt;T&gt;)</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Ledger_MemoryPool.md&amp;value=---%0Auid%3A%20Neo.Ledger.MemoryPool%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Ledger/MemoryPool.cs/#L27" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

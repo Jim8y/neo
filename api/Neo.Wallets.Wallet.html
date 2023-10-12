@@ -1,0 +1,1967 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class Wallet
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class Wallet
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.Wallets.Wallet">
+
+
+
+  <h1 id="Neo_Wallets_Wallet" data-uid="Neo.Wallets.Wallet" class="text-break">Class Wallet
+</h1>
+  <div class="markdown level0 summary"><p>The base class of wallets.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">Wallet</span></div>
+      <div class="level2"><a class="xref" href="Neo.Wallets.NEP6.NEP6Wallet.html">NEP6Wallet</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.Wallets.html">Wallets</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_Wallets_Wallet_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Wallet</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet__ctor_System_String_Neo_ProtocolSettings_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.%23ctor(System.String%2CNeo.ProtocolSettings)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L127">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet__ctor_" data-uid="Neo.Wallets.Wallet.#ctor*"></a>
+  <h4 id="Neo_Wallets_Wallet__ctor_System_String_Neo_ProtocolSettings_" data-uid="Neo.Wallets.Wallet.#ctor(System.String,Neo.ProtocolSettings)">Wallet(string, ProtocolSettings)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Neo.Wallets.Wallet.html">Wallet</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Wallet(string path, ProtocolSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path of the wallet file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>The <a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a> to be used by the wallet.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Name.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Name%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L48">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Name_" data-uid="Neo.Wallets.Wallet.Name*"></a>
+  <h4 id="Neo_Wallets_Wallet_Name" data-uid="Neo.Wallets.Wallet.Name">Name</h4>
+  <div class="markdown level1 summary"><p>The name of the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Path.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Path%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L53">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Path_" data-uid="Neo.Wallets.Wallet.Path*"></a>
+  <h4 id="Neo_Wallets_Wallet_Path" data-uid="Neo.Wallets.Wallet.Path">Path</h4>
+  <div class="markdown level1 summary"><p>The path of the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Path { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_ProtocolSettings.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.ProtocolSettings%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L43">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_ProtocolSettings_" data-uid="Neo.Wallets.Wallet.ProtocolSettings*"></a>
+  <h4 id="Neo_Wallets_Wallet_ProtocolSettings" data-uid="Neo.Wallets.Wallet.ProtocolSettings">ProtocolSettings</h4>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a> to be used by the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProtocolSettings ProtocolSettings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Version.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Version%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L58">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Version_" data-uid="Neo.Wallets.Wallet.Version*"></a>
+  <h4 id="Neo_Wallets_Wallet_Version" data-uid="Neo.Wallets.Wallet.Version">Version</h4>
+  <div class="markdown level1 summary"><p>The version of the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Version Version { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.version">Version</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_CalculateNetworkFee_Neo_Persistence_DataCache_Neo_Network_P2P_Payloads_Transaction_System_Int64_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.CalculateNetworkFee(Neo.Persistence.DataCache%2CNeo.Network.P2P.Payloads.Transaction%2CSystem.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L591">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_CalculateNetworkFee_" data-uid="Neo.Wallets.Wallet.CalculateNetworkFee*"></a>
+  <h4 id="Neo_Wallets_Wallet_CalculateNetworkFee_Neo_Persistence_DataCache_Neo_Network_P2P_Payloads_Transaction_System_Int64_" data-uid="Neo.Wallets.Wallet.CalculateNetworkFee(Neo.Persistence.DataCache,Neo.Network.P2P.Payloads.Transaction,System.Int64)">CalculateNetworkFee(DataCache, Transaction, long)</h4>
+  <div class="markdown level1 summary"><p>Calculates the network fee for the specified transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long CalculateNetworkFee(DataCache snapshot, Transaction tx, long maxExecutionCost = 2000000000)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a></td>
+        <td><span class="parametername">tx</span></td>
+        <td><p>The transaction to calculate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">maxExecutionCost</span></td>
+        <td><p>The maximum cost that can be spent when a contract is executed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><p>The network fee of the transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_ChangePassword_System_String_System_String_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.ChangePassword(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L66">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_ChangePassword_" data-uid="Neo.Wallets.Wallet.ChangePassword*"></a>
+  <h4 id="Neo_Wallets_Wallet_ChangePassword_System_String_System_String_" data-uid="Neo.Wallets.Wallet.ChangePassword(System.String,System.String)">ChangePassword(string, string)</h4>
+  <div class="markdown level1 summary"><p>Changes the password of the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool ChangePassword(string oldPassword, string newPassword)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">oldPassword</span></td>
+        <td><p>The old password of the wallet.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">newPassword</span></td>
+        <td><p>The new password to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the password is changed successfully; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Contains_Neo_UInt160_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Contains(Neo.UInt160)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L73">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Contains_" data-uid="Neo.Wallets.Wallet.Contains*"></a>
+  <h4 id="Neo_Wallets_Wallet_Contains_Neo_UInt160_" data-uid="Neo.Wallets.Wallet.Contains(Neo.UInt160)">Contains(UInt160)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified account is included in the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool Contains(UInt160 scriptHash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">scriptHash</span></td>
+        <td><p>The hash of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the account is included in the wallet; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Create_System_String_System_String_System_String_Neo_ProtocolSettings_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Create(System.String%2CSystem.String%2CSystem.String%2CNeo.ProtocolSettings)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L747">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Create_" data-uid="Neo.Wallets.Wallet.Create*"></a>
+  <h4 id="Neo_Wallets_Wallet_Create_System_String_System_String_System_String_Neo_ProtocolSettings_" data-uid="Neo.Wallets.Wallet.Create(System.String,System.String,System.String,Neo.ProtocolSettings)">Create(string, string, string, ProtocolSettings)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Wallet Create(string name, string path, string password, ProtocolSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">password</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.Wallet.html">Wallet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_CreateAccount.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.CreateAccount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L137">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_CreateAccount_" data-uid="Neo.Wallets.Wallet.CreateAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_CreateAccount" data-uid="Neo.Wallets.Wallet.CreateAccount">CreateAccount()</h4>
+  <div class="markdown level1 summary"><p>Creates a standard account for the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WalletAccount CreateAccount()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The created account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_CreateAccount_Neo_SmartContract_Contract_Neo_Wallets_KeyPair_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.CreateAccount(Neo.SmartContract.Contract%2CNeo.Wallets.KeyPair)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L88">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_CreateAccount_" data-uid="Neo.Wallets.Wallet.CreateAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_CreateAccount_Neo_SmartContract_Contract_Neo_Wallets_KeyPair_" data-uid="Neo.Wallets.Wallet.CreateAccount(Neo.SmartContract.Contract,Neo.Wallets.KeyPair)">CreateAccount(Contract, KeyPair)</h4>
+  <div class="markdown level1 summary"><p>Creates a contract account for the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract WalletAccount CreateAccount(Contract contract, KeyPair key = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.Contract.html">Contract</a></td>
+        <td><span class="parametername">contract</span></td>
+        <td><p>The contract of the account.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.KeyPair.html">KeyPair</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The private key of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The created account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_CreateAccount_Neo_SmartContract_Contract_System_Byte___.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.CreateAccount(Neo.SmartContract.Contract%2CSystem.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L165">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_CreateAccount_" data-uid="Neo.Wallets.Wallet.CreateAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_CreateAccount_Neo_SmartContract_Contract_System_Byte___" data-uid="Neo.Wallets.Wallet.CreateAccount(Neo.SmartContract.Contract,System.Byte[])">CreateAccount(Contract, byte[])</h4>
+  <div class="markdown level1 summary"><p>Creates a contract account for the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WalletAccount CreateAccount(Contract contract, byte[] privateKey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.Contract.html">Contract</a></td>
+        <td><span class="parametername">contract</span></td>
+        <td><p>The contract of the account.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">privateKey</span></td>
+        <td><p>The private key of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The created account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_CreateAccount_Neo_UInt160_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.CreateAccount(Neo.UInt160)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L95">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_CreateAccount_" data-uid="Neo.Wallets.Wallet.CreateAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_CreateAccount_Neo_UInt160_" data-uid="Neo.Wallets.Wallet.CreateAccount(Neo.UInt160)">CreateAccount(UInt160)</h4>
+  <div class="markdown level1 summary"><p>Creates a watch-only account for the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract WalletAccount CreateAccount(UInt160 scriptHash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">scriptHash</span></td>
+        <td><p>The hash of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The created account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_CreateAccount_System_Byte___.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.CreateAccount(System.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L80">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_CreateAccount_" data-uid="Neo.Wallets.Wallet.CreateAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_CreateAccount_System_Byte___" data-uid="Neo.Wallets.Wallet.CreateAccount(System.Byte[])">CreateAccount(byte[])</h4>
+  <div class="markdown level1 summary"><p>Creates a standard account with the specified private key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract WalletAccount CreateAccount(byte[] privateKey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">privateKey</span></td>
+        <td><p>The private key of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The created account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Delete.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Delete%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L100">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Delete_" data-uid="Neo.Wallets.Wallet.Delete*"></a>
+  <h4 id="Neo_Wallets_Wallet_Delete" data-uid="Neo.Wallets.Wallet.Delete">Delete()</h4>
+  <div class="markdown level1 summary"><p>Deletes the entire database of the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void Delete()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_DeleteAccount_Neo_UInt160_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.DeleteAccount(Neo.UInt160)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L107">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_DeleteAccount_" data-uid="Neo.Wallets.Wallet.DeleteAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_DeleteAccount_Neo_UInt160_" data-uid="Neo.Wallets.Wallet.DeleteAccount(Neo.UInt160)">DeleteAccount(UInt160)</h4>
+  <div class="markdown level1 summary"><p>Deletes an account from the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool DeleteAccount(UInt160 scriptHash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">scriptHash</span></td>
+        <td><p>The hash of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the account is removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetAccount_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetAccount(Neo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L237">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetAccount_" data-uid="Neo.Wallets.Wallet.GetAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetAccount_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.Wallets.Wallet.GetAccount(Neo.Cryptography.ECC.ECPoint)">GetAccount(ECPoint)</h4>
+  <div class="markdown level1 summary"><p>Gets the account with the specified public key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WalletAccount GetAccount(ECPoint pubkey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">pubkey</span></td>
+        <td><p>The public key of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The account with the specified public key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetAccount_Neo_UInt160_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetAccount(Neo.UInt160)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L114">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetAccount_" data-uid="Neo.Wallets.Wallet.GetAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetAccount_Neo_UInt160_" data-uid="Neo.Wallets.Wallet.GetAccount(Neo.UInt160)">GetAccount(UInt160)</h4>
+  <div class="markdown level1 summary"><p>Gets the account with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract WalletAccount GetAccount(UInt160 scriptHash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">scriptHash</span></td>
+        <td><p>The hash of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The account with the specified hash.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetAccounts.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetAccounts%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L120">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetAccounts_" data-uid="Neo.Wallets.Wallet.GetAccounts*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetAccounts" data-uid="Neo.Wallets.Wallet.GetAccounts">GetAccounts()</h4>
+  <div class="markdown level1 summary"><p>Gets all the accounts from the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract IEnumerable&lt;WalletAccount&gt; GetAccounts()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a>&gt;</td>
+        <td><p>All accounts in the wallet.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetAvailable_Neo_Persistence_DataCache_Neo_UInt160_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetAvailable(Neo.Persistence.DataCache%2CNeo.UInt160)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L263">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetAvailable_" data-uid="Neo.Wallets.Wallet.GetAvailable*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetAvailable_Neo_Persistence_DataCache_Neo_UInt160_" data-uid="Neo.Wallets.Wallet.GetAvailable(Neo.Persistence.DataCache,Neo.UInt160)">GetAvailable(DataCache, UInt160)</h4>
+  <div class="markdown level1 summary"><p>Gets the available balance for the specified asset in the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BigDecimal GetAvailable(DataCache snapshot, UInt160 asset_id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">asset_id</span></td>
+        <td><p>The id of the asset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.BigDecimal.html">BigDecimal</a></td>
+        <td><p>The available balance for the specified asset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetBalance_Neo_Persistence_DataCache_Neo_UInt160_Neo_UInt160___.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetBalance(Neo.Persistence.DataCache%2CNeo.UInt160%2CNeo.UInt160%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L276">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetBalance_" data-uid="Neo.Wallets.Wallet.GetBalance*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetBalance_Neo_Persistence_DataCache_Neo_UInt160_Neo_UInt160___" data-uid="Neo.Wallets.Wallet.GetBalance(Neo.Persistence.DataCache,Neo.UInt160,Neo.UInt160[])">GetBalance(DataCache, UInt160, params UInt160[])</h4>
+  <div class="markdown level1 summary"><p>Gets the balance for the specified asset in the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BigDecimal GetBalance(DataCache snapshot, UInt160 asset_id, params UInt160[] accounts)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">asset_id</span></td>
+        <td><p>The id of the asset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a>[]</td>
+        <td><span class="parametername">accounts</span></td>
+        <td><p>The accounts to be counted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.BigDecimal.html">BigDecimal</a></td>
+        <td><p>The balance for the specified asset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetDefaultAccount.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetDefaultAccount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L246">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetDefaultAccount_" data-uid="Neo.Wallets.Wallet.GetDefaultAccount*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetDefaultAccount" data-uid="Neo.Wallets.Wallet.GetDefaultAccount">GetDefaultAccount()</h4>
+  <div class="markdown level1 summary"><p>Gets the default account of the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual WalletAccount GetDefaultAccount()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The default account of the wallet.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetPrivateKeyFromNEP2_System_String_System_Byte___System_Byte_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetPrivateKeyFromNEP2(System.String%2CSystem.Byte%5B%5D%2CSystem.Byte%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L341">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetPrivateKeyFromNEP2_" data-uid="Neo.Wallets.Wallet.GetPrivateKeyFromNEP2*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetPrivateKeyFromNEP2_System_String_System_Byte___System_Byte_System_Int32_System_Int32_System_Int32_" data-uid="Neo.Wallets.Wallet.GetPrivateKeyFromNEP2(System.String,System.Byte[],System.Byte,System.Int32,System.Int32,System.Int32)">GetPrivateKeyFromNEP2(string, byte[], byte, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Decodes a private key from the specified NEP-2 string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] GetPrivateKeyFromNEP2(string nep2, byte[] passphrase, byte version, int N = 16384, int r = 8, int p = 8)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">nep2</span></td>
+        <td><p>The NEP-2 string to be decoded.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">passphrase</span></td>
+        <td><p>The passphrase of the private key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The address version of NEO system.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">N</span></td>
+        <td><p>The N field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">r</span></td>
+        <td><p>The R field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">p</span></td>
+        <td><p>The P field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The decoded private key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetPrivateKeyFromNEP2_System_String_System_String_System_Byte_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetPrivateKeyFromNEP2(System.String%2CSystem.String%2CSystem.Byte%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L318">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetPrivateKeyFromNEP2_" data-uid="Neo.Wallets.Wallet.GetPrivateKeyFromNEP2*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetPrivateKeyFromNEP2_System_String_System_String_System_Byte_System_Int32_System_Int32_System_Int32_" data-uid="Neo.Wallets.Wallet.GetPrivateKeyFromNEP2(System.String,System.String,System.Byte,System.Int32,System.Int32,System.Int32)">GetPrivateKeyFromNEP2(string, string, byte, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Decodes a private key from the specified NEP-2 string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] GetPrivateKeyFromNEP2(string nep2, string passphrase, byte version, int N = 16384, int r = 8, int p = 8)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">nep2</span></td>
+        <td><p>The NEP-2 string to be decoded.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">passphrase</span></td>
+        <td><p>The passphrase of the private key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></td>
+        <td><span class="parametername">version</span></td>
+        <td><p>The address version of NEO system.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">N</span></td>
+        <td><p>The N field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">r</span></td>
+        <td><p>The R field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">p</span></td>
+        <td><p>The P field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The decoded private key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_GetPrivateKeyFromWIF_System_String_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.GetPrivateKeyFromWIF(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L373">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_GetPrivateKeyFromWIF_" data-uid="Neo.Wallets.Wallet.GetPrivateKeyFromWIF*"></a>
+  <h4 id="Neo_Wallets_Wallet_GetPrivateKeyFromWIF_System_String_" data-uid="Neo.Wallets.Wallet.GetPrivateKeyFromWIF(System.String)">GetPrivateKeyFromWIF(string)</h4>
+  <div class="markdown level1 summary"><p>Decodes a private key from the specified WIF string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] GetPrivateKeyFromWIF(string wif)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">wif</span></td>
+        <td><p>The WIF string to be decoded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The decoded private key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Import_System_Security_Cryptography_X509Certificates_X509Certificate2_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Import(System.Security.Cryptography.X509Certificates.X509Certificate2)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L410">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Import_" data-uid="Neo.Wallets.Wallet.Import*"></a>
+  <h4 id="Neo_Wallets_Wallet_Import_System_Security_Cryptography_X509Certificates_X509Certificate2_" data-uid="Neo.Wallets.Wallet.Import(System.Security.Cryptography.X509Certificates.X509Certificate2)">Import(X509Certificate2)</h4>
+  <div class="markdown level1 summary"><p>Imports an account from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual WalletAccount Import(X509Certificate2 cert)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a></td>
+        <td><span class="parametername">cert</span></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a> to import.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The imported account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Import_System_String_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Import(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L427">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Import_" data-uid="Neo.Wallets.Wallet.Import*"></a>
+  <h4 id="Neo_Wallets_Wallet_Import_System_String_" data-uid="Neo.Wallets.Wallet.Import(System.String)">Import(string)</h4>
+  <div class="markdown level1 summary"><p>Imports an account from the specified WIF string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual WalletAccount Import(string wif)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">wif</span></td>
+        <td><p>The WIF string to import.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The imported account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Import_System_String_System_String_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Import(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L444">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Import_" data-uid="Neo.Wallets.Wallet.Import*"></a>
+  <h4 id="Neo_Wallets_Wallet_Import_System_String_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Neo.Wallets.Wallet.Import(System.String,System.String,System.Int32,System.Int32,System.Int32)">Import(string, string, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Imports an account from the specified NEP-2 string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual WalletAccount Import(string nep2, string passphrase, int N = 16384, int r = 8, int p = 8)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">nep2</span></td>
+        <td><p>The NEP-2 string to import.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">passphrase</span></td>
+        <td><p>The passphrase of the private key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">N</span></td>
+        <td><p>The N field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">r</span></td>
+        <td><p>The R field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">p</span></td>
+        <td><p>The P field of the <a class="xref" href="Neo.Wallets.NEP6.ScryptParameters.html">ScryptParameters</a> to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.WalletAccount.html">WalletAccount</a></td>
+        <td><p>The imported account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_MakeTransaction_Neo_Persistence_DataCache_Neo_Wallets_TransferOutput___Neo_UInt160_Neo_Network_P2P_Payloads_Signer___Neo_Network_P2P_Payloads_Block_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.MakeTransaction(Neo.Persistence.DataCache%2CNeo.Wallets.TransferOutput%5B%5D%2CNeo.UInt160%2CNeo.Network.P2P.Payloads.Signer%5B%5D%2CNeo.Network.P2P.Payloads.Block)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L461">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_MakeTransaction_" data-uid="Neo.Wallets.Wallet.MakeTransaction*"></a>
+  <h4 id="Neo_Wallets_Wallet_MakeTransaction_Neo_Persistence_DataCache_Neo_Wallets_TransferOutput___Neo_UInt160_Neo_Network_P2P_Payloads_Signer___Neo_Network_P2P_Payloads_Block_" data-uid="Neo.Wallets.Wallet.MakeTransaction(Neo.Persistence.DataCache,Neo.Wallets.TransferOutput[],Neo.UInt160,Neo.Network.P2P.Payloads.Signer[],Neo.Network.P2P.Payloads.Block)">MakeTransaction(DataCache, TransferOutput[], UInt160, Signer[], Block)</h4>
+  <div class="markdown level1 summary"><p>Makes a transaction to transfer assets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transaction MakeTransaction(DataCache snapshot, TransferOutput[] outputs, UInt160 from = null, Signer[] cosigners = null, Block persistingBlock = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.TransferOutput.html">TransferOutput</a>[]</td>
+        <td><span class="parametername">outputs</span></td>
+        <td><p>The array of <a class="xref" href="Neo.Wallets.TransferOutput.html">TransferOutput</a> that contain the asset, amount, and targets of the transfer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>The account to transfer from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Signer.html">Signer</a>[]</td>
+        <td><span class="parametername">cosigners</span></td>
+        <td><p>The cosigners to be added to the transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Block.html">Block</a></td>
+        <td><span class="parametername">persistingBlock</span></td>
+        <td><p>The block environment to execute the transaction. If null, <a class="xref" href="Neo.SmartContract.ApplicationEngine.html#Neo_SmartContract_ApplicationEngine_CreateDummyBlock_Neo_Persistence_DataCache_Neo_ProtocolSettings_">CreateDummyBlock(DataCache, ProtocolSettings)</a> will be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a></td>
+        <td><p>The created transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_MakeTransaction_Neo_Persistence_DataCache_System_ReadOnlyMemory_System_Byte__Neo_UInt160_Neo_Network_P2P_Payloads_Signer___Neo_Network_P2P_Payloads_TransactionAttribute___System_Int64_Neo_Network_P2P_Payloads_Block_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.MakeTransaction(Neo.Persistence.DataCache%2CSystem.ReadOnlyMemory%7BSystem.Byte%7D%2CNeo.UInt160%2CNeo.Network.P2P.Payloads.Signer%5B%5D%2CNeo.Network.P2P.Payloads.TransactionAttribute%5B%5D%2CSystem.Int64%2CNeo.Network.P2P.Payloads.Block)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L538">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_MakeTransaction_" data-uid="Neo.Wallets.Wallet.MakeTransaction*"></a>
+  <h4 id="Neo_Wallets_Wallet_MakeTransaction_Neo_Persistence_DataCache_System_ReadOnlyMemory_System_Byte__Neo_UInt160_Neo_Network_P2P_Payloads_Signer___Neo_Network_P2P_Payloads_TransactionAttribute___System_Int64_Neo_Network_P2P_Payloads_Block_" data-uid="Neo.Wallets.Wallet.MakeTransaction(Neo.Persistence.DataCache,System.ReadOnlyMemory{System.Byte},Neo.UInt160,Neo.Network.P2P.Payloads.Signer[],Neo.Network.P2P.Payloads.TransactionAttribute[],System.Int64,Neo.Network.P2P.Payloads.Block)">MakeTransaction(DataCache, ReadOnlyMemory&lt;byte&gt;, UInt160, Signer[], TransactionAttribute[], long, Block)</h4>
+  <div class="markdown level1 summary"><p>Makes a transaction to run a smart contract.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transaction MakeTransaction(DataCache snapshot, ReadOnlyMemory&lt;byte&gt; script, UInt160 sender = null, Signer[] cosigners = null, TransactionAttribute[] attributes = null, long maxGas = 2000000000, Block persistingBlock = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
+        <td><span class="parametername">script</span></td>
+        <td><p>The script to be loaded in the transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">sender</span></td>
+        <td><p>The sender of the transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Signer.html">Signer</a>[]</td>
+        <td><span class="parametername">cosigners</span></td>
+        <td><p>The cosigners to be added to the transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.TransactionAttribute.html">TransactionAttribute</a>[]</td>
+        <td><span class="parametername">attributes</span></td>
+        <td><p>The attributes to be added to the transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">maxGas</span></td>
+        <td><p>The maximum gas that can be spent to execute the script.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Block.html">Block</a></td>
+        <td><span class="parametername">persistingBlock</span></td>
+        <td><p>The block environment to execute the transaction. If null, <a class="xref" href="Neo.SmartContract.ApplicationEngine.html#Neo_SmartContract_ApplicationEngine_CreateDummyBlock_Neo_Persistence_DataCache_Neo_ProtocolSettings_">CreateDummyBlock(DataCache, ProtocolSettings)</a> will be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a></td>
+        <td><p>The created transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Migrate_System_String_System_String_System_String_Neo_ProtocolSettings_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Migrate(System.String%2CSystem.String%2CSystem.String%2CNeo.ProtocolSettings)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L765">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Migrate_" data-uid="Neo.Wallets.Wallet.Migrate*"></a>
+  <h4 id="Neo_Wallets_Wallet_Migrate_System_String_System_String_System_String_Neo_ProtocolSettings_" data-uid="Neo.Wallets.Wallet.Migrate(System.String,System.String,System.String,Neo.ProtocolSettings)">Migrate(string, string, string, ProtocolSettings)</h4>
+  <div class="markdown level1 summary"><p>Migrates the accounts from old wallet to a new <a class="xref" href="Neo.Wallets.NEP6.NEP6Wallet.html">NEP6Wallet</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Wallet Migrate(string path, string oldPath, string password, ProtocolSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path of the new wallet file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">oldPath</span></td>
+        <td><p>The path of the old wallet file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">password</span></td>
+        <td><p>The password of the wallets.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>The <a class="xref" href="Neo.Wallets.Wallet.html#Neo_Wallets_Wallet_ProtocolSettings">ProtocolSettings</a> to be used by the wallet.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.Wallet.html">Wallet</a></td>
+        <td><p>The created new wallet.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Open_System_String_System_String_Neo_ProtocolSettings_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Open(System.String%2CSystem.String%2CNeo.ProtocolSettings)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L752">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Open_" data-uid="Neo.Wallets.Wallet.Open*"></a>
+  <h4 id="Neo_Wallets_Wallet_Open_System_String_System_String_Neo_ProtocolSettings_" data-uid="Neo.Wallets.Wallet.Open(System.String,System.String,Neo.ProtocolSettings)">Open(string, string, ProtocolSettings)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Wallet Open(string path, string password, ProtocolSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">password</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.Wallet.html">Wallet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_RegisterFactory_Neo_Wallets_IWalletFactory_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.RegisterFactory(Neo.Wallets.IWalletFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L789">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_RegisterFactory_" data-uid="Neo.Wallets.Wallet.RegisterFactory*"></a>
+  <h4 id="Neo_Wallets_Wallet_RegisterFactory_Neo_Wallets_IWalletFactory_" data-uid="Neo.Wallets.Wallet.RegisterFactory(Neo.Wallets.IWalletFactory)">RegisterFactory(IWalletFactory)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterFactory(IWalletFactory factory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Wallets.IWalletFactory.html">IWalletFactory</a></td>
+        <td><span class="parametername">factory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Save.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Save%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L745">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Save_" data-uid="Neo.Wallets.Wallet.Save*"></a>
+  <h4 id="Neo_Wallets_Wallet_Save" data-uid="Neo.Wallets.Wallet.Save">Save()</h4>
+  <div class="markdown level1 summary"><p>Saves the wallet file to the disk. It uses the value of <a class="xref" href="Neo.Wallets.Wallet.html#Neo_Wallets_Wallet_Path">Path</a> property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void Save()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_Sign_Neo_SmartContract_ContractParametersContext_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.Sign(Neo.SmartContract.ContractParametersContext)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L676">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_Sign_" data-uid="Neo.Wallets.Wallet.Sign*"></a>
+  <h4 id="Neo_Wallets_Wallet_Sign_Neo_SmartContract_ContractParametersContext_" data-uid="Neo.Wallets.Wallet.Sign(Neo.SmartContract.ContractParametersContext)">Sign(ContractParametersContext)</h4>
+  <div class="markdown level1 summary"><p>Signs the <a class="xref" href="Neo.Network.P2P.Payloads.IVerifiable.html">IVerifiable</a> in the specified <a class="xref" href="Neo.SmartContract.ContractParametersContext.html">ContractParametersContext</a> with the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Sign(ContractParametersContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.ContractParametersContext.html">ContractParametersContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The <a class="xref" href="Neo.SmartContract.ContractParametersContext.html">ContractParametersContext</a> to be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the signature is successfully added to the context; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet_VerifyPassword_System_String_.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet.VerifyPassword(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L740">View Source</a>
+  </span>
+  <a id="Neo_Wallets_Wallet_VerifyPassword_" data-uid="Neo.Wallets.Wallet.VerifyPassword*"></a>
+  <h4 id="Neo_Wallets_Wallet_VerifyPassword_System_String_" data-uid="Neo.Wallets.Wallet.VerifyPassword(System.String)">VerifyPassword(string)</h4>
+  <div class="markdown level1 summary"><p>Checks that the specified password is correct for the wallet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool VerifyPassword(string password)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">password</span></td>
+        <td><p>The password to be checked.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the password is correct; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Wallets_Wallet.md&amp;value=---%0Auid%3A%20Neo.Wallets.Wallet%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Wallets/Wallet.cs/#L36" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

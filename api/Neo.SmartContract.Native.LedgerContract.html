@@ -1,0 +1,931 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class LedgerContract
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class LedgerContract
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.SmartContract.Native.LedgerContract">
+
+
+
+  <h1 id="Neo_SmartContract_Native_LedgerContract" data-uid="Neo.SmartContract.Native.LedgerContract" class="text-break">Class LedgerContract
+</h1>
+  <div class="markdown level0 summary"><p>A native contract for storing all blocks and transactions.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Neo.SmartContract.Native.NativeContract.html">NativeContract</a></div>
+    <div class="level2"><span class="xref">LedgerContract</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_ContractManagement">NativeContract.ContractManagement</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_StdLib">NativeContract.StdLib</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_CryptoLib">NativeContract.CryptoLib</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Ledger">NativeContract.Ledger</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_NEO">NativeContract.NEO</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_GAS">NativeContract.GAS</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Policy">NativeContract.Policy</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_RoleManagement">NativeContract.RoleManagement</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Oracle">NativeContract.Oracle</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Contracts">NativeContract.Contracts</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Name">NativeContract.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Nef">NativeContract.Nef</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Hash">NativeContract.Hash</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Id">NativeContract.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Manifest">NativeContract.Manifest</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_GetContract_Neo_UInt160_">NativeContract.GetContract(UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_IsNative_Neo_UInt160_">NativeContract.IsNative(UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.SmartContract.html">SmartContract</a>.<a class="xref" href="Neo.SmartContract.Native.html">Native</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_SmartContract_Native_LedgerContract_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class LedgerContract : NativeContract</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_ContainsBlock_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.ContainsBlock(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L124">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_ContainsBlock_" data-uid="Neo.SmartContract.Native.LedgerContract.ContainsBlock*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_ContainsBlock_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.ContainsBlock(Neo.Persistence.DataCache,Neo.UInt256)">ContainsBlock(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the specified block is contained in the blockchain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsBlock(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the blockchain contains the block; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_ContainsConflictHash_Neo_Persistence_DataCache_Neo_UInt256_System_Collections_Generic_IEnumerable_Neo_UInt160__.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.ContainsConflictHash(Neo.Persistence.DataCache%2CNeo.UInt256%2CSystem.Collections.Generic.IEnumerable%7BNeo.UInt160%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L149">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_ContainsConflictHash_" data-uid="Neo.SmartContract.Native.LedgerContract.ContainsConflictHash*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_ContainsConflictHash_Neo_Persistence_DataCache_Neo_UInt256_System_Collections_Generic_IEnumerable_Neo_UInt160__" data-uid="Neo.SmartContract.Native.LedgerContract.ContainsConflictHash(Neo.Persistence.DataCache,Neo.UInt256,System.Collections.Generic.IEnumerable{Neo.UInt160})">ContainsConflictHash(DataCache, UInt256, IEnumerable&lt;UInt160&gt;)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the specified transaction hash is contained in the blockchain
+as the hash of conflicting transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsConflictHash(DataCache snapshot, UInt256 hash, IEnumerable&lt;UInt160&gt; signers)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the conflicting transaction.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Neo.UInt160.html">UInt160</a>&gt;</td>
+        <td><span class="parametername">signers</span></td>
+        <td><p>The list of signer accounts of the conflicting transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the blockchain contains the hash of the conflicting transaction; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_ContainsTransaction_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.ContainsTransaction(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L135">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_ContainsTransaction_" data-uid="Neo.SmartContract.Native.LedgerContract.ContainsTransaction*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_ContainsTransaction_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.ContainsTransaction(Neo.Persistence.DataCache,Neo.UInt256)">ContainsTransaction(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the specified transaction is contained in the blockchain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsTransaction(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the blockchain contains the transaction; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_CurrentHash_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.CurrentHash(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L101">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_CurrentHash_" data-uid="Neo.SmartContract.Native.LedgerContract.CurrentHash*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_CurrentHash_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.LedgerContract.CurrentHash(Neo.Persistence.DataCache)">CurrentHash(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets the hash of the current block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UInt256 CurrentHash(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><p>The hash of the current block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_CurrentIndex_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.CurrentIndex(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L112">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_CurrentIndex_" data-uid="Neo.SmartContract.Native.LedgerContract.CurrentIndex*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_CurrentIndex_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.LedgerContract.CurrentIndex(Neo.Persistence.DataCache)">CurrentIndex(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets the index of the current block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint CurrentIndex(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><p>The index of the current block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetBlock_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetBlock(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L190">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetBlock_" data-uid="Neo.SmartContract.Native.LedgerContract.GetBlock*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetBlock_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.GetBlock(Neo.Persistence.DataCache,Neo.UInt256)">GetBlock(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Gets a block with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Block GetBlock(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Block.html">Block</a></td>
+        <td><p>The block with the specified hash.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetBlock_Neo_Persistence_DataCache_System_UInt32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetBlock(Neo.Persistence.DataCache%2CSystem.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L207">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetBlock_" data-uid="Neo.SmartContract.Native.LedgerContract.GetBlock*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetBlock_Neo_Persistence_DataCache_System_UInt32_" data-uid="Neo.SmartContract.Native.LedgerContract.GetBlock(Neo.Persistence.DataCache,System.UInt32)">GetBlock(DataCache, uint)</h4>
+  <div class="markdown level1 summary"><p>Gets a block with the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Block GetBlock(DataCache snapshot, uint index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Block.html">Block</a></td>
+        <td><p>The block with the specified index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetBlockHash_Neo_Persistence_DataCache_System_UInt32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetBlockHash(Neo.Persistence.DataCache%2CSystem.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L89">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetBlockHash_" data-uid="Neo.SmartContract.Native.LedgerContract.GetBlockHash*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetBlockHash_Neo_Persistence_DataCache_System_UInt32_" data-uid="Neo.SmartContract.Native.LedgerContract.GetBlockHash(Neo.Persistence.DataCache,System.UInt32)">GetBlockHash(DataCache, uint)</h4>
+  <div class="markdown level1 summary"><p>Gets the hash of the specified block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UInt256 GetBlockHash(DataCache snapshot, uint index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><p>The hash of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetHeader_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetHeader(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L220">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetHeader_" data-uid="Neo.SmartContract.Native.LedgerContract.GetHeader*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetHeader_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.GetHeader(Neo.Persistence.DataCache,Neo.UInt256)">GetHeader(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Gets a block header with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Header GetHeader(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Header.html">Header</a></td>
+        <td><p>The block header with the specified hash.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetHeader_Neo_Persistence_DataCache_System_UInt32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetHeader(Neo.Persistence.DataCache%2CSystem.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L231">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetHeader_" data-uid="Neo.SmartContract.Native.LedgerContract.GetHeader*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetHeader_Neo_Persistence_DataCache_System_UInt32_" data-uid="Neo.SmartContract.Native.LedgerContract.GetHeader(Neo.Persistence.DataCache,System.UInt32)">GetHeader(DataCache, uint)</h4>
+  <div class="markdown level1 summary"><p>Gets a block header with the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Header GetHeader(DataCache snapshot, uint index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Header.html">Header</a></td>
+        <td><p>The block header with the specified index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetTransaction_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetTransaction(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L257">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetTransaction_" data-uid="Neo.SmartContract.Native.LedgerContract.GetTransaction*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetTransaction_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.GetTransaction(Neo.Persistence.DataCache,Neo.UInt256)">GetTransaction(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Gets a transaction with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transaction GetTransaction(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Network.P2P.Payloads.Transaction.html">Transaction</a></td>
+        <td><p>The transaction with the specified hash.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetTransactionState_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetTransactionState(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L244">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetTransactionState_" data-uid="Neo.SmartContract.Native.LedgerContract.GetTransactionState*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetTransactionState_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.GetTransactionState(Neo.Persistence.DataCache,Neo.UInt256)">GetTransactionState(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Gets a <a class="xref" href="Neo.SmartContract.Native.TransactionState.html">TransactionState</a> with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionState GetTransactionState(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the transaction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.Native.TransactionState.html">TransactionState</a></td>
+        <td><p>The <a class="xref" href="Neo.SmartContract.Native.TransactionState.html">TransactionState</a> with the specified hash.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract_GetTrimmedBlock_Neo_Persistence_DataCache_Neo_UInt256_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract.GetTrimmedBlock(Neo.Persistence.DataCache%2CNeo.UInt256)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L161">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_LedgerContract_GetTrimmedBlock_" data-uid="Neo.SmartContract.Native.LedgerContract.GetTrimmedBlock*"></a>
+  <h4 id="Neo_SmartContract_Native_LedgerContract_GetTrimmedBlock_Neo_Persistence_DataCache_Neo_UInt256_" data-uid="Neo.SmartContract.Native.LedgerContract.GetTrimmedBlock(Neo.Persistence.DataCache,Neo.UInt256)">GetTrimmedBlock(DataCache, UInt256)</h4>
+  <div class="markdown level1 summary"><p>Gets a <a class="xref" href="Neo.SmartContract.Native.TrimmedBlock.html">TrimmedBlock</a> with the specified hash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TrimmedBlock GetTrimmedBlock(DataCache snapshot, UInt256 hash)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt256.html">UInt256</a></td>
+        <td><span class="parametername">hash</span></td>
+        <td><p>The hash of the block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.Native.TrimmedBlock.html">TrimmedBlock</a></td>
+        <td><p>The trimmed block.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_LedgerContract.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.LedgerContract%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/LedgerContract.cs/#L27" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

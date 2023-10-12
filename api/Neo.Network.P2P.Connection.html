@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class Connection
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class Connection
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.Network.P2P.Connection">
+
+
+
+  <h1 id="Neo_Network_P2P_Connection" data-uid="Neo.Network.P2P.Connection" class="text-break">Class Connection
+</h1>
+  <div class="markdown level0 summary"><p>Represents a connection of the P2P network.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">ActorBase</span></div>
+    <div class="level2"><span class="xref">UntypedActor</span></div>
+    <div class="level3"><span class="xref">Connection</span></div>
+      <div class="level4"><a class="xref" href="Neo.Network.P2P.RemoteNode.html">RemoteNode</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IInternalActor</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">UntypedActor.Receive(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">UntypedActor.RunTask(Action)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">UntypedActor.RunTask(Func&lt;Task&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">UntypedActor.Become(UntypedReceive)</span>
+    </div>
+    <div>
+      <span class="xref">UntypedActor.BecomeStacked(UntypedReceive)</span>
+    </div>
+    <div>
+      <span class="xref">UntypedActor.Context</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">ActorBase.AroundReceive(Receive, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">ActorBase.Unhandled(object)</a>
+    </div>
+    <div>
+      <span class="xref">ActorBase.Become(Receive)</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.BecomeStacked(Receive)</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.UnbecomeStacked()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">ActorBase.SetReceiveTimeout(TimeSpan?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">ActorBase.AroundPreRestart(Exception, object)</a>
+    </div>
+    <div>
+      <span class="xref">ActorBase.AroundPreStart()</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.PreStart()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">ActorBase.AroundPostRestart(Exception, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">ActorBase.PreRestart(Exception, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">ActorBase.PostRestart(Exception)</a>
+    </div>
+    <div>
+      <span class="xref">ActorBase.AroundPostStop()</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.SupervisorStrategy()</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.Sender</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.Self</span>
+    </div>
+    <div>
+      <span class="xref">ActorBase.EmptyReceive</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.Network.html">Network</a>.<a class="xref" href="Neo.Network.P2P.html">P2P</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_Network_P2P_Connection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Connection : UntypedActor, IInternalActor</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection__ctor_System_Object_System_Net_IPEndPoint_System_Net_IPEndPoint_.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.%23ctor(System.Object%2CSystem.Net.IPEndPoint%2CSystem.Net.IPEndPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L59">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection__ctor_" data-uid="Neo.Network.P2P.Connection.#ctor*"></a>
+  <h4 id="Neo_Network_P2P_Connection__ctor_System_Object_System_Net_IPEndPoint_System_Net_IPEndPoint_" data-uid="Neo.Network.P2P.Connection.#ctor(System.Object,System.Net.IPEndPoint,System.Net.IPEndPoint)">Connection(object, IPEndPoint, IPEndPoint)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Neo.Network.P2P.Connection.html">Connection</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Connection(object connection, IPEndPoint remote, IPEndPoint local)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">connection</span></td>
+        <td><p>The underlying connection object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipendpoint">IPEndPoint</a></td>
+        <td><span class="parametername">remote</span></td>
+        <td><p>The address of the remote node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipendpoint">IPEndPoint</a></td>
+        <td><span class="parametername">local</span></td>
+        <td><p>The address of the local node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_Local.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.Local%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L46">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_Local_" data-uid="Neo.Network.P2P.Connection.Local*"></a>
+  <h4 id="Neo_Network_P2P_Connection_Local" data-uid="Neo.Network.P2P.Connection.Local">Local</h4>
+  <div class="markdown level1 summary"><p>The address of the local node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPEndPoint Local { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipendpoint">IPEndPoint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_Remote.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.Remote%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L41">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_Remote_" data-uid="Neo.Network.P2P.Connection.Remote*"></a>
+  <h4 id="Neo_Network_P2P_Connection_Remote" data-uid="Neo.Network.P2P.Connection.Remote">Remote</h4>
+  <div class="markdown level1 summary"><p>The address of the remote node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPEndPoint Remote { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipendpoint">IPEndPoint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_Disconnect_System_Boolean_.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.Disconnect(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L100">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_Disconnect_" data-uid="Neo.Network.P2P.Connection.Disconnect*"></a>
+  <h4 id="Neo_Network_P2P_Connection_Disconnect_System_Boolean_" data-uid="Neo.Network.P2P.Connection.Disconnect(System.Boolean)">Disconnect(bool)</h4>
+  <div class="markdown level1 summary"><p>Disconnect from the remote node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Disconnect(bool abort = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">abort</span></td>
+        <td><p>Indicates whether the TCP ABORT command should be sent.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_OnAck.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.OnAck%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L117">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_OnAck_" data-uid="Neo.Network.P2P.Connection.OnAck*"></a>
+  <h4 id="Neo_Network_P2P_Connection_OnAck" data-uid="Neo.Network.P2P.Connection.OnAck">OnAck()</h4>
+  <div class="markdown level1 summary"><p>Called when a TCP ACK message is received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnAck()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_OnData_Akka_IO_ByteString_.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.OnData(Akka.IO.ByteString)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L125">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_OnData_" data-uid="Neo.Network.P2P.Connection.OnData*"></a>
+  <h4 id="Neo_Network_P2P_Connection_OnData_Akka_IO_ByteString_" data-uid="Neo.Network.P2P.Connection.OnData(Akka.IO.ByteString)">OnData(ByteString)</h4>
+  <div class="markdown level1 summary"><p>Called when data is received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void OnData(ByteString data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ByteString</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The received data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_OnReceive_System_Object_.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.OnReceive(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L127">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_OnReceive_" data-uid="Neo.Network.P2P.Connection.OnReceive*"></a>
+  <h4 id="Neo_Network_P2P_Connection_OnReceive_System_Object_" data-uid="Neo.Network.P2P.Connection.OnReceive(System.Object)">OnReceive(object)</h4>
+  <div class="markdown level1 summary"><p>To be implemented by concrete UntypedActor, this defines the behavior of the UntypedActor.
+This method is called for every message received by the actor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnReceive(object message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">UntypedActor.OnReceive(object)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_PostStop.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.PostStop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L160">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_PostStop_" data-uid="Neo.Network.P2P.Connection.PostStop*"></a>
+  <h4 id="Neo_Network_P2P_Connection_PostStop" data-uid="Neo.Network.P2P.Connection.PostStop">PostStop()</h4>
+  <div class="markdown level1 summary"><p>User overridable callback.</p>
+<p></p>
+Is called asynchronously after 'actor.stop()' is invoked.
+Empty default implementation.
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void PostStop()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Akka.Actor.ActorBase.PostStop()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection_SendData_Akka_IO_ByteString_.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection.SendData(Akka.IO.ByteString)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L173">View Source</a>
+  </span>
+  <a id="Neo_Network_P2P_Connection_SendData_" data-uid="Neo.Network.P2P.Connection.SendData*"></a>
+  <h4 id="Neo_Network_P2P_Connection_SendData_Akka_IO_ByteString_" data-uid="Neo.Network.P2P.Connection.SendData(Akka.IO.ByteString)">SendData(ByteString)</h4>
+  <div class="markdown level1 summary"><p>Sends data to the remote node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SendData(ByteString data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ByteString</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Akka.Actor.IInternalActor</span>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Network_P2P_Connection.md&amp;value=---%0Auid%3A%20Neo.Network.P2P.Connection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/Network/P2P/Connection.cs/#L23" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

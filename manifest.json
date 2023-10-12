@@ -1,0 +1,2147 @@
+{
+  "source_base_path": "/home/runner/work/neo/neo",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "CONTRIBUTING.md",
+      "output": {
+        ".html": {
+          "relative_path": "CONTRIBUTING.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "SECURITY.md",
+      "output": {
+        ".html": {
+          "relative_path": "SECURITY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.BigDecimal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.BigDecimal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.Base58.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.Base58.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.BloomFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.BloomFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.Crypto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.Crypto.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.ECC.ECCurve.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.ECC.ECCurve.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.ECC.ECPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.ECC.ECPoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.ECC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.ECC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.MerkleTree.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.MerkleTree.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.Murmur128.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.Murmur128.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.Murmur32.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.Murmur32.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.RIPEMD160Managed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.RIPEMD160Managed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Cryptography.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Cryptography.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Hardfork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Hardfork.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.IO.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.IO.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.IO.ISerializable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.IO.ISerializable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.IO.MemoryReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.IO.MemoryReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.IO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.IO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JArray.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JBoolean.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JBoolean.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JContainer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JNumber.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JString.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.JToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.JToken.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Json.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.ApplicationExecuted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.ApplicationExecuted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.FillCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.FillCompleted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.FillMemoryPool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.FillMemoryPool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.Import.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.Import.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.ImportCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.ImportCompleted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.PersistCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.PersistCompleted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.RelayResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.RelayResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.Reverify.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.Reverify.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.Blockchain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.Blockchain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.CommittedHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.CommittedHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.CommittingHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.CommittingHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.HeaderCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.HeaderCache.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.MemoryPool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.MemoryPool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.TransactionRemovalReason.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.TransactionRemovalReason.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.TransactionRemovedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.TransactionRemovedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.TransactionVerificationContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.TransactionVerificationContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.VerifyResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.VerifyResult.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Ledger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Ledger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.LogEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.LogEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.LogLevel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.NeoSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.NeoSystem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Capabilities.FullNodeCapability.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Capabilities.FullNodeCapability.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Capabilities.NodeCapability.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Capabilities.NodeCapability.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Capabilities.NodeCapabilityType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Capabilities.NodeCapabilityType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Capabilities.ServerCapability.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Capabilities.ServerCapability.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Capabilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Capabilities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.ChannelsConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.ChannelsConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Connection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Connection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.LocalNode.GetInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.LocalNode.GetInstance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.LocalNode.RelayDirectly.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.LocalNode.RelayDirectly.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.LocalNode.SendDirectly.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.LocalNode.SendDirectly.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.LocalNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.LocalNode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Message.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.MessageCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.MessageCommand.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.MessageFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.MessageFlags.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.MessageReceivedHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.MessageReceivedHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.AddrPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.AddrPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Block.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Block.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.AndCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.AndCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.BooleanCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.BooleanCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.CalledByContractCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.CalledByContractCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.CalledByEntryCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.CalledByEntryCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.CalledByGroupCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.CalledByGroupCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.GroupCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.GroupCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.NotCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.NotCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.OrCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.OrCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.ScriptHashCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.ScriptHashCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.WitnessCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.WitnessCondition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.WitnessConditionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.WitnessConditionType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conditions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Conflicts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Conflicts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.ExtensiblePayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.ExtensiblePayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.FilterAddPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.FilterAddPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.FilterLoadPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.FilterLoadPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.GetBlockByIndexPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.GetBlockByIndexPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.GetBlocksPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.GetBlocksPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Header.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Header.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.HeadersPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.HeadersPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.HighPriorityAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.HighPriorityAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.IInventory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.IInventory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.IVerifiable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.IVerifiable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.InvPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.InvPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.InventoryType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.InventoryType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.MerkleBlockPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.MerkleBlockPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.NetworkAddressWithTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.NetworkAddressWithTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.NotValidBefore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.NotValidBefore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.OracleResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.OracleResponse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.OracleResponseCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.OracleResponseCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.PingPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.PingPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Signer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Signer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Transaction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.TransactionAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.TransactionAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.TransactionAttributeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.TransactionAttributeType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.VersionPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.VersionPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.Witness.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.Witness.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.WitnessRule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.WitnessRule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.WitnessRuleAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.WitnessRuleAction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.WitnessScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.WitnessScope.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Payloads.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Payloads.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Peer.Connect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Peer.Connect.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Peer.Peers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Peer.Peers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.Peer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.Peer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.RemoteNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.RemoteNode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.TaskManager.RestartTasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.TaskManager.RestartTasks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.TaskManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.TaskManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.P2P.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.P2P.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.UPnP.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.UPnP.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.DataCache.Trackable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.DataCache.Trackable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.DataCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.DataCache.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.IReadOnlyStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.IReadOnlyStore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.ISnapshot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.ISnapshot.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.IStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.IStore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.IStoreProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.IStoreProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.MemoryStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.MemoryStore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.SeekDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.SeekDirection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.SnapshotCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.SnapshotCache.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.StoreFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.StoreFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.TrackState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.TrackState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Persistence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Persistence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Plugins.Plugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Plugins.Plugin.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Plugins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Plugins.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.ProtocolSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.ProtocolSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.ApplicationEngine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.ApplicationEngine.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.BinarySerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.BinarySerializer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.CallFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.CallFlags.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Contract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Contract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.ContractParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.ContractParameter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.ContractParameterType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.ContractParameterType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.ContractParametersContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.ContractParametersContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.ContractState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.ContractState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.DeployedContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.DeployedContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.ExecutionContextState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.ExecutionContextState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.FindOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.FindOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.IApplicationEngineProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.IApplicationEngineProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.IDiagnostic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.IDiagnostic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.IInteroperable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.IInteroperable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.InteropDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.InteropDescriptor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.InteropParameterDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.InteropParameterDescriptor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Iterators.IIterator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Iterators.IIterator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Iterators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Iterators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.JsonSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.JsonSerializer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.KeyBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.KeyBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.LogEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.LogEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractAbi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractAbi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractEventDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractEventDescriptor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractManifest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractManifest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractMethodDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractMethodDescriptor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractParameterDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractParameterDefinition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractPermission.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractPermission.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.ContractPermissionDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.ContractPermissionDescriptor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.WildcardContainer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.WildcardContainer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Manifest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Manifest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.MethodToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.MethodToken.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.AccountState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.AccountState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.ContractManagement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.ContractManagement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.CryptoLib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.CryptoLib.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.FungibleToken-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.FungibleToken-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.GasToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.GasToken.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.LedgerContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.LedgerContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.NamedCurve.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.NamedCurve.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.NativeContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.NativeContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.NeoToken.NeoAccountState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.NeoToken.NeoAccountState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.NeoToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.NeoToken.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.OracleContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.OracleContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.OracleRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.OracleRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.PolicyContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.PolicyContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.Role.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.Role.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.RoleManagement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.RoleManagement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.StdLib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.StdLib.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.TransactionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.TransactionState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.TrimmedBlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.TrimmedBlock.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.Native.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.Native.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.NefFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.NefFile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.NotifyEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.NotifyEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.StorageContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.StorageContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.StorageItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.StorageItem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.StorageKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.StorageKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.TriggerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.TriggerType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.SmartContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.SmartContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.TimeProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.TimeProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.UInt160.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.UInt160.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.UInt256.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.UInt256.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Utility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Utility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.VM.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.VM.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.VM.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.VM.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.AssetDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.AssetDescriptor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.IWalletFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.IWalletFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.IWalletProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.IWalletProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.KeyPair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.KeyPair.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.NEP6.NEP6Wallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.NEP6.NEP6Wallet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.NEP6.ScryptParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.NEP6.ScryptParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.NEP6.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.NEP6.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.TransferOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.TransferOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.Wallet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.Wallet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.WalletAccount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.WalletAccount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.Wallets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.Wallets.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Neo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Neo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

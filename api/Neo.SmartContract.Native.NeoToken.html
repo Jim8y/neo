@@ -1,0 +1,940 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class NeoToken
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class NeoToken
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.SmartContract.Native.NeoToken">
+
+
+
+  <h1 id="Neo_SmartContract_Native_NeoToken" data-uid="Neo.SmartContract.Native.NeoToken" class="text-break">Class NeoToken
+</h1>
+  <div class="markdown level0 summary"><p>Represents the NEO token in the NEO system.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Neo.SmartContract.Native.NativeContract.html">NativeContract</a></div>
+    <div class="level2"><a class="xref" href="Neo.SmartContract.Native.FungibleToken-1.html">FungibleToken</a>&lt;<a class="xref" href="Neo.SmartContract.Native.NeoToken.html">NeoToken</a>.<a class="xref" href="Neo.SmartContract.Native.NeoToken.NeoAccountState.html">NeoAccountState</a>&gt;</div>
+    <div class="level3"><span class="xref">NeoToken</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.FungibleToken-1.html#Neo_SmartContract_Native_FungibleToken_1_Factor">FungibleToken&lt;NeoToken.NeoAccountState&gt;.Factor</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.FungibleToken-1.html#Neo_SmartContract_Native_FungibleToken_1_BalanceOf_Neo_Persistence_DataCache_Neo_UInt160_">FungibleToken&lt;NeoToken.NeoAccountState&gt;.BalanceOf(DataCache, UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_ContractManagement">NativeContract.ContractManagement</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_StdLib">NativeContract.StdLib</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_CryptoLib">NativeContract.CryptoLib</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Ledger">NativeContract.Ledger</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_NEO">NativeContract.NEO</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_GAS">NativeContract.GAS</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Policy">NativeContract.Policy</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_RoleManagement">NativeContract.RoleManagement</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Oracle">NativeContract.Oracle</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Contracts">NativeContract.Contracts</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Name">NativeContract.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Nef">NativeContract.Nef</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Hash">NativeContract.Hash</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Id">NativeContract.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_Manifest">NativeContract.Manifest</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_GetContract_Neo_UInt160_">NativeContract.GetContract(UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.SmartContract.Native.NativeContract.html#Neo_SmartContract_Native_NativeContract_IsNative_Neo_UInt160_">NativeContract.IsNative(UInt160)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.SmartContract.html">SmartContract</a>.<a class="xref" href="Neo.SmartContract.Native.html">Native</a></h6>
+  <h6><strong>Assembly</strong>: Neo.dll</h6>
+  <h5 id="Neo_SmartContract_Native_NeoToken_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class NeoToken : FungibleToken&lt;NeoToken.NeoAccountState&gt;</code></pre>
+  </div>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_EffectiveVoterTurnout.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.EffectiveVoterTurnout%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L44">View Source</a>
+  </span>
+  <h4 id="Neo_SmartContract_Native_NeoToken_EffectiveVoterTurnout" data-uid="Neo.SmartContract.Native.NeoToken.EffectiveVoterTurnout">EffectiveVoterTurnout</h4>
+  <div class="markdown level1 summary"><p>Indicates the effective voting turnout in NEO. The voted candidates will only be effective when the voting turnout exceeds this value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const decimal EffectiveVoterTurnout = 0.2</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_Decimals.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.Decimals%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L34">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_Decimals_" data-uid="Neo.SmartContract.Native.NeoToken.Decimals*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_Decimals" data-uid="Neo.SmartContract.Native.NeoToken.Decimals">Decimals</h4>
+  <div class="markdown level1 summary"><p>The number of decimal places of the token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override byte Decimals { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.SmartContract.Native.FungibleToken-1.html#Neo_SmartContract_Native_FungibleToken_1_Decimals">FungibleToken&lt;NeoToken.NeoAccountState&gt;.Decimals</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_Symbol.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.Symbol%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L33">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_Symbol_" data-uid="Neo.SmartContract.Native.NeoToken.Symbol*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_Symbol" data-uid="Neo.SmartContract.Native.NeoToken.Symbol">Symbol</h4>
+  <div class="markdown level1 summary"><p>The symbol of the token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string Symbol { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.SmartContract.Native.FungibleToken-1.html#Neo_SmartContract_Native_FungibleToken_1_Symbol">FungibleToken&lt;NeoToken.NeoAccountState&gt;.Symbol</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_TotalAmount.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.TotalAmount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L39">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_TotalAmount_" data-uid="Neo.SmartContract.Native.NeoToken.TotalAmount*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_TotalAmount" data-uid="Neo.SmartContract.Native.NeoToken.TotalAmount">TotalAmount</h4>
+  <div class="markdown level1 summary"><p>Indicates the total amount of NEO.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BigInteger TotalAmount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_ComputeNextBlockValidators_Neo_Persistence_DataCache_Neo_ProtocolSettings_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.ComputeNextBlockValidators(Neo.Persistence.DataCache%2CNeo.ProtocolSettings)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L526">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_ComputeNextBlockValidators_" data-uid="Neo.SmartContract.Native.NeoToken.ComputeNextBlockValidators*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_ComputeNextBlockValidators_Neo_Persistence_DataCache_Neo_ProtocolSettings_" data-uid="Neo.SmartContract.Native.NeoToken.ComputeNextBlockValidators(Neo.Persistence.DataCache,Neo.ProtocolSettings)">ComputeNextBlockValidators(DataCache, ProtocolSettings)</h4>
+  <div class="markdown level1 summary"><p>Computes the validators of the next block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ECPoint[] ComputeNextBlockValidators(DataCache snapshot, ProtocolSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>The <a class="xref" href="Neo.ProtocolSettings.html">ProtocolSettings</a> used during computing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>[]</td>
+        <td><p>The public keys of the validators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetAccountState_Neo_Persistence_DataCache_Neo_UInt160_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetAccountState(Neo.Persistence.DataCache%2CNeo.UInt160)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L498">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetAccountState_" data-uid="Neo.SmartContract.Native.NeoToken.GetAccountState*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetAccountState_Neo_Persistence_DataCache_Neo_UInt160_" data-uid="Neo.SmartContract.Native.NeoToken.GetAccountState(Neo.Persistence.DataCache,Neo.UInt160)">GetAccountState(DataCache, UInt160)</h4>
+  <div class="markdown level1 summary"><p>Get account state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NeoToken.NeoAccountState GetAccountState(DataCache snapshot, UInt160 account)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">account</span></td>
+        <td><p>account</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.SmartContract.Native.NeoToken.html">NeoToken</a>.<a class="xref" href="Neo.SmartContract.Native.NeoToken.NeoAccountState.html">NeoAccountState</a></td>
+        <td><p>The state of the account.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetCandidateVote_Neo_Persistence_DataCache_Neo_Cryptography_ECC_ECPoint_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetCandidateVote(Neo.Persistence.DataCache%2CNeo.Cryptography.ECC.ECPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L473">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetCandidateVote_" data-uid="Neo.SmartContract.Native.NeoToken.GetCandidateVote*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetCandidateVote_Neo_Persistence_DataCache_Neo_Cryptography_ECC_ECPoint_" data-uid="Neo.SmartContract.Native.NeoToken.GetCandidateVote(Neo.Persistence.DataCache,Neo.Cryptography.ECC.ECPoint)">GetCandidateVote(DataCache, ECPoint)</h4>
+  <div class="markdown level1 summary"><p>Gets votes from specific candidate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BigInteger GetCandidateVote(DataCache snapshot, ECPoint pubKey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a></td>
+        <td><span class="parametername">pubKey</span></td>
+        <td><p>Specific public key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><p>Votes or -1 if it was not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetCommittee_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetCommittee(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L486">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetCommittee_" data-uid="Neo.SmartContract.Native.NeoToken.GetCommittee*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetCommittee_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.NeoToken.GetCommittee(Neo.Persistence.DataCache)">GetCommittee(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets all the members of the committee.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ECPoint[] GetCommittee(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>[]</td>
+        <td><p>The public keys of the members.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetCommitteeAddress_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetCommitteeAddress(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L509">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetCommitteeAddress_" data-uid="Neo.SmartContract.Native.NeoToken.GetCommitteeAddress*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetCommitteeAddress_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.NeoToken.GetCommitteeAddress(Neo.Persistence.DataCache)">GetCommitteeAddress(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets the address of the committee.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UInt160 GetCommitteeAddress(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><p>The address of the committee.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetGasPerBlock_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetGasPerBlock(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L295">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetGasPerBlock_" data-uid="Neo.SmartContract.Native.NeoToken.GetGasPerBlock*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetGasPerBlock_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.NeoToken.GetGasPerBlock(Neo.Persistence.DataCache)">GetGasPerBlock(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets the amount of GAS generated in each block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BigInteger GetGasPerBlock(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><p>The amount of GAS generated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetNextBlockValidators_Neo_Persistence_DataCache_System_Int32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetNextBlockValidators(Neo.Persistence.DataCache%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L558">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetNextBlockValidators_" data-uid="Neo.SmartContract.Native.NeoToken.GetNextBlockValidators*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetNextBlockValidators_Neo_Persistence_DataCache_System_Int32_" data-uid="Neo.SmartContract.Native.NeoToken.GetNextBlockValidators(Neo.Persistence.DataCache,System.Int32)">GetNextBlockValidators(DataCache, int)</h4>
+  <div class="markdown level1 summary"><p>Gets the validators of the next block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ECPoint[] GetNextBlockValidators(DataCache snapshot, int validatorsCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">validatorsCount</span></td>
+        <td><p>The number of validators in the system.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Cryptography.ECC.ECPoint.html">ECPoint</a>[]</td>
+        <td><p>The public keys of the validators.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_GetRegisterPrice_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.GetRegisterPrice(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L315">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_GetRegisterPrice_" data-uid="Neo.SmartContract.Native.NeoToken.GetRegisterPrice*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_GetRegisterPrice_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.NeoToken.GetRegisterPrice(Neo.Persistence.DataCache)">GetRegisterPrice(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets the fees to be paid to register as a candidate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetRegisterPrice(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><p>The amount of the fees.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_ShouldRefreshCommittee_System_UInt32_System_Int32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.ShouldRefreshCommittee(System.UInt32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L220">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_ShouldRefreshCommittee_" data-uid="Neo.SmartContract.Native.NeoToken.ShouldRefreshCommittee*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_ShouldRefreshCommittee_System_UInt32_System_Int32_" data-uid="Neo.SmartContract.Native.NeoToken.ShouldRefreshCommittee(System.UInt32,System.Int32)">ShouldRefreshCommittee(uint, int)</h4>
+  <div class="markdown level1 summary"><p>Determine whether the votes should be recounted at the specified height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ShouldRefreshCommittee(uint height, int committeeMembersCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>The height to be checked.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">committeeMembersCount</span></td>
+        <td><p>The number of committee members in the system.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the votes should be recounted; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_TotalSupply_Neo_Persistence_DataCache_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.TotalSupply(Neo.Persistence.DataCache)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L117">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_TotalSupply_" data-uid="Neo.SmartContract.Native.NeoToken.TotalSupply*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_TotalSupply_Neo_Persistence_DataCache_" data-uid="Neo.SmartContract.Native.NeoToken.TotalSupply(Neo.Persistence.DataCache)">TotalSupply(DataCache)</h4>
+  <div class="markdown level1 summary"><p>Gets the total supply of the token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override BigInteger TotalSupply(DataCache snapshot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><p>The total supply of the token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.SmartContract.Native.FungibleToken-1.html#Neo_SmartContract_Native_FungibleToken_1_TotalSupply_Neo_Persistence_DataCache_">FungibleToken&lt;NeoToken.NeoAccountState&gt;.TotalSupply(DataCache)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken_UnclaimedGas_Neo_Persistence_DataCache_Neo_UInt160_System_UInt32_.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken.UnclaimedGas(Neo.Persistence.DataCache%2CNeo.UInt160%2CSystem.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L336">View Source</a>
+  </span>
+  <a id="Neo_SmartContract_Native_NeoToken_UnclaimedGas_" data-uid="Neo.SmartContract.Native.NeoToken.UnclaimedGas*"></a>
+  <h4 id="Neo_SmartContract_Native_NeoToken_UnclaimedGas_Neo_Persistence_DataCache_Neo_UInt160_System_UInt32_" data-uid="Neo.SmartContract.Native.NeoToken.UnclaimedGas(Neo.Persistence.DataCache,Neo.UInt160,System.UInt32)">UnclaimedGas(DataCache, UInt160, uint)</h4>
+  <div class="markdown level1 summary"><p>Get the amount of unclaimed GAS in the specified account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BigInteger UnclaimedGas(DataCache snapshot, UInt160 account, uint end)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Persistence.DataCache.html">DataCache</a></td>
+        <td><span class="parametername">snapshot</span></td>
+        <td><p>The snapshot used to read data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Neo.UInt160.html">UInt160</a></td>
+        <td><span class="parametername">account</span></td>
+        <td><p>The account to check.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">end</span></td>
+        <td><p>The block index used when calculating GAS.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a></td>
+        <td><p>The amount of unclaimed GAS.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_SmartContract_Native_NeoToken.md&amp;value=---%0Auid%3A%20Neo.SmartContract.Native.NeoToken%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo/SmartContract/Native/NeoToken.cs/#L31" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

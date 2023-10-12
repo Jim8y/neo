@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class JBoolean
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class JBoolean
+ ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Neo.Json.JBoolean">
+
+
+
+  <h1 id="Neo_Json_JBoolean" data-uid="Neo.Json.JBoolean" class="text-break">Class JBoolean
+</h1>
+  <div class="markdown level0 summary"><p>Represents a JSON boolean value.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Neo.Json.JToken.html">JToken</a></div>
+    <div class="level2"><span class="xref">JBoolean</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_Null">JToken.Null</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_Item_System_Int32_">JToken.this[int]</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_Item_System_String_">JToken.this[string]</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_AsEnum__1___0_System_Boolean_">JToken.AsEnum&lt;T&gt;(T, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_GetEnum__1_System_Boolean_">JToken.GetEnum&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_GetInt32">JToken.GetInt32()</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_GetNumber">JToken.GetNumber()</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_GetString">JToken.GetString()</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_Parse_System_ReadOnlySpan_System_Byte__System_Int32_">JToken.Parse(ReadOnlySpan&lt;byte&gt;, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_Parse_System_String_System_Int32_">JToken.Parse(string, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_ToByteArray_System_Boolean_">JToken.ToByteArray(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_ToString_System_Boolean_">JToken.ToString(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_JsonPath_System_String_">JToken.JsonPath(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Neo.html">Neo</a>.<a class="xref" href="Neo.Json.html">Json</a></h6>
+  <h6><strong>Assembly</strong>: Neo.Json.dll</h6>
+  <h5 id="Neo_Json_JBoolean_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class JBoolean : JToken</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.%23ctor(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L29">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean__ctor_" data-uid="Neo.Json.JBoolean.#ctor*"></a>
+  <h4 id="Neo_Json_JBoolean__ctor_System_Boolean_" data-uid="Neo.Json.JBoolean.#ctor(System.Boolean)">JBoolean(bool)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Neo.Json.JBoolean.html">JBoolean</a> class with the specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JBoolean(bool value = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value of the JSON token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_Value.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.Value%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L23">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_Value_" data-uid="Neo.Json.JBoolean.Value*"></a>
+  <h4 id="Neo_Json_JBoolean_Value" data-uid="Neo.Json.JBoolean.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the JSON token.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_AsBoolean.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.AsBoolean%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L34">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_AsBoolean_" data-uid="Neo.Json.JBoolean.AsBoolean*"></a>
+  <h4 id="Neo_Json_JBoolean_AsBoolean" data-uid="Neo.Json.JBoolean.AsBoolean">AsBoolean()</h4>
+  <div class="markdown level1 summary"><p>Converts the current JSON token to a boolean value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool AsBoolean()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>The converted value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_AsBoolean">JToken.AsBoolean()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_AsNumber.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.AsNumber%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L43">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_AsNumber_" data-uid="Neo.Json.JBoolean.AsNumber*"></a>
+  <h4 id="Neo_Json_JBoolean_AsNumber" data-uid="Neo.Json.JBoolean.AsNumber">AsNumber()</h4>
+  <div class="markdown level1 summary"><p>Converts the current JSON token to a floating point number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override double AsNumber()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><p>The number 1 if value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>; otherwise, 0.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_AsNumber">JToken.AsNumber()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_AsString.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.AsString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L48">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_AsString_" data-uid="Neo.Json.JBoolean.AsString*"></a>
+  <h4 id="Neo_Json_JBoolean_AsString" data-uid="Neo.Json.JBoolean.AsString">AsString()</h4>
+  <div class="markdown level1 summary"><p>Converts the current JSON token to a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string AsString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The converted value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_AsString">JToken.AsString()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_Clone.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.Clone%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L65">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_Clone_" data-uid="Neo.Json.JBoolean.Clone*"></a>
+  <h4 id="Neo_Json_JBoolean_Clone" data-uid="Neo.Json.JBoolean.Clone">Clone()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override JBoolean Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Json.JBoolean.html">JBoolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_Clone">JToken.Clone()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_GetBoolean.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.GetBoolean%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L53">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_GetBoolean_" data-uid="Neo.Json.JBoolean.GetBoolean*"></a>
+  <h4 id="Neo_Json_JBoolean_GetBoolean" data-uid="Neo.Json.JBoolean.GetBoolean">GetBoolean()</h4>
+  <div class="markdown level1 summary"><p>Converts the current JSON token to a boolean value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool GetBoolean()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>The converted value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_GetBoolean">JToken.GetBoolean()</a></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidcastexception">InvalidCastException</a></td>
+        <td><p>The JSON token is not a <a class="xref" href="Neo.Json.JBoolean.html">JBoolean</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_ToString.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L55">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_ToString_" data-uid="Neo.Json.JBoolean.ToString*"></a>
+  <h4 id="Neo_Json_JBoolean_ToString" data-uid="Neo.Json.JBoolean.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Encode the current JSON token into a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The encoded JSON token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Neo.Json.JToken.html#Neo_Json_JToken_ToString">JToken.ToString()</a></div>
+  <h3 id="operators">Operators
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean_op_Implicit_System_Boolean__Neo_Json_JBoolean.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean.op_Implicit(System.Boolean)~Neo.Json.JBoolean%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L70">View Source</a>
+  </span>
+  <a id="Neo_Json_JBoolean_op_Implicit_" data-uid="Neo.Json.JBoolean.op_Implicit*"></a>
+  <h4 id="Neo_Json_JBoolean_op_Implicit_System_Boolean__Neo_Json_JBoolean" data-uid="Neo.Json.JBoolean.op_Implicit(System.Boolean)~Neo.Json.JBoolean">implicit operator JBoolean(bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator JBoolean(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Neo.Json.JBoolean.html">JBoolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/new/doc/apiSpec/new?filename=Neo_Json_JBoolean.md&amp;value=---%0Auid%3A%20Neo.Json.JBoolean%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Liaojinghui/neo/blob/doc/src/Neo.Json/JBoolean.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

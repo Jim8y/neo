@@ -4,11 +4,17 @@ on:
   push:
     branches: [check]
   workflow_dispatch:
+    # Inputs the workflow accepts.
     inputs:
-      ref:
-        description: 'Ref to build neo-modules [default: latest master;]'
-        required: false
-        default: 'master'  # or 'main', depending on your default branch
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
 
 jobs:
   build-and-test:
@@ -25,7 +31,6 @@ jobs:
       with:
         repository: neo-project/neo-modules
         path: ./neo-modules
-        ref: ${{ github.event.inputs.ref }}
 
     - name: Patch neo-modules Directory.Build.props to use local neo
       run: |

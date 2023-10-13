@@ -2,7 +2,7 @@ name: Validate neo-node Compilation with Local neo
 
 on:
   push:
-    branches: [master]
+    branches: [check]
   workflow_dispatch:
     inputs:
       ref:

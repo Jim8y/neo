@@ -2,7 +2,7 @@ name: Validate neo-devpack-dotnet Compilation with Local neo
 
 on:
   push:
-    branches: [master]
+    branches: [check]
   workflow_dispatch:
     inputs:
       ref:

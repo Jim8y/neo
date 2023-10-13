@@ -8,7 +8,7 @@ on:
       ref:
         description: 'Ref to build neo-modules [default: latest master;]'
         required: false
-        default: ''
+        default: 'neo-project/neo-modules'
 
 jobs:
   build-and-test:
@@ -23,8 +23,8 @@ jobs:
     - name: Checkout neo-modules
       uses: actions/checkout@v2
       with:
-        repository: neo-project/neo-modules
-        path: ./neo-modules
+        # repository: neo-project/neo-modules
+        # path: ./neo-modules
         ref: ${{ github.event.inputs.ref }}
 
     - name: Patch neo-modules Directory.Build.props to use local neo

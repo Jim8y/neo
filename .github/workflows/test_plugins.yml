@@ -3,6 +3,12 @@ name: Validate neo-modules Compilation with Local neo
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Ref to build neo-modules [default: latest master;]'
+        required: false
+        default: ''
 
 jobs:
   build-and-test:

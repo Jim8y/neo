@@ -25,6 +25,7 @@ jobs:
       with:
         repository: neo-project/neo-devpack-dotnet
         path: ./neo-devpack-dotnet
+        ref: ${{ github.event.inputs.ref }}
 
     - name: Patch neo-devpack-dotnet .csproj to use local neo
       run: |

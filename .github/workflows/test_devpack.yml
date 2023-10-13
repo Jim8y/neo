@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: 'Ref to build neo-devpack [default: latest master;]'
+        description: 'Ref to build neo-modules [default: latest master; examples: 3.6.0, 0a4ff9d3e4a9ab432fd5812eb18c98e03b5a7432]'
         required: false
-        default: ''
+        default: 'master'
 
 jobs:
   build-and-test:

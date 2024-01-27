@@ -12,6 +12,7 @@
 using Akka.Actor;
 using Akka.Configuration;
 using Akka.IO;
+using Neo.IO;
 using Neo.IO.Actors;
 using Neo.IO.Caching;
 using Neo.Ledger;
@@ -419,7 +420,7 @@ namespace Neo.Network.P2P
         {
         }
 
-        internal protected override bool IsHighPriority(object message)
+        public override bool IsHighPriority(object message)
         {
             switch (message)
             {
@@ -436,7 +437,7 @@ namespace Neo.Network.P2P
             }
         }
 
-        internal protected override bool ShallDrop(object message, IEnumerable queue)
+        public override bool ShallDrop(object message, IEnumerable queue)
         {
             if (message is not TaskManager.NewTasks tasks) return false;
             // Remove duplicate tasks

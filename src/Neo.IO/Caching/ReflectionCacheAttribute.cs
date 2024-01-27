@@ -14,7 +14,7 @@ using System;
 namespace Neo.IO.Caching
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    internal class ReflectionCacheAttribute : Attribute
+    public class ReflectionCacheAttribute : Attribute
     {
         /// <summary>
         /// Type

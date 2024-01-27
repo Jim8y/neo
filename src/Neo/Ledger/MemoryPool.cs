@@ -10,6 +10,7 @@
 // modifications are permitted.
 
 using Akka.Util.Internal;
+using Neo.IO;
 using Neo.Network.P2P;
 using Neo.Network.P2P.Payloads;
 using Neo.Persistence;

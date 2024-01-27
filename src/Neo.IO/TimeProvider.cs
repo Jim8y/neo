@@ -9,9 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
-using System;
-
-namespace Neo
+namespace Neo.IO
 {
     /// <summary>
     /// The time provider for the NEO system.
@@ -23,14 +21,14 @@ namespace Neo
         /// <summary>
         /// The currently used <see cref="TimeProvider"/> instance.
         /// </summary>
-        public static TimeProvider Current { get; internal set; } = Default;
+        public static TimeProvider Current { get; set; } = Default;
 
         /// <summary>
         /// Gets the current time expressed as the Coordinated Universal Time (UTC).
         /// </summary>
         public virtual DateTime UtcNow => DateTime.UtcNow;
 
-        internal static void ResetToDefault()
+        public static void ResetToDefault()
         {
             Current = Default;
         }

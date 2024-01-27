@@ -12,6 +12,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Cryptography.ECC;
+using Neo.IO;
 using Neo.IO.Caching;
 
 namespace Neo.UnitTests.IO.Caching

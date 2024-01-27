@@ -246,7 +246,7 @@ namespace Neo.Network.P2P
     {
         public RemoteNodeMailbox(Settings settings, Config config) : base(settings, config) { }
 
-        internal protected override bool IsHighPriority(object message)
+        public override bool IsHighPriority(object message)
         {
             return message switch
             {
@@ -260,7 +260,7 @@ namespace Neo.Network.P2P
             };
         }
 
-        internal protected override bool ShallDrop(object message, IEnumerable queue)
+        public override bool ShallDrop(object message, IEnumerable queue)
         {
             if (message is not Message msg) return false;
             return msg.Command switch

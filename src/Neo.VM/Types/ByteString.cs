@@ -9,6 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.IO.ObjectPool;
 using Neo.VM.Cryptography;
 using System;
 using System.Buffers.Binary;
@@ -22,7 +23,7 @@ namespace Neo.VM.Types
     /// Represents an immutable memory block in the VM.
     /// </summary>
     [DebuggerDisplay("Type={GetType().Name}, Value={System.Convert.ToHexString(GetSpan())}")]
-    public class ByteString : PrimitiveType
+    public class ByteString : PrimitiveType, IPoolable<ReadOnlyMemory<byte>>
     {
         /// <summary>
         /// An empty <see cref="ByteString"/>.
@@ -32,7 +33,7 @@ namespace Neo.VM.Types
         private static readonly uint s_seed = unchecked((uint)new Random().Next());
         private int _hashCode = 0;
 
-        public override ReadOnlyMemory<byte> Memory { get; }
+        public override ReadOnlyMemory<byte> Memory { get; set; }
         public override StackItemType Type => StackItemType.ByteString;
 
         /// <summary>
@@ -43,6 +44,9 @@ namespace Neo.VM.Types
         {
             this.Memory = data;
         }
+
+        public ByteString()
+        { }
 
         private bool Equals(ByteString other)
         {
@@ -132,6 +136,21 @@ namespace Neo.VM.Types
         public static implicit operator ByteString(string value)
         {
             return new ByteString(Utility.StrictUTF8.GetBytes(value));
+        }
+
+        public void SetValue(string value)
+        {
+            this.Memory = Utility.StrictUTF8.GetBytes(value);
+        }
+
+        public void SetValue(ReadOnlyMemory<byte> value)
+        {
+            this.Memory = value;
+        }
+
+        public void Reset()
+        {
+            // this.Memory = Empty;
         }
     }
 }

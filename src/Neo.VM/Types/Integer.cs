@@ -9,6 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.IO.ObjectPool;
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -20,7 +21,7 @@ namespace Neo.VM.Types
     /// Represents an integer value in the VM.
     /// </summary>
     [DebuggerDisplay("Type={GetType().Name}, Value={value}")]
-    public class Integer : PrimitiveType
+    public class Integer : PrimitiveType, IPoolable<BigInteger>
     {
         /// <summary>
         /// The maximum size of an integer in bytes.
@@ -31,10 +32,15 @@ namespace Neo.VM.Types
         /// Represents the number 0.
         /// </summary>
         public static readonly Integer Zero = 0;
-        private readonly BigInteger value;
+        private BigInteger value;
 
-        public override ReadOnlyMemory<byte> Memory => value.IsZero ? ReadOnlyMemory<byte>.Empty : value.ToByteArray();
-        public override int Size { get; }
+        public override ReadOnlyMemory<byte> Memory
+        {
+            get => value.IsZero ? ReadOnlyMemory<byte>.Empty : value.ToByteArray();
+            set => throw new NotImplementedException();
+        }
+
+        public override int Size { get; set; }
         public override StackItemType Type => StackItemType.Integer;
 
         /// <summary>
@@ -54,6 +60,8 @@ namespace Neo.VM.Types
             }
             this.value = value;
         }
+
+        public Integer() { }
 
         public override bool Equals(StackItem? other)
         {
@@ -129,6 +137,26 @@ namespace Neo.VM.Types
         public static implicit operator Integer(BigInteger value)
         {
             return new Integer(value);
+        }
+
+        public void SetValue(BigInteger value)
+        {
+            if (value.IsZero)
+            {
+                Size = 0;
+            }
+            else
+            {
+                Size = value.GetByteCount();
+                if (Size > MaxSize) throw new ArgumentException($"MaxSize exceed: {Size}");
+            }
+            this.value = value;
+        }
+
+        public void Reset()
+        {
+            // this.value = 0;
+            // Size = value.GetByteCount();
         }
     }
 }

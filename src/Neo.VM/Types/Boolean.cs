@@ -9,6 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.IO.ObjectPool;
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -20,14 +21,19 @@ namespace Neo.VM.Types
     /// Represents a boolean (<see langword="true" /> or <see langword="false" />) value in the VM.
     /// </summary>
     [DebuggerDisplay("Type={GetType().Name}, Value={value}")]
-    public class Boolean : PrimitiveType
+    public class Boolean : PrimitiveType, IPoolable<bool>
     {
         private static readonly ReadOnlyMemory<byte> TRUE = new byte[] { 1 };
         private static readonly ReadOnlyMemory<byte> FALSE = new byte[] { 0 };
 
-        private readonly bool value;
+        private bool value;
 
-        public override ReadOnlyMemory<byte> Memory => value ? TRUE : FALSE;
+        public override ReadOnlyMemory<byte> Memory
+        {
+            get => value ? TRUE : FALSE;
+            set => throw new NotImplementedException();
+        }
+
         public override int Size => sizeof(bool);
         public override StackItemType Type => StackItemType.Boolean;
 
@@ -39,6 +45,8 @@ namespace Neo.VM.Types
         {
             this.value = value;
         }
+
+        public Boolean() { this.value = false; }
 
         public override bool Equals(StackItem? other)
         {
@@ -66,6 +74,16 @@ namespace Neo.VM.Types
         public static implicit operator Boolean(bool value)
         {
             return value ? True : False;
+        }
+
+        public void SetValue(bool value)
+        {
+            this.value = value;
+        }
+
+        public void Reset()
+        {
+            // this.value = false;
         }
     }
 }

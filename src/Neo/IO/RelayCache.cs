@@ -1,6 +1,6 @@
 // Copyright (C) 2015-2024 The Neo Project.
 //
-// BooleanPool.cs file belongs to the neo project and is free
+// RelayCache.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
 // accompanying file LICENSE in the main directory of the
 // repository or http://www.opensource.org/licenses/mit-license.php
@@ -9,16 +9,20 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
-using Neo.IO.ObjectPool;
-using System;
+using Neo.Network.P2P.Payloads;
 
-namespace Neo.VM.Types.ObjectPool
+namespace Neo.IO.Caching
 {
-    public class BooleanPool : LimitedObjectPool<Boolean, bool>
+    internal class RelayCache : FIFOCache<UInt256, IInventory>
     {
-        public BooleanPool(int maxSize) : base(500, maxSize)
+        public RelayCache(int max_capacity)
+            : base(max_capacity)
         {
+        }
+
+        protected override UInt256 GetKeyForItem(IInventory item)
+        {
+            return item.Hash;
         }
     }
 }
-

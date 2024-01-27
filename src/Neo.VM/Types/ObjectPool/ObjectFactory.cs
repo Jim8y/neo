@@ -13,7 +13,7 @@ namespace Neo.VM.Types.ObjectPool;
 
 public static class ObjectFactory
 {
-    // public static readonly BooleanPool BooleanPool = new(short.MaxValue);
-    // public static readonly IntegerPool IntegerPool = new(short.MaxValue);
-    // public static readonly StringPool StringPool = new(short.MaxValue);
+    public static readonly BooleanPool BooleanPool = new(short.MaxValue);
+    public static readonly IntegerPool IntegerPool = new(short.MaxValue);
+    public static readonly StringPool StringPool = new(short.MaxValue);
 }

@@ -21,12 +21,16 @@ namespace Neo.VM.Types
     /// </summary>
     public abstract class PrimitiveType : StackItem
     {
-        public abstract ReadOnlyMemory<byte> Memory { get; }
+        public abstract ReadOnlyMemory<byte> Memory { get; set; }
 
         /// <summary>
         /// The size of the VM object in bytes.
         /// </summary>
-        public virtual int Size => Memory.Length;
+        public virtual int Size
+        {
+            get => Memory.Length;
+            set => throw new NotImplementedException();
+        }
 
         public override StackItem ConvertTo(StackItemType type)
         {

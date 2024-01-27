@@ -17,62 +17,64 @@ using System.Collections.Generic;
 
 public class LimitedObjectPool<T, E> where T : IPoolable<E>, new()
 {
-    protected readonly Queue<T> _available = new();
-    protected readonly HashSet<T> _inUse = new();
-    protected readonly int _maxSize;
-    protected readonly int _minSize;
+    protected readonly Queue<T> Available = new();
+    // protected readonly HashSet<T> InUse = new();
+    protected readonly uint MaxSize;
+    protected readonly uint MinSize;
 
-    public LimitedObjectPool(int maxSize, int minSize)
+    public LimitedObjectPool(uint maxSize, uint minSize)
     {
         if (minSize > maxSize)
         {
             throw new ArgumentException("Minimum size cannot be greater than maximum size.");
         }
 
-        _maxSize = maxSize;
-        _minSize = minSize;
+        MaxSize = maxSize;
+        MinSize = minSize;
 
         // Preallocate the pool with the minimum size
-        for (int i = 0; i < _minSize; i++)
+        for (int i = 0; i < MinSize; i++)
         {
-            _available.Enqueue(new T());
+            Available.Enqueue(new T());
         }
     }
 
     public T Get(E value)
     {
         T item;
-        if (_available.Count > 0)
+        if (Available.Count > 0)
         {
-            item = _available.Dequeue();
+            item = Available.Dequeue();
         }
         else
         {
             item = new T();
         }
-        if (_inUse.Count < _maxSize)
-        {
+        // if (InUse.Count < MaxSize)
+        // {
             item.SetValue(value);
-            _inUse.Add(item);
+            // InUse.Add(item);
             return item;
-        }
-        throw new InvalidOperationException("No available objects in the pool.");
+        // }
+        // throw new InvalidOperationException("No available objects in the pool.");
     }
 
     public void Return(T item)
     {
-        try
-        {
-            _inUse.Remove(item);
-        }
-        catch (Exception e)
-        {
-            // Can not be removed from _inUse as its not added to the _inUse
-        }
-        finally
-        {
-            item.Reset();
-            _available.Enqueue(item);
-        }
+        // try
+        // {
+        //     InUse.Remove(item);
+        // }
+        // catch (Exception e)
+        // {
+        //     // Can not be removed from _inUse as its not added to the _inUse
+        // }
+        // finally
+        // {
+        if (Available.Count >= MinSize) return;
+
+        item.Reset();
+        Available.Enqueue(item);
+        // }
     }
 }

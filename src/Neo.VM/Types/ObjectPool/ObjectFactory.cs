@@ -9,11 +9,19 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using System;
+using System.Numerics;
+
 namespace Neo.VM.Types.ObjectPool;
 
 public static class ObjectFactory
 {
-    public static readonly BooleanPool BooleanPool = new(short.MaxValue);
-    public static readonly IntegerPool IntegerPool = new(short.MaxValue);
-    public static readonly StringPool StringPool = new(short.MaxValue);
+    public static readonly BooleanPool BooleanPool = new(ExecutionEngineLimits.Default.MaxStackSize);
+    public static readonly IntegerPool IntegerPool = new(ExecutionEngineLimits.Default.MaxStackSize);
+    public static readonly StringPool StringPool = new(ExecutionEngineLimits.Default.MaxStackSize);
+
+    public static Integer Get(BigInteger integer) => IntegerPool.Get(integer);
+    public static Boolean Get(bool value) => BooleanPool.Get(value);
+    public static ByteString Get(string value) => StringPool.Get(value);
+    public static ByteString Get(ReadOnlyMemory<byte> value) => StringPool.Get(value);
 }

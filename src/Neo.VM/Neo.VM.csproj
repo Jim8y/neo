@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Neo.IO\Neo.IO.csproj" />
+  </ItemGroup>
+
 </Project>

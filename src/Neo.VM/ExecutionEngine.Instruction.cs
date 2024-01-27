@@ -32,7 +32,7 @@ namespace Neo.VM
                 case OpCode.PUSHINT128:
                 case OpCode.PUSHINT256:
                     {
-                        Push(new BigInteger(instruction.Operand.Span));
+                        PushInteger(new BigInteger(instruction.Operand.Span));
                         break;
                     }
                 case OpCode.PUSHT:
@@ -326,7 +326,7 @@ namespace Neo.VM
                 // Stack ops
                 case OpCode.DEPTH:
                     {
-                        Push(CurrentContext!.EvaluationStack.Count);
+                        PushInteger(CurrentContext!.EvaluationStack.Count);
                         break;
                     }
                 case OpCode.DROP:
@@ -629,28 +629,28 @@ namespace Neo.VM
                 case OpCode.INVERT:
                     {
                         var x = Pop().ReUse().GetInteger();
-                        Push(~x);
+                        PushInteger(~x);
                         break;
                     }
                 case OpCode.AND:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 & x2);
+                        PushInteger(x1 & x2);
                         break;
                     }
                 case OpCode.OR:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 | x2);
+                        PushInteger(x1 | x2);
                         break;
                     }
                 case OpCode.XOR:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 ^ x2);
+                        PushInteger(x1 ^ x2);
                         break;
                     }
                 case OpCode.EQUAL:
@@ -672,66 +672,66 @@ namespace Neo.VM
                 case OpCode.SIGN:
                     {
                         var x = Pop().ReUse().GetInteger();
-                        Push(x.Sign);
+                        PushInteger(x.Sign);
                         break;
                     }
                 case OpCode.ABS:
                     {
                         var x = Pop().ReUse().GetInteger();
-                        Push(BigInteger.Abs(x));
+                        PushInteger(BigInteger.Abs(x));
                         break;
                     }
                 case OpCode.NEGATE:
                     {
                         var x = Pop().ReUse().GetInteger();
-                        Push(-x);
+                        PushInteger(-x);
                         break;
                     }
                 case OpCode.INC:
                     {
                         var x = Pop().ReUse().GetInteger();
-                        Push(x + 1);
+                        PushInteger(x + 1);
                         break;
                     }
                 case OpCode.DEC:
                     {
                         var x = Pop().ReUse().GetInteger();
-                        Push(x - 1);
+                        PushInteger(x - 1);
                         break;
                     }
                 case OpCode.ADD:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 + x2);
+                        PushInteger(x1 + x2);
                         break;
                     }
                 case OpCode.SUB:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 - x2);
+                        PushInteger(x1 - x2);
                         break;
                     }
                 case OpCode.MUL:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 * x2);
+                        PushInteger(x1 * x2);
                         break;
                     }
                 case OpCode.DIV:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 / x2);
+                        PushInteger(x1 / x2);
                         break;
                     }
                 case OpCode.MOD:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 % x2);
+                        PushInteger(x1 % x2);
                         break;
                     }
                 case OpCode.POW:
@@ -739,12 +739,12 @@ namespace Neo.VM
                         var exponent = (int)Pop().ReUse().GetInteger();
                         Limits.AssertShift(exponent);
                         var value = Pop().ReUse().GetInteger();
-                        Push(BigInteger.Pow(value, exponent));
+                        PushInteger(BigInteger.Pow(value, exponent));
                         break;
                     }
                 case OpCode.SQRT:
                     {
-                        Push(Pop().ReUse().GetInteger().Sqrt());
+                        PushInteger(Pop().ReUse().GetInteger().Sqrt());
                         break;
                     }
                 case OpCode.MODMUL:
@@ -752,7 +752,7 @@ namespace Neo.VM
                         var modulus = Pop().ReUse().GetInteger();
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(x1 * x2 % modulus);
+                        PushInteger(x1 * x2 % modulus);
                         break;
                     }
                 case OpCode.MODPOW:
@@ -763,7 +763,7 @@ namespace Neo.VM
                         var result = exponent == -1
                             ? value.ModInverse(modulus)
                             : BigInteger.ModPow(value, exponent, modulus);
-                        Push(result);
+                        PushInteger(result);
                         break;
                     }
                 case OpCode.SHL:
@@ -772,7 +772,7 @@ namespace Neo.VM
                         Limits.AssertShift(shift);
                         if (shift == 0) break;
                         var x = Pop().ReUse().GetInteger();
-                        Push(x << shift);
+                        PushInteger(x << shift);
                         break;
                     }
                 case OpCode.SHR:
@@ -781,7 +781,7 @@ namespace Neo.VM
                         Limits.AssertShift(shift);
                         if (shift == 0) break;
                         var x = Pop().ReUse().GetInteger();
-                        Push(x >> shift);
+                        PushInteger(x >> shift);
                         break;
                     }
                 case OpCode.NOT:
@@ -868,14 +868,14 @@ namespace Neo.VM
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(BigInteger.Min(x1, x2));
+                        PushInteger(BigInteger.Min(x1, x2));
                         break;
                     }
                 case OpCode.MAX:
                     {
                         var x2 = Pop().ReUse().GetInteger();
                         var x1 = Pop().ReUse().GetInteger();
-                        Push(BigInteger.Max(x1, x2));
+                        PushInteger(BigInteger.Max(x1, x2));
                         break;
                     }
                 case OpCode.WITHIN:
@@ -952,7 +952,7 @@ namespace Neo.VM
                             default:
                                 throw new InvalidOperationException($"Invalid type for {instruction.OpCode}: {compound.Type}");
                         }
-                        Push(compound.Count);
+                        PushInteger(compound.Count);
                         break;
                     }
                 case OpCode.NEWARRAY0:
@@ -1014,13 +1014,13 @@ namespace Neo.VM
                         switch (x)
                         {
                             case CompoundType compound:
-                                Push(compound.Count);
+                                PushInteger(compound.Count);
                                 break;
                             case PrimitiveType primitive:
-                                Push(primitive.Size);
+                                PushInteger(primitive.Size);
                                 break;
                             case Buffer buffer:
-                                Push(buffer.Size);
+                                PushInteger(buffer.Size);
                                 break;
                             default:
                                 throw new InvalidOperationException($"Invalid type for {instruction.OpCode}: {x.Type}");

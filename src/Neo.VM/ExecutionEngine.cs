@@ -462,7 +462,8 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PushInteger(BigInteger item)
         {
-            CurrentContext!.EvaluationStack.Push(item);
+            var stackItem = ObjectFactory.Get(item);
+            CurrentContext!.EvaluationStack.Push(stackItem);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

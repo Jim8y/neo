@@ -11,7 +11,6 @@
 
 #pragma warning disable CS0659
 
-using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -259,26 +258,5 @@ namespace Neo.VM.Types
         {
             return (ByteString)value;
         }
-
-        public StackItem ReUse()
-        {
-            if (this.StackReferences == 0)
-            {
-                switch (this)
-                {
-                    case Boolean boolean:
-                        ObjectFactory.BooleanPool.Return(boolean);
-                        break;
-                    case Integer integer:
-                        ObjectFactory.IntegerPool.Return(integer);
-                        break;
-                    case ByteString byteString:
-                        ObjectFactory.StringPool.Return(byteString);
-                        break;
-                }
-            }
-            return this;
-        }
-
     }
 }

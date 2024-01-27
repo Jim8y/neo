@@ -10,6 +10,7 @@
 // modifications are permitted.
 
 using Neo.VM.Types;
+using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,17 +161,17 @@ namespace Neo.VM
                 case OpCode.PUSHINT128:
                 case OpCode.PUSHINT256:
                     {
-                        Push(new BigInteger(instruction.Operand.Span));
+                        Push(ObjectFactory.Get(new BigInteger(instruction.Operand.Span)));
                         break;
                     }
                 case OpCode.PUSHT:
                     {
-                        Push(StackItem.True);
+                        Push(ObjectFactory.Get(true));
                         break;
                     }
                 case OpCode.PUSHF:
                     {
-                        Push(StackItem.False);
+                        Push(ObjectFactory.Get(false));
                         break;
                     }
                 case OpCode.PUSHA:
@@ -191,7 +192,7 @@ namespace Neo.VM
                 case OpCode.PUSHDATA4:
                     {
                         Limits.AssertMaxItemSize(instruction.Operand.Length);
-                        Push(instruction.Operand);
+                        Push(ObjectFactory.Get(instruction.Operand));
                         break;
                     }
                 case OpCode.PUSHM1:
@@ -231,120 +232,120 @@ namespace Neo.VM
                     }
                 case OpCode.JMPIF:
                     {
-                        if (Pop().GetBoolean())
+                        if (Pop().ReUse().GetBoolean())
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPIF_L:
                     {
-                        if (Pop().GetBoolean())
+                        if (Pop().ReUse().GetBoolean())
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPIFNOT:
                     {
-                        if (!Pop().GetBoolean())
+                        if (!Pop().ReUse().GetBoolean())
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPIFNOT_L:
                     {
-                        if (!Pop().GetBoolean())
+                        if (!Pop().ReUse().GetBoolean())
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPEQ:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 == x2)
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPEQ_L:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 == x2)
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPNE:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 != x2)
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPNE_L:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 != x2)
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPGT:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 > x2)
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPGT_L:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 > x2)
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPGE:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 >= x2)
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPGE_L:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 >= x2)
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPLT:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 < x2)
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPLT_L:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 < x2)
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
                     }
                 case OpCode.JMPLE:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 <= x2)
                             ExecuteJumpOffset(instruction.TokenI8);
                         break;
                     }
                 case OpCode.JMPLE_L:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
                         if (x1 <= x2)
                             ExecuteJumpOffset(instruction.TokenI32);
                         break;
@@ -378,7 +379,7 @@ namespace Neo.VM
                     }
                 case OpCode.ASSERT:
                     {
-                        var x = Pop().GetBoolean();
+                        var x = Pop().ReUse().GetBoolean();
                         if (!x)
                             throw new Exception($"{OpCode.ASSERT} is executed with false result.");
                         break;
@@ -454,12 +455,12 @@ namespace Neo.VM
                 // Stack ops
                 case OpCode.DEPTH:
                     {
-                        Push(CurrentContext!.EvaluationStack.Count);
+                        Push(ObjectFactory.Get(CurrentContext!.EvaluationStack.Count));
                         break;
                     }
                 case OpCode.DROP:
                     {
-                        Pop();
+                        Pop().ReUse();
                         break;
                     }
                 case OpCode.NIP:
@@ -469,7 +470,7 @@ namespace Neo.VM
                     }
                 case OpCode.XDROP:
                     {
-                        int n = (int)Pop().GetInteger();
+                        int n = (int)Pop().ReUse().GetInteger();
                         if (n < 0)
                             throw new InvalidOperationException($"The negative value {n} is invalid for OpCode.{instruction.OpCode}.");
                         CurrentContext!.EvaluationStack.Remove<StackItem>(n);
@@ -492,7 +493,7 @@ namespace Neo.VM
                     }
                 case OpCode.PICK:
                     {
-                        int n = (int)Pop().GetInteger();
+                        int n = (int)Pop().ReUse().GetInteger();
                         if (n < 0)
                             throw new InvalidOperationException($"The negative value {n} is invalid for OpCode.{instruction.OpCode}.");
                         Push(Peek(n));
@@ -517,7 +518,7 @@ namespace Neo.VM
                     }
                 case OpCode.ROLL:
                     {
-                        int n = (int)Pop().GetInteger();
+                        int n = (int)Pop().ReUse().GetInteger();
                         if (n < 0)
                             throw new InvalidOperationException($"The negative value {n} is invalid for OpCode.{instruction.OpCode}.");
                         if (n == 0) break;
@@ -537,7 +538,7 @@ namespace Neo.VM
                     }
                 case OpCode.REVERSEN:
                     {
-                        int n = (int)Pop().GetInteger();
+                        int n = (int)Pop().ReUse().GetInteger();
                         CurrentContext!.EvaluationStack.Reverse(n);
                         break;
                     }
@@ -567,7 +568,7 @@ namespace Neo.VM
                             StackItem[] items = new StackItem[instruction.TokenU8_1];
                             for (int i = 0; i < instruction.TokenU8_1; i++)
                             {
-                                items[i] = Pop();
+                                items[i] = Pop().ReUse();
                             }
                             CurrentContext.Arguments = new Slot(items, ReferenceCounter);
                         }
@@ -673,23 +674,23 @@ namespace Neo.VM
                 // Splice
                 case OpCode.NEWBUFFER:
                     {
-                        int length = (int)Pop().GetInteger();
+                        int length = (int)Pop().ReUse().GetInteger();
                         Limits.AssertMaxItemSize(length);
                         Push(new Buffer(length));
                         break;
                     }
                 case OpCode.MEMCPY:
                     {
-                        int count = (int)Pop().GetInteger();
+                        int count = (int)Pop().ReUse().GetInteger();
                         if (count < 0)
                             throw new InvalidOperationException($"The value {count} is out of range.");
-                        int si = (int)Pop().GetInteger();
+                        int si = (int)Pop().ReUse().GetInteger();
                         if (si < 0)
                             throw new InvalidOperationException($"The value {si} is out of range.");
-                        ReadOnlySpan<byte> src = Pop().GetSpan();
+                        ReadOnlySpan<byte> src = Pop().ReUse().GetSpan();
                         if (checked(si + count) > src.Length)
                             throw new InvalidOperationException($"The value {count} is out of range.");
-                        int di = (int)Pop().GetInteger();
+                        int di = (int)Pop().ReUse().GetInteger();
                         if (di < 0)
                             throw new InvalidOperationException($"The value {di} is out of range.");
                         Buffer dst = Pop<Buffer>();
@@ -700,8 +701,8 @@ namespace Neo.VM
                     }
                 case OpCode.CAT:
                     {
-                        var x2 = Pop().GetSpan();
-                        var x1 = Pop().GetSpan();
+                        var x2 = Pop().ReUse().GetSpan();
+                        var x1 = Pop().ReUse().GetSpan();
                         int length = x1.Length + x2.Length;
                         Limits.AssertMaxItemSize(length);
                         Buffer result = new(length, false);
@@ -712,13 +713,13 @@ namespace Neo.VM
                     }
                 case OpCode.SUBSTR:
                     {
-                        int count = (int)Pop().GetInteger();
+                        int count = (int)Pop().ReUse().GetInteger();
                         if (count < 0)
                             throw new InvalidOperationException($"The value {count} is out of range.");
-                        int index = (int)Pop().GetInteger();
+                        int index = (int)Pop().ReUse().GetInteger();
                         if (index < 0)
                             throw new InvalidOperationException($"The value {index} is out of range.");
-                        var x = Pop().GetSpan();
+                        var x = Pop().ReUse().GetSpan();
                         if (index + count > x.Length)
                             throw new InvalidOperationException($"The value {count} is out of range.");
                         Buffer result = new(count, false);
@@ -728,10 +729,10 @@ namespace Neo.VM
                     }
                 case OpCode.LEFT:
                     {
-                        int count = (int)Pop().GetInteger();
+                        int count = (int)Pop().ReUse().GetInteger();
                         if (count < 0)
                             throw new InvalidOperationException($"The value {count} is out of range.");
-                        var x = Pop().GetSpan();
+                        var x = Pop().ReUse().GetSpan();
                         if (count > x.Length)
                             throw new InvalidOperationException($"The value {count} is out of range.");
                         Buffer result = new(count, false);
@@ -741,10 +742,10 @@ namespace Neo.VM
                     }
                 case OpCode.RIGHT:
                     {
-                        int count = (int)Pop().GetInteger();
+                        int count = (int)Pop().ReUse().GetInteger();
                         if (count < 0)
                             throw new InvalidOperationException($"The value {count} is out of range.");
-                        var x = Pop().GetSpan();
+                        var x = Pop().ReUse().GetSpan();
                         if (count > x.Length)
                             throw new InvalidOperationException($"The value {count} is out of range.");
                         Buffer result = new(count, false);
@@ -756,276 +757,276 @@ namespace Neo.VM
                 // Bitwise logic
                 case OpCode.INVERT:
                     {
-                        var x = Pop().GetInteger();
-                        Push(~x);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(~x));
                         break;
                     }
                 case OpCode.AND:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 & x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 & x2));
                         break;
                     }
                 case OpCode.OR:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 | x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 | x2));
                         break;
                     }
                 case OpCode.XOR:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 ^ x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 ^ x2));
                         break;
                     }
                 case OpCode.EQUAL:
                     {
-                        StackItem x2 = Pop();
-                        StackItem x1 = Pop();
-                        Push(x1.Equals(x2, Limits));
+                        StackItem x2 = Pop().ReUse();
+                        StackItem x1 = Pop().ReUse();
+                        Push(ObjectFactory.Get(x1.Equals(x2, Limits)));
                         break;
                     }
                 case OpCode.NOTEQUAL:
                     {
-                        StackItem x2 = Pop();
-                        StackItem x1 = Pop();
-                        Push(!x1.Equals(x2, Limits));
+                        StackItem x2 = Pop().ReUse();
+                        StackItem x1 = Pop().ReUse();
+                        Push(ObjectFactory.Get(!x1.Equals(x2, Limits)));
                         break;
                     }
 
                 // Numeric
                 case OpCode.SIGN:
                     {
-                        var x = Pop().GetInteger();
-                        Push(x.Sign);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x.Sign));
                         break;
                     }
                 case OpCode.ABS:
                     {
-                        var x = Pop().GetInteger();
-                        Push(BigInteger.Abs(x));
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(BigInteger.Abs(x)));
                         break;
                     }
                 case OpCode.NEGATE:
                     {
-                        var x = Pop().GetInteger();
-                        Push(-x);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(-x));
                         break;
                     }
                 case OpCode.INC:
                     {
-                        var x = Pop().GetInteger();
-                        Push(x + 1);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x + 1));
                         break;
                     }
                 case OpCode.DEC:
                     {
-                        var x = Pop().GetInteger();
-                        Push(x - 1);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x - 1));
                         break;
                     }
                 case OpCode.ADD:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 + x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 + x2));
                         break;
                     }
                 case OpCode.SUB:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 - x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 - x2));
                         break;
                     }
                 case OpCode.MUL:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 * x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 * x2));
                         break;
                     }
                 case OpCode.DIV:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 / x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 / x2));
                         break;
                     }
                 case OpCode.MOD:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 % x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 % x2));
                         break;
                     }
                 case OpCode.POW:
                     {
-                        var exponent = (int)Pop().GetInteger();
+                        var exponent = (int)Pop().ReUse().GetInteger();
                         Limits.AssertShift(exponent);
-                        var value = Pop().GetInteger();
-                        Push(BigInteger.Pow(value, exponent));
+                        var value = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(BigInteger.Pow(value, exponent)));
                         break;
                     }
                 case OpCode.SQRT:
                     {
-                        Push(Pop().GetInteger().Sqrt());
+                        Push(ObjectFactory.Get(Pop().ReUse().GetInteger().Sqrt()));
                         break;
                     }
                 case OpCode.MODMUL:
                     {
-                        var modulus = Pop().GetInteger();
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 * x2 % modulus);
+                        var modulus = Pop().ReUse().GetInteger();
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 * x2 % modulus));
                         break;
                     }
                 case OpCode.MODPOW:
                     {
-                        var modulus = Pop().GetInteger();
-                        var exponent = Pop().GetInteger();
-                        var value = Pop().GetInteger();
+                        var modulus = Pop().ReUse().GetInteger();
+                        var exponent = Pop().ReUse().GetInteger();
+                        var value = Pop().ReUse().GetInteger();
                         var result = exponent == -1
                             ? value.ModInverse(modulus)
                             : BigInteger.ModPow(value, exponent, modulus);
-                        Push(result);
+                        Push(ObjectFactory.Get(result));
                         break;
                     }
                 case OpCode.SHL:
                     {
-                        int shift = (int)Pop().GetInteger();
+                        int shift = (int)Pop().ReUse().GetInteger();
                         Limits.AssertShift(shift);
                         if (shift == 0) break;
-                        var x = Pop().GetInteger();
-                        Push(x << shift);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x << shift));
                         break;
                     }
                 case OpCode.SHR:
                     {
-                        int shift = (int)Pop().GetInteger();
+                        int shift = (int)Pop().ReUse().GetInteger();
                         Limits.AssertShift(shift);
                         if (shift == 0) break;
-                        var x = Pop().GetInteger();
-                        Push(x >> shift);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x >> shift));
                         break;
                     }
                 case OpCode.NOT:
                     {
-                        var x = Pop().GetBoolean();
-                        Push(!x);
+                        var x = Pop().ReUse().GetBoolean();
+                        Push(ObjectFactory.Get(!x));
                         break;
                     }
                 case OpCode.BOOLAND:
                     {
-                        var x2 = Pop().GetBoolean();
-                        var x1 = Pop().GetBoolean();
-                        Push(x1 && x2);
+                        var x2 = Pop().ReUse().GetBoolean();
+                        var x1 = Pop().ReUse().GetBoolean();
+                        Push(ObjectFactory.Get(x1 && x2));
                         break;
                     }
                 case OpCode.BOOLOR:
                     {
-                        var x2 = Pop().GetBoolean();
-                        var x1 = Pop().GetBoolean();
-                        Push(x1 || x2);
+                        var x2 = Pop().ReUse().GetBoolean();
+                        var x1 = Pop().ReUse().GetBoolean();
+                        Push(ObjectFactory.Get(x1 || x2));
                         break;
                     }
                 case OpCode.NZ:
                     {
-                        var x = Pop().GetInteger();
-                        Push(!x.IsZero);
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(!x.IsZero));
                         break;
                     }
                 case OpCode.NUMEQUAL:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 == x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 == x2));
                         break;
                     }
                 case OpCode.NUMNOTEQUAL:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(x1 != x2);
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(x1 != x2));
                         break;
                     }
                 case OpCode.LT:
                     {
-                        var x2 = Pop();
-                        var x1 = Pop();
+                        var x2 = Pop().ReUse();
+                        var x1 = Pop().ReUse();
                         if (x1.IsNull || x2.IsNull)
-                            Push(false);
+                            Push(ObjectFactory.Get(false));
                         else
-                            Push(x1.GetInteger() < x2.GetInteger());
+                            Push(ObjectFactory.Get(x1.GetInteger() < x2.GetInteger()));
                         break;
                     }
                 case OpCode.LE:
                     {
-                        var x2 = Pop();
-                        var x1 = Pop();
+                        var x2 = Pop().ReUse();
+                        var x1 = Pop().ReUse();
                         if (x1.IsNull || x2.IsNull)
-                            Push(false);
+                            Push(ObjectFactory.Get(false));
                         else
-                            Push(x1.GetInteger() <= x2.GetInteger());
+                            Push(ObjectFactory.Get(x1.GetInteger() <= x2.GetInteger()));
                         break;
                     }
                 case OpCode.GT:
                     {
-                        var x2 = Pop();
-                        var x1 = Pop();
+                        var x2 = Pop().ReUse();
+                        var x1 = Pop().ReUse();
                         if (x1.IsNull || x2.IsNull)
-                            Push(false);
+                            Push(ObjectFactory.Get(false));
                         else
-                            Push(x1.GetInteger() > x2.GetInteger());
+                            Push(ObjectFactory.Get(x1.GetInteger() > x2.GetInteger()));
                         break;
                     }
                 case OpCode.GE:
                     {
-                        var x2 = Pop();
-                        var x1 = Pop();
+                        var x2 = Pop().ReUse();
+                        var x1 = Pop().ReUse();
                         if (x1.IsNull || x2.IsNull)
-                            Push(false);
+                            Push(ObjectFactory.Get(false));
                         else
-                            Push(x1.GetInteger() >= x2.GetInteger());
+                            Push(ObjectFactory.Get(x1.GetInteger() >= x2.GetInteger()));
                         break;
                     }
                 case OpCode.MIN:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(BigInteger.Min(x1, x2));
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(BigInteger.Min(x1, x2)));
                         break;
                     }
                 case OpCode.MAX:
                     {
-                        var x2 = Pop().GetInteger();
-                        var x1 = Pop().GetInteger();
-                        Push(BigInteger.Max(x1, x2));
+                        var x2 = Pop().ReUse().GetInteger();
+                        var x1 = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(BigInteger.Max(x1, x2)));
                         break;
                     }
                 case OpCode.WITHIN:
                     {
-                        BigInteger b = Pop().GetInteger();
-                        BigInteger a = Pop().GetInteger();
-                        var x = Pop().GetInteger();
-                        Push(a <= x && x < b);
+                        BigInteger b = Pop().ReUse().GetInteger();
+                        BigInteger a = Pop().ReUse().GetInteger();
+                        var x = Pop().ReUse().GetInteger();
+                        Push(ObjectFactory.Get(a <= x && x < b));
                         break;
                     }
 
                 // Compound-type
                 case OpCode.PACKMAP:
                     {
-                        int size = (int)Pop().GetInteger();
+                        int size = (int)Pop().ReUse().ReUse().GetInteger();
                         if (size < 0 || size * 2 > CurrentContext!.EvaluationStack.Count)
                             throw new InvalidOperationException($"The value {size} is out of range.");
                         Map map = new(ReferenceCounter);
                         for (int i = 0; i < size; i++)
                         {
                             PrimitiveType key = Pop<PrimitiveType>();
-                            StackItem value = Pop();
+                            StackItem value = Pop().ReUse();
                             map[key] = value;
                         }
                         Push(map);
@@ -1033,13 +1034,13 @@ namespace Neo.VM
                     }
                 case OpCode.PACKSTRUCT:
                     {
-                        int size = (int)Pop().GetInteger();
+                        int size = (int)Pop().ReUse().GetInteger();
                         if (size < 0 || size > CurrentContext!.EvaluationStack.Count)
                             throw new InvalidOperationException($"The value {size} is out of range.");
                         Struct @struct = new(ReferenceCounter);
                         for (int i = 0; i < size; i++)
                         {
-                            StackItem item = Pop();
+                            StackItem item = Pop().ReUse();
                             @struct.Add(item);
                         }
                         Push(@struct);
@@ -1047,13 +1048,13 @@ namespace Neo.VM
                     }
                 case OpCode.PACK:
                     {
-                        int size = (int)Pop().GetInteger();
+                        int size = (int)Pop().ReUse().GetInteger();
                         if (size < 0 || size > CurrentContext!.EvaluationStack.Count)
                             throw new InvalidOperationException($"The value {size} is out of range.");
                         VMArray array = new(ReferenceCounter);
                         for (int i = 0; i < size; i++)
                         {
-                            StackItem item = Pop();
+                            StackItem item = Pop().ReUse();
                             array.Add(item);
                         }
                         Push(array);
@@ -1080,7 +1081,7 @@ namespace Neo.VM
                             default:
                                 throw new InvalidOperationException($"Invalid type for {instruction.OpCode}: {compound.Type}");
                         }
-                        Push(compound.Count);
+                        Push(ObjectFactory.Get(compound.Count));
                         break;
                     }
                 case OpCode.NEWARRAY0:
@@ -1091,7 +1092,7 @@ namespace Neo.VM
                 case OpCode.NEWARRAY:
                 case OpCode.NEWARRAY_T:
                     {
-                        int n = (int)Pop().GetInteger();
+                        int n = (int)Pop().ReUse().GetInteger();
                         if (n < 0 || n > Limits.MaxStackSize)
                             throw new InvalidOperationException($"MaxStackSize exceed: {n}");
                         StackItem item;
@@ -1122,7 +1123,7 @@ namespace Neo.VM
                     }
                 case OpCode.NEWSTRUCT:
                     {
-                        int n = (int)Pop().GetInteger();
+                        int n = (int)Pop().ReUse().GetInteger();
                         if (n < 0 || n > Limits.MaxStackSize)
                             throw new InvalidOperationException($"MaxStackSize exceed: {n}");
                         Struct result = new(ReferenceCounter);
@@ -1138,17 +1139,17 @@ namespace Neo.VM
                     }
                 case OpCode.SIZE:
                     {
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         switch (x)
                         {
                             case CompoundType compound:
-                                Push(compound.Count);
+                                Push(ObjectFactory.Get(compound.Count));
                                 break;
                             case PrimitiveType primitive:
-                                Push(primitive.Size);
+                                Push(ObjectFactory.Get(primitive.Size));
                                 break;
                             case Buffer buffer:
-                                Push(buffer.Size);
+                                Push(ObjectFactory.Get(buffer.Size));
                                 break;
                             default:
                                 throw new InvalidOperationException($"Invalid type for {instruction.OpCode}: {x.Type}");
@@ -1158,7 +1159,7 @@ namespace Neo.VM
                 case OpCode.HASKEY:
                     {
                         PrimitiveType key = Pop<PrimitiveType>();
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         switch (x)
                         {
                             case VMArray array:
@@ -1166,12 +1167,12 @@ namespace Neo.VM
                                     int index = (int)key.GetInteger();
                                     if (index < 0)
                                         throw new InvalidOperationException($"The negative value {index} is invalid for OpCode.{instruction.OpCode}.");
-                                    Push(index < array.Count);
+                                    Push(ObjectFactory.Get(index < array.Count));
                                     break;
                                 }
                             case Map map:
                                 {
-                                    Push(map.ContainsKey(key));
+                                    Push(ObjectFactory.Get(map.ContainsKey(key)));
                                     break;
                                 }
                             case Buffer buffer:
@@ -1179,7 +1180,7 @@ namespace Neo.VM
                                     int index = (int)key.GetInteger();
                                     if (index < 0)
                                         throw new InvalidOperationException($"The negative value {index} is invalid for OpCode.{instruction.OpCode}.");
-                                    Push(index < buffer.Size);
+                                    Push(ObjectFactory.Get(index < buffer.Size));
                                     break;
                                 }
                             case ByteString array:
@@ -1187,7 +1188,7 @@ namespace Neo.VM
                                     int index = (int)key.GetInteger();
                                     if (index < 0)
                                         throw new InvalidOperationException($"The negative value {index} is invalid for OpCode.{instruction.OpCode}.");
-                                    Push(index < array.Size);
+                                    Push(ObjectFactory.Get(index < array.Size));
                                     break;
                                 }
                             default:
@@ -1203,7 +1204,7 @@ namespace Neo.VM
                     }
                 case OpCode.VALUES:
                     {
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         IEnumerable<StackItem> values = x switch
                         {
                             VMArray array => array,
@@ -1222,7 +1223,7 @@ namespace Neo.VM
                 case OpCode.PICKITEM:
                     {
                         PrimitiveType key = Pop<PrimitiveType>();
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         switch (x)
                         {
                             case VMArray array:
@@ -1264,7 +1265,7 @@ namespace Neo.VM
                     }
                 case OpCode.APPEND:
                     {
-                        StackItem newItem = Pop();
+                        StackItem newItem = Pop().ReUse();
                         VMArray array = Pop<VMArray>();
                         if (newItem is Struct s) newItem = s.Clone(Limits);
                         array.Add(newItem);
@@ -1272,10 +1273,10 @@ namespace Neo.VM
                     }
                 case OpCode.SETITEM:
                     {
-                        StackItem value = Pop();
+                        StackItem value = Pop().ReUse();
                         if (value is Struct s) value = s.Clone(Limits);
-                        PrimitiveType key = Pop<PrimitiveType>();
-                        var x = Pop();
+                        PrimitiveType key = (PrimitiveType)Pop().ReUse();
+                        var x = Pop().ReUse();
                         switch (x)
                         {
                             case VMArray array:
@@ -1311,7 +1312,7 @@ namespace Neo.VM
                     }
                 case OpCode.REVERSEITEMS:
                     {
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         switch (x)
                         {
                             case VMArray array:
@@ -1327,8 +1328,8 @@ namespace Neo.VM
                     }
                 case OpCode.REMOVE:
                     {
-                        PrimitiveType key = Pop<PrimitiveType>();
-                        var x = Pop();
+                        PrimitiveType key = (PrimitiveType)Pop().ReUse();
+                        var x = Pop().ReUse();
                         switch (x)
                         {
                             case VMArray array:
@@ -1363,34 +1364,34 @@ namespace Neo.VM
                 //Types
                 case OpCode.ISNULL:
                     {
-                        var x = Pop();
-                        Push(x.IsNull);
+                        var x = Pop().ReUse();
+                        Push(ObjectFactory.Get(x.IsNull));
                         break;
                     }
                 case OpCode.ISTYPE:
                     {
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         StackItemType type = (StackItemType)instruction.TokenU8;
                         if (type == StackItemType.Any || !Enum.IsDefined(typeof(StackItemType), type))
                             throw new InvalidOperationException($"Invalid type: {type}");
-                        Push(x.Type == type);
+                        Push(ObjectFactory.Get(x.Type == type));
                         break;
                     }
                 case OpCode.CONVERT:
                     {
-                        var x = Pop();
+                        var x = Pop().ReUse();
                         Push(x.ConvertTo((StackItemType)instruction.TokenU8));
                         break;
                     }
                 case OpCode.ABORTMSG:
                     {
-                        var msg = Pop().GetString();
+                        var msg = Pop().ReUse().GetString();
                         throw new Exception($"{OpCode.ABORTMSG} is executed. Reason: {msg}");
                     }
                 case OpCode.ASSERTMSG:
                     {
-                        var msg = Pop().GetString();
-                        var x = Pop().GetBoolean();
+                        var msg = Pop().ReUse().GetString();
+                        var x = Pop().ReUse().GetBoolean();
                         if (!x)
                             throw new Exception($"{OpCode.ASSERTMSG} is executed with false result. Reason: {msg}");
                         break;
@@ -1497,7 +1498,7 @@ namespace Neo.VM
                 throw new InvalidOperationException("Slot has not been initialized.");
             if (index < 0 || index >= slot.Count)
                 throw new InvalidOperationException($"Index out of range when storing to slot: {index}");
-            slot[index] = Pop();
+            slot[index] = Pop().ReUse();
         }
 
         /// <summary>

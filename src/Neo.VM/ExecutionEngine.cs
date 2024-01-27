@@ -10,6 +10,7 @@
 // modifications are permitted.
 
 using Neo.VM.Types;
+using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -454,7 +455,8 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PushBoolean(bool item)
         {
-            CurrentContext!.EvaluationStack.Push(item);
+            var stackItem = ObjectFactory.Get(item);
+            CurrentContext!.EvaluationStack.Push(stackItem);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -474,8 +476,5 @@ namespace Neo.VM
         {
             CurrentContext!.EvaluationStack.Push(item);
         }
-
-
-
     }
 }

@@ -11,12 +11,14 @@
 
 using Neo.IO.ObjectPool;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Neo.VM.Types.ObjectPool;
 
 public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
 {
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ByteString Get(string value)
     {
         ByteString item;
@@ -34,6 +36,28 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
         // {
         //     InUse.Add(item);
             return item;
+        // }
+        // throw new InvalidOperationException("No available objects in the pool.");
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public ByteString Get(byte[] value)
+    {
+        ByteString item;
+        if (Available.Count > 0)
+        {
+            item = Available.Dequeue();
+            item.SetValue(value);
+        }
+        else
+        {
+            item = (ByteString)value;
+        }
+
+        // if (InUse.Count < MaxSize)
+        // {
+        //     InUse.Add(item);
+        return item;
         // }
         // throw new InvalidOperationException("No available objects in the pool.");
     }

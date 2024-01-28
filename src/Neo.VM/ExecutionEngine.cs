@@ -13,12 +13,8 @@ using Neo.VM.Types;
 using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Boolean = Neo.VM.Types.Boolean;
-using Buffer = Neo.VM.Types.Buffer;
-using VMArray = Neo.VM.Types.Array;
 
 namespace Neo.VM
 {

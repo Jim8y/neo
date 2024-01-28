@@ -11,6 +11,7 @@
 
 using System;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace Neo.VM.Types.ObjectPool;
 
@@ -27,8 +28,22 @@ public static class ObjectFactory
         StringPool ??= new StringPool(ExecutionEngineLimits.Default.MaxStackSize);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Integer Get(BigInteger integer) => IntegerPool.Get(integer);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Boolean Get(bool value) => BooleanPool.Get(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ByteString Get(string value) => StringPool.Get(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ByteString Get(ReadOnlyMemory<byte> value) => StringPool.Get(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ByteString Get(byte[] value)
+    {
+        return StringPool.Get(value);
+    }
+
 }

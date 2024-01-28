@@ -38,7 +38,7 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
         // throw new InvalidOperationException("No available objects in the pool.");
     }
 
-    public StringPool(uint maxSize) : base(maxSize, 500)
+    public StringPool(uint maxSize) : base(maxSize, maxSize)
     {
     }
 }

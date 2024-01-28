@@ -25,7 +25,7 @@ namespace Neo.VM
         private const bool TrackAllItems = false;
 
         private readonly HashSet<StackItem> tracked_items = new(ReferenceEqualityComparer.Instance);
-        private readonly HashSet<StackItem> zero_referred = new(ReferenceEqualityComparer.Instance);
+        private HashSet<StackItem>? zero_referred = new(ReferenceEqualityComparer.Instance);
         private LinkedList<HashSet<StackItem>>? cached_components;
         private int references_count = 0;
 
@@ -66,12 +66,12 @@ namespace Neo.VM
             if (tracked_items.Add(item))
                 cached_components?.AddLast(new HashSet<StackItem>(ReferenceEqualityComparer.Instance) { item });
             item.StackReferences += count;
-            zero_referred.Remove(item);
+            zero_referred!.Remove(item);
         }
 
         internal void AddZeroReferred(StackItem item)
         {
-            zero_referred.Add(item);
+            zero_referred!.Add(item);
             if (!NeedTrack(item)) return;
             cached_components?.AddLast(new HashSet<StackItem>(ReferenceEqualityComparer.Instance) { item });
             tracked_items.Add(item);
@@ -79,9 +79,10 @@ namespace Neo.VM
 
         internal int CheckZeroReferred()
         {
-            if (zero_referred.Count > 0)
+            if (zero_referred!.Count > 0)
             {
-                zero_referred.Clear();
+                zero_referred = null;
+                zero_referred = new HashSet<StackItem>(ReferenceEqualityComparer.Instance);//   .Clear();
                 if (cached_components is null)
                 {
                     //Tarjan<StackItem> tarjan = new(tracked_items.Where(p => p.StackReferences == 0));

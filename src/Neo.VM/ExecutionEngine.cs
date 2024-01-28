@@ -433,6 +433,7 @@ namespace Neo.VM
         /// </summary>
         protected virtual void PostExecuteInstruction(Instruction instruction)
         {
+            if (ReferenceCounter.Count <= Limits.MaxStackSize) return;
             if (ReferenceCounter.CheckZeroReferred() > Limits.MaxStackSize)
                 throw new InvalidOperationException($"MaxStackSize exceed: {ReferenceCounter.Count}");
         }

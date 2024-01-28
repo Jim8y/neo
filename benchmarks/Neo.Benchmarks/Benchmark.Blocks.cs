@@ -14,6 +14,7 @@ using Neo.IO;
 using Neo.Network.P2P.Payloads;
 using Neo.Persistence;
 using Neo.SmartContract;
+using Neo.VM.Types.ObjectPool;
 using System.Text;
 
 namespace Neo
@@ -31,6 +32,7 @@ namespace Neo
         [GlobalSetup]
         public void Setup()
         {
+            var integerPool = ObjectFactory.IntegerPool;
             _memoryStore = new SnapshotCache(new MemoryStore());
             LoadBlock(_blockId);
         }

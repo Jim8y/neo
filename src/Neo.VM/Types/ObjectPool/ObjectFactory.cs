@@ -16,9 +16,16 @@ namespace Neo.VM.Types.ObjectPool;
 
 public static class ObjectFactory
 {
-    public static readonly BooleanPool BooleanPool = new(ExecutionEngineLimits.Default.MaxStackSize);
-    public static readonly IntegerPool IntegerPool = new(ExecutionEngineLimits.Default.MaxStackSize);
-    public static readonly StringPool StringPool = new(ExecutionEngineLimits.Default.MaxStackSize);
+    public static readonly BooleanPool BooleanPool ;
+    public static readonly IntegerPool IntegerPool;
+    public static readonly StringPool StringPool;
+
+    static ObjectFactory()
+    {
+        BooleanPool ??= new BooleanPool(ExecutionEngineLimits.Default.MaxStackSize);
+        IntegerPool ??= new IntegerPool(ExecutionEngineLimits.Default.MaxStackSize);
+        StringPool ??= new StringPool(ExecutionEngineLimits.Default.MaxStackSize);
+    }
 
     public static Integer Get(BigInteger integer) => IntegerPool.Get(integer);
     public static Boolean Get(bool value) => BooleanPool.Get(value);

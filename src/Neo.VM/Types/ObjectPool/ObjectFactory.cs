@@ -45,5 +45,4 @@ public static class ObjectFactory
     {
         return StringPool.Get(value);
     }
-
 }

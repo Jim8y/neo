@@ -16,7 +16,7 @@ namespace Neo.VM.Types.ObjectPool
 {
     public class IntegerPool : LimitedObjectPool<Integer, BigInteger>
     {
-        public IntegerPool(uint maxSize) : base(maxSize, maxSize)
+        public IntegerPool(uint maxSize) : base(maxSize, maxSize/2)
         {
         }
     }

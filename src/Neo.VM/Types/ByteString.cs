@@ -153,10 +153,5 @@ namespace Neo.VM.Types
         {
             this.Memory = value;
         }
-
-        public void Reset()
-        {
-            // this.Memory = Empty;
-        }
     }
 }

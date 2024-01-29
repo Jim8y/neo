@@ -15,5 +15,4 @@ public interface IPoolable<E>
 {
     void SetValue(E value);
 
-    void Reset();
 }

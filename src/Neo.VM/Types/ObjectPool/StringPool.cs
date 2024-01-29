@@ -21,7 +21,7 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ByteString Get(string value)
     {
-        ByteString item;
+        ByteString? item=null;
         if (Available.Count > 0)
         {
             item = Available.Dequeue();
@@ -52,7 +52,7 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
         return item;
     }
 
-    public StringPool(uint maxSize) : base(maxSize, maxSize)
+    public StringPool(uint maxSize) : base(maxSize, maxSize/2)
     {
     }
 }

@@ -153,11 +153,5 @@ namespace Neo.VM.Types
             }
             this.value = value;
         }
-
-        public void Reset()
-        {
-            // this.value = 0;
-            // Size = value.GetByteCount();
-        }
     }
 }

@@ -80,10 +80,5 @@ namespace Neo.VM.Types
         {
             this.value = value;
         }
-
-        public void Reset()
-        {
-            // this.value = false;
-        }
     }
 }

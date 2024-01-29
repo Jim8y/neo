@@ -57,7 +57,6 @@ public class LimitedObjectPool<T, E> where T : IPoolable<E>, new()
     public void Return(T item)
     {
         if (Available.Count >= MaxSize) return;
-        item.Reset();
         Available.Enqueue(item);
     }
 }

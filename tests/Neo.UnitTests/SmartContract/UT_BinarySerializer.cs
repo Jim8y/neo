@@ -87,7 +87,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void TestDeserializeStackItem()
         {
-            StackItem stackItem1 = new ByteString(new byte[5]);
+            StackItem stackItem1 = ObjectFactory.Get(new byte[5]);
             byte[] byteArray1 = BinarySerializer.Serialize(stackItem1, ExecutionEngineLimits.Default);
             StackItem result1 = BinarySerializer.Deserialize(byteArray1, ExecutionEngineLimits.Default);
             Assert.AreEqual(stackItem1, result1);

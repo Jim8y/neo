@@ -9,6 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.VM.Types.ObjectPool;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -93,7 +94,7 @@ namespace Neo.VM.Types
         internal override StackItem DeepCopy(Dictionary<StackItem, StackItem> refMap, bool asImmutable)
         {
             if (refMap.TryGetValue(this, out StackItem? mappedItem)) return mappedItem;
-            StackItem result = asImmutable ? new ByteString(InnerBuffer.ToArray()) : new Buffer(InnerBuffer.Span);
+            StackItem result = asImmutable ? ObjectFactory.Get(InnerBuffer.ToArray()) : new Buffer(InnerBuffer.Span);
             refMap.Add(this, result);
             return result;
         }

@@ -108,7 +108,7 @@ namespace Neo.SmartContract
         /// <returns>The <see cref="CallFlags"/> of the current context.</returns>
         protected internal CallFlags GetCallFlags()
         {
-            var state = CurrentContext.GetState<ExecutionContextState>();
+            var state = _currentContext.GetState<ExecutionContextState>();
             return state.CallFlags;
         }
 

@@ -16,7 +16,7 @@ namespace Neo.VM.Types.ObjectPool
 {
     public class BooleanPool : LimitedObjectPool<Boolean, bool>
     {
-        public BooleanPool(uint maxSize) : base(maxSize, maxSize/2)
+        public BooleanPool(uint maxSize) : base(maxSize, maxSize)
         {
         }
     }

@@ -13,6 +13,6 @@ using BenchmarkDotNet.Running;
 using Neo;
 
 
-new BenchmarkBlock().RunBlock();
-// BenchmarkRunner.Run<BenchmarkBlock>();
+// new BenchmarkBlock().RunBlock();
+BenchmarkRunner.Run<BenchmarkBlock>();
 // BenchmarkRunner.Run<BenchmarkPoCs>();

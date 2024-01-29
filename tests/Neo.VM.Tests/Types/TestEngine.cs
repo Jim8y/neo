@@ -23,7 +23,7 @@ namespace Neo.Test.Types
         {
             if (method == 0x77777777)
             {
-                CurrentContext.EvaluationStack.Push(StackItem.FromInterface(new object()));
+                _currentContext.EvaluationStack.Push(StackItem.FromInterface(new object()));
                 return;
             }
 

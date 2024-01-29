@@ -105,7 +105,7 @@ namespace Neo.Test
             int x = 0;
             foreach (var context in stack)
             {
-                var opcode = context.InstructionPointer >= context.Script.Length ? OpCode.RET : context.Script[context.InstructionPointer];
+                var opcode = context.InstructionPointer >= context.Script._length ? OpCode.RET : context.Script[context.InstructionPointer];
 
                 AssertAreEqual(result[x].NextInstruction, opcode, message + "Next instruction is different");
                 AssertAreEqual(result[x].InstructionPointer, context.InstructionPointer, message + "Instruction pointer is different");

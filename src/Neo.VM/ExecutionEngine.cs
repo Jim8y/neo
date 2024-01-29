@@ -34,7 +34,7 @@ namespace Neo.VM
         /// <summary>
         /// Used for reference counting of objects in the VM.
         /// </summary>
-        public ReferenceCounter ReferenceCounter { get; }
+        public ReferenceCounter ReferenceCounter { [MethodImpl(MethodImplOptions.AggressiveInlining)]get; }
 
         /// <summary>
         /// The invocation stack of the VM.
@@ -44,7 +44,7 @@ namespace Neo.VM
         /// <summary>
         /// The top frame of the invocation stack.
         /// </summary>
-        public ExecutionContext? CurrentContext { get; private set; }
+        public ExecutionContext? _currentContext;// { [MethodImpl(MethodImplOptions.AggressiveInlining)]get; private set; }
 
         /// <summary>
         /// The bottom frame of the invocation stack.
@@ -66,10 +66,8 @@ namespace Neo.VM
         /// </summary>
         public VMState State
         {
-            get
-            {
-                return state;
-            }
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => state;
             protected internal set
             {
                 if (state != value)
@@ -107,14 +105,14 @@ namespace Neo.VM
         {
             if (InvocationStack.Count == 0)
             {
-                CurrentContext = null;
+                _currentContext = null;
                 EntryContext = null;
             }
             else
             {
-                CurrentContext = InvocationStack.Peek();
+                _currentContext = InvocationStack.Peek();
             }
-            if (context.StaticFields != null && context.StaticFields != CurrentContext?.StaticFields)
+            if (context.StaticFields != null && context.StaticFields != _currentContext?.StaticFields)
             {
                 context.StaticFields.ClearReferences();
             }
@@ -143,31 +141,31 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ExecuteCall(int position)
         {
-            LoadContext(CurrentContext!.Clone(position));
+            LoadContext(_currentContext!.Clone(position));
         }
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ExecuteEndTry(int endOffset)
         {
-            if (CurrentContext!.TryStack is null)
+            if (_currentContext!.TryStack is null)
                 throw new InvalidOperationException($"The corresponding TRY block cannot be found.");
-            if (!CurrentContext.TryStack.TryPeek(out ExceptionHandlingContext? currentTry))
+            if (!_currentContext.TryStack.TryPeek(out ExceptionHandlingContext? currentTry))
                 throw new InvalidOperationException($"The corresponding TRY block cannot be found.");
             if (currentTry.State == ExceptionHandlingState.Finally)
                 throw new InvalidOperationException($"The opcode {OpCode.ENDTRY} can't be executed in a FINALLY block.");
 
-            int endPointer = checked(CurrentContext.InstructionPointer + endOffset);
+            int endPointer = checked(_currentContext.InstructionPointer + endOffset);
             if (currentTry.HasFinally)
             {
                 currentTry.State = ExceptionHandlingState.Finally;
                 currentTry.EndPointer = endPointer;
-                CurrentContext.InstructionPointer = currentTry.FinallyPointer;
+                _currentContext.InstructionPointer = currentTry.FinallyPointer;
             }
             else
             {
-                CurrentContext.TryStack.Pop();
-                CurrentContext.InstructionPointer = endPointer;
+                _currentContext.TryStack.Pop();
+                _currentContext.InstructionPointer = endPointer;
             }
             isJumping = true;
         }
@@ -179,9 +177,9 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void ExecuteJump(int position)
         {
-            if (position < 0 || position >= CurrentContext!.Script.Length)
+            if (position < 0 || position >= _currentContext!.ScriptLength)
                 throw new ArgumentOutOfRangeException($"Jump out of range for position: {position}");
-            CurrentContext.InstructionPointer = position;
+            _currentContext.InstructionPointer = position;
             isJumping = true;
         }
 
@@ -192,7 +190,7 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void ExecuteJumpOffset(int offset)
         {
-            ExecuteJump(checked(CurrentContext!.InstructionPointer + offset));
+            ExecuteJump(checked(_currentContext!.InstructionPointer + offset));
         }
 
         private void ExecuteLoadFromSlot(Slot? slot, int index)
@@ -217,7 +215,7 @@ namespace Neo.VM
             {
                 try
                 {
-                    ExecutionContext context = CurrentContext!;
+                    ExecutionContext context = _currentContext!;
                     Instruction instruction = context.CurrentInstruction ?? Instruction.RET;
                     PreExecuteInstruction(instruction);
                     try
@@ -239,6 +237,7 @@ namespace Neo.VM
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ExecuteStoreToSlot(Slot? slot, int index)
         {
             if (slot is null)
@@ -263,13 +262,13 @@ namespace Neo.VM
         {
             if (catchOffset == 0 && finallyOffset == 0)
                 throw new InvalidOperationException($"catchOffset and finallyOffset can't be 0 in a TRY block");
-            if (CurrentContext!.TryStack is null)
-                CurrentContext.TryStack = new Stack<ExceptionHandlingContext>();
-            else if (CurrentContext.TryStack.Count >= Limits.MaxTryNestingDepth)
+            if (_currentContext!.TryStack is null)
+                _currentContext.TryStack = new Stack<ExceptionHandlingContext>();
+            else if (_currentContext.TryStack.Count >= Limits.MaxTryNestingDepth)
                 throw new InvalidOperationException("MaxTryNestingDepth exceed.");
-            int catchPointer = catchOffset == 0 ? -1 : checked(CurrentContext.InstructionPointer + catchOffset);
-            int finallyPointer = finallyOffset == 0 ? -1 : checked(CurrentContext.InstructionPointer + finallyOffset);
-            CurrentContext.TryStack.Push(new ExceptionHandlingContext(catchPointer, finallyPointer));
+            int catchPointer = catchOffset == 0 ? -1 : checked(_currentContext.InstructionPointer + catchOffset);
+            int finallyPointer = finallyOffset == 0 ? -1 : checked(_currentContext.InstructionPointer + finallyOffset);
+            _currentContext.TryStack.Push(new ExceptionHandlingContext(catchPointer, finallyPointer));
         }
 
         private void HandleException()
@@ -316,13 +315,14 @@ namespace Neo.VM
         /// Loads the specified context into the invocation stack.
         /// </summary>
         /// <param name="context">The context to load.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void LoadContext(ExecutionContext context)
         {
             if (InvocationStack.Count >= Limits.MaxInvocationStackSize)
                 throw new InvalidOperationException($"MaxInvocationStackSize exceed: {InvocationStack.Count}");
             InvocationStack.Push(context);
             if (EntryContext is null) EntryContext = context;
-            CurrentContext = context;
+            _currentContext = context;
         }
 
         /// <summary>
@@ -378,6 +378,7 @@ namespace Neo.VM
         /// <summary>
         /// Called when the state of the VM changed.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnStateChanged()
         {
         }
@@ -400,7 +401,7 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public StackItem Peek(int index = 0)
         {
-            return CurrentContext!.EvaluationStack.Peek(index);
+            return _currentContext!.EvaluationStack.Peek(index);
         }
 
         /// <summary>
@@ -410,7 +411,7 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public StackItem Pop()
         {
-            return CurrentContext!.EvaluationStack.Pop();
+            return _currentContext!.EvaluationStack.Pop();
         }
 
         /// <summary>
@@ -421,12 +422,13 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T Pop<T>() where T : StackItem
         {
-            return CurrentContext!.EvaluationStack.Pop<T>();
+            return _currentContext!.EvaluationStack.Pop<T>();
         }
 
         /// <summary>
         /// Called after an instruction is executed.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void PostExecuteInstruction(Instruction instruction)
         {
             if (ReferenceCounter.Count <= Limits.MaxStackSize) return;
@@ -437,6 +439,7 @@ namespace Neo.VM
         /// <summary>
         /// Called before an instruction is executed.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void PreExecuteInstruction(Instruction instruction) { }
 
         /// <summary>
@@ -446,33 +449,39 @@ namespace Neo.VM
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Push(StackItem item)
         {
-            CurrentContext!.EvaluationStack.Push(item);
+            _currentContext!.EvaluationStack.Push(item);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PushBoolean(bool item)
         {
             var stackItem = ObjectFactory.Get(item);
-            CurrentContext!.EvaluationStack.Push(stackItem);
+            _currentContext!.EvaluationStack.Push(stackItem);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PushInteger(BigInteger item)
         {
             var stackItem = ObjectFactory.Get(item);
-            CurrentContext!.EvaluationStack.Push(stackItem);
+            _currentContext!.EvaluationStack.Push(stackItem);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void PushString(string item)
+        public void PushByteArray(string item)
         {
-            CurrentContext!.EvaluationStack.Push(item);
+            _currentContext!.EvaluationStack.Push(item);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PushByteArray(ReadOnlyMemory<byte> item)
         {
-            CurrentContext!.EvaluationStack.Push(item);
+            _currentContext!.EvaluationStack.Push(item);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void PushByteArray(byte[] item)
+        {
+            _currentContext!.EvaluationStack.Push(item);
         }
     }
 }

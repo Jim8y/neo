@@ -45,7 +45,7 @@ namespace Neo.Test
             Assert.ThrowsException<BadScriptException>(() => new Script(rawScript, true));
 
             var script = new Script(rawScript, false);
-            Assert.AreEqual(2, script.Length);
+            Assert.AreEqual(2, script._length);
 
             rawScript = new byte[] { (byte)OpCode.PUSHDATA1 };
             Assert.ThrowsException<BadScriptException>(() => new Script(rawScript, true));
@@ -71,7 +71,7 @@ namespace Neo.Test
                 script = new Script(builder.ToArray());
             }
 
-            Assert.AreEqual(11, script.Length);
+            Assert.AreEqual(11, script._length);
 
             var ins = script.GetInstruction(0);
 

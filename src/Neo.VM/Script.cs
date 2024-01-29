@@ -20,7 +20,7 @@ namespace Neo.VM
     /// <summary>
     /// Represents the script executed in the VM.
     /// </summary>
-    [DebuggerDisplay("Length={Length}")]
+    [DebuggerDisplay("Length={_length}")]
     public class Script
     {
         private readonly ReadOnlyMemory<byte> _value;
@@ -30,14 +30,7 @@ namespace Neo.VM
         /// <summary>
         /// The length of the script.
         /// </summary>
-        public int Length
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                return _value.Length;
-            }
-        }
+        internal int _length;
 
         /// <summary>
         /// Gets the <see cref="OpCode"/> at the specified index.
@@ -73,9 +66,10 @@ namespace Neo.VM
         public Script(ReadOnlyMemory<byte> script, bool strictMode)
         {
             this._value = script;
+            _length = script.Length;
             if (strictMode)
             {
-                for (int ip = 0; ip < script.Length; ip += GetInstruction(ip).Size) { }
+                for (int ip = 0; ip < _length; ip += GetInstruction(ip).Size) { }
                 foreach (var (ip, instruction) in _instructions)
                 {
                     switch (instruction.OpCode)
@@ -134,6 +128,7 @@ namespace Neo.VM
                 }
             }
             this.strictMode = strictMode;
+
         }
 
         /// <summary>
@@ -142,9 +137,10 @@ namespace Neo.VM
         /// <param name="ip">The position to get the <see cref="Instruction"/>.</param>
         /// <returns>The <see cref="Instruction"/> at the specified position.</returns>
         /// <exception cref="ArgumentException">In strict mode, the <see cref="Instruction"/> was not found at the specified position.</exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Instruction GetInstruction(int ip)
         {
-            if (ip >= Length) throw new ArgumentOutOfRangeException(nameof(ip));
+            if (ip >= _length) throw new ArgumentOutOfRangeException(nameof(ip));
             if (!_instructions.TryGetValue(ip, out Instruction? instruction))
             {
                 if (strictMode) throw new ArgumentException($"ip not found with strict mode", nameof(ip));

@@ -119,7 +119,7 @@ namespace Neo.UnitTests.SmartContract
                 // Execute
 
                 engine.LoadScript(script.ToArray());
-                engine.CurrentContext.GetState<ExecutionContextState>().Contract = new()
+                engine._currentContext.GetState<ExecutionContextState>().Contract = new()
                 {
                     Manifest = new()
                     {
@@ -188,7 +188,7 @@ namespace Neo.UnitTests.SmartContract
                 // Execute
 
                 engine.LoadScript(script.ToArray());
-                engine.CurrentContext.GetState<ExecutionContextState>().Contract = new()
+                engine._currentContext.GetState<ExecutionContextState>().Contract = new()
                 {
                     Manifest = new()
                     {
@@ -647,8 +647,8 @@ namespace Neo.UnitTests.SmartContract
             engine.Snapshot.AddContract(state.Hash, state);
 
             engine.CallContract(state.Hash, method, CallFlags.All, args);
-            engine.CurrentContext.EvaluationStack.Pop().Should().Be(args[0]);
-            engine.CurrentContext.EvaluationStack.Pop().Should().Be(args[1]);
+            engine._currentContext.EvaluationStack.Pop().Should().Be(args[0]);
+            engine._currentContext.EvaluationStack.Pop().Should().Be(args[1]);
 
             state.Manifest.Permissions[0].Methods = WildcardContainer<string>.Create("a");
             engine.Snapshot.DeleteContract(state.Hash);

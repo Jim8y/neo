@@ -59,6 +59,7 @@ namespace Neo.VM
             pEntry.References++;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void AddStackReference(StackItem item, int count = 1)
         {
             references_count += count;

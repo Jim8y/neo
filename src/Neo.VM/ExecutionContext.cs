@@ -33,7 +33,9 @@ namespace Neo.VM
         /// <summary>
         /// The script to run in this context.
         /// </summary>
-        public Script Script => shared_states.Script;
+        public readonly Script Script;
+
+        public readonly int ScriptLength;
 
         /// <summary>
         /// The evaluation stack for this context.
@@ -69,13 +71,10 @@ namespace Neo.VM
         /// </summary>
         public int InstructionPointer
         {
-            get
-            {
-                return instructionPointer;
-            }
+            get => instructionPointer;
             internal set
             {
-                if (value < 0 || value > Script.Length)
+                if (value < 0 || value > ScriptLength)
                     throw new ArgumentOutOfRangeException(nameof(value));
                 instructionPointer = value;
             }
@@ -117,6 +116,8 @@ namespace Neo.VM
             if (rvcount < -1 || rvcount > ushort.MaxValue)
                 throw new ArgumentOutOfRangeException(nameof(rvcount));
             this.shared_states = shared_states;
+            this.Script = shared_states.Script;
+            this.ScriptLength = Script._length;
             this.RVCount = rvcount;
             this.InstructionPointer = initialPosition;
         }
@@ -141,7 +142,7 @@ namespace Neo.VM
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private Instruction? GetInstruction(int ip) => ip >= Script.Length ? null : Script.GetInstruction(ip);
+        private Instruction? GetInstruction(int ip) => ip >= ScriptLength ? null : Script.GetInstruction(ip);
 
         /// <summary>
         /// Gets custom data of the specified type. If the data does not exist, create a new one.
@@ -149,6 +150,7 @@ namespace Neo.VM
         /// <typeparam name="T">The type of data to be obtained.</typeparam>
         /// <param name="factory">A delegate used to create the entry. If factory is null, new() will be used.</param>
         /// <returns>The custom data of the specified type.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetState<T>(Func<T>? factory = null) where T : class, new()
         {
             if (!shared_states.States.TryGetValue(typeof(T), out object? value))
@@ -164,7 +166,7 @@ namespace Neo.VM
             Instruction? current = CurrentInstruction;
             if (current is null) return false;
             InstructionPointer += current.Size;
-            return InstructionPointer < Script.Length;
+            return InstructionPointer < ScriptLength;
         }
     }
 }

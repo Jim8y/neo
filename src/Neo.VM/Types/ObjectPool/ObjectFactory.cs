@@ -33,16 +33,16 @@ public static class ObjectFactory
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Boolean Get(bool value) => BooleanPool.Get(value);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ByteString Get(string value) => StringPool.Get(value);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ByteString Get(ReadOnlyMemory<byte> value) => StringPool.Get(value);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ByteString Get(byte[] value)
-    {
-        return StringPool.Get(value);
-    }
+    //
+    // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // public static ByteString Get(string value) => StringPool.Get(value);
+    //
+    // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // public static ByteString Get(ReadOnlyMemory<byte> value) => StringPool.Get(value);
+    //
+    // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // public static ByteString Get(byte[] value)
+    // {
+    //     return StringPool.Get(value);
+    // }
 }

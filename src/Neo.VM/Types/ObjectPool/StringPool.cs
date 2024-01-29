@@ -21,15 +21,14 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ByteString Get(string value)
     {
-        ByteString? item=null;
+        ByteString? item;
         if (Available.Count > 0)
         {
             item = Available.Dequeue();
-            item.SetValue(value);
         }
         else
         {
-            item = new ByteString();
+            item = value;
         }
         item.SetValue(value);
         return item;
@@ -38,11 +37,10 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ByteString Get(byte[] value)
     {
-        ByteString item;
+        ByteString? item;
         if (Available.Count > 0)
         {
             item = Available.Dequeue();
-            item.SetValue(value);
         }
         else
         {
@@ -52,7 +50,7 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
         return item;
     }
 
-    public StringPool(uint maxSize) : base(maxSize, maxSize/2)
+    public StringPool(uint maxSize) : base(maxSize, maxSize)
     {
     }
 }

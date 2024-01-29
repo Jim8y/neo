@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Array = System.Array;
 using VMArray = Neo.VM.Types.Array;
 
@@ -90,7 +91,7 @@ namespace Neo.SmartContract
         /// <summary>
         /// The snapshot used to read or write data.
         /// </summary>
-        public DataCache Snapshot => CurrentContext?.GetState<ExecutionContextState>().Snapshot ?? originalSnapshot;
+        public DataCache Snapshot => _currentContext?.GetState<ExecutionContextState>().Snapshot ?? originalSnapshot;
 
         /// <summary>
         /// The block being persisted. This field could be <see langword="null"/> if the <see cref="Trigger"/> is <see cref="TriggerType.Verification"/>.
@@ -105,7 +106,10 @@ namespace Neo.SmartContract
         /// <summary>
         /// GAS spent to execute.
         /// </summary>
-        public long GasConsumed { get; private set; } = 0;
+        public long GasConsumed
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]get; private set;
+        } = 0;
 
         /// <summary>
         /// The remaining GAS that can be spent in order to complete the execution.
@@ -120,17 +124,18 @@ namespace Neo.SmartContract
         /// <summary>
         /// The script hash of the current context. This field could be <see langword="null"/> if no context is loaded to the engine.
         /// </summary>
-        public UInt160 CurrentScriptHash => CurrentContext?.GetScriptHash();
+        public UInt160 CurrentScriptHash => _currentContext?.GetScriptHash();
 
         /// <summary>
         /// The script hash of the calling contract. This field could be <see langword="null"/> if the current context is the entry context.
         /// </summary>
         public UInt160 CallingScriptHash
         {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
-                if (CurrentContext is null) return null;
-                var state = CurrentContext.GetState<ExecutionContextState>();
+                if (_currentContext is null) return null;
+                var state = _currentContext.GetState<ExecutionContextState>();
                 return state.NativeCallingScriptHash ?? state.CallingContext?.GetState<ExecutionContextState>().ScriptHash;
             }
         }
@@ -181,6 +186,7 @@ namespace Neo.SmartContract
         /// Adds GAS to <see cref="GasConsumed"/> and checks if it has exceeded the maximum limit.
         /// </summary>
         /// <param name="gas">The amount of GAS to be added.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected internal void AddGas(long gas)
         {
             GasConsumed = checked(GasConsumed + gas);
@@ -234,7 +240,7 @@ namespace Neo.SmartContract
                 invocationCounter[contract.Hash] = 1;
             }
 
-            ExecutionContext currentContext = CurrentContext;
+            ExecutionContext currentContext = _currentContext;
             ExecutionContextState state = currentContext.GetState<ExecutionContextState>();
             CallFlags callingFlags = state.CallFlags;
 
@@ -273,15 +279,15 @@ namespace Neo.SmartContract
         protected override void ContextUnloaded(ExecutionContext context)
         {
             base.ContextUnloaded(context);
-            if (context.Script != CurrentContext?.Script)
+            if (context.Script != _currentContext?.Script)
             {
                 ExecutionContextState state = context.GetState<ExecutionContextState>();
                 if (UncaughtException is null)
                 {
                     state.Snapshot?.Commit();
-                    if (CurrentContext != null)
+                    if (_currentContext != null)
                     {
-                        ExecutionContextState contextState = CurrentContext.GetState<ExecutionContextState>();
+                        ExecutionContextState contextState = _currentContext.GetState<ExecutionContextState>();
                         contextState.NotificationCount += state.NotificationCount;
                         if (state.IsDynamicCall)
                         {
@@ -394,11 +400,11 @@ namespace Neo.SmartContract
         protected override ExecutionContext LoadToken(ushort tokenId)
         {
             ValidateCallFlags(CallFlags.ReadStates | CallFlags.AllowCall);
-            ContractState contract = CurrentContext.GetState<ExecutionContextState>().Contract;
+            ContractState contract = _currentContext.GetState<ExecutionContextState>().Contract;
             if (contract is null || tokenId >= contract.Nef.Tokens.Length)
                 throw new InvalidOperationException();
             MethodToken token = contract.Nef.Tokens[tokenId];
-            if (token.ParametersCount > CurrentContext.EvaluationStack.Count)
+            if (token.ParametersCount > _currentContext.EvaluationStack.Count)
                 throw new InvalidOperationException();
             StackItem[] args = new StackItem[token.ParametersCount];
             for (int i = 0; i < token.ParametersCount; i++)
@@ -496,13 +502,15 @@ namespace Neo.SmartContract
         /// Determines whether the <see cref="CallFlags"/> of the current context meets the specified requirements.
         /// </summary>
         /// <param name="requiredCallFlags">The requirements to check.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal protected void ValidateCallFlags(CallFlags requiredCallFlags)
         {
-            ExecutionContextState state = CurrentContext.GetState<ExecutionContextState>();
+            ExecutionContextState state = _currentContext.GetState<ExecutionContextState>();
             if (!state.CallFlags.HasFlag(requiredCallFlags))
                 throw new InvalidOperationException($"Cannot call this SYSCALL with the flag {state.CallFlags}.");
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnSysCall(uint method)
         {
             OnSysCall(services[method]);
@@ -526,12 +534,14 @@ namespace Neo.SmartContract
                 Push(Convert(returnValue));
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void PreExecuteInstruction(Instruction instruction)
         {
             Diagnostic?.PreExecuteInstruction(instruction);
             AddGas(ExecFeeFactor * OpCodePrices[instruction.OpCode]);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void PostExecuteInstruction(Instruction instruction)
         {
             base.PostExecuteInstruction(instruction);
@@ -599,6 +609,7 @@ namespace Neo.SmartContract
             return engine;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetState<T>()
         {
             if (states is null) return default;
@@ -606,12 +617,14 @@ namespace Neo.SmartContract
             return (T)state;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetState<T>(T state)
         {
             states ??= new Dictionary<Type, object>();
             states[typeof(T)] = state;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsHardforkEnabled(Hardfork hardfork)
         {
             // Return true if there's no specific configuration or PersistingBlock is null

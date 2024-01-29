@@ -125,7 +125,7 @@ namespace Neo.SmartContract.Native
             GasDistribution distribution = DistributeGas(engine, account, state);
             if (distribution is not null)
             {
-                var list = engine.CurrentContext.GetState<List<GasDistribution>>();
+                var list = engine._currentContext.GetState<List<GasDistribution>>();
                 list.Add(distribution);
             }
             if (amount.IsZero) return;
@@ -140,7 +140,7 @@ namespace Neo.SmartContract.Native
         private protected override async ContractTask PostTransfer(ApplicationEngine engine, UInt160 from, UInt160 to, BigInteger amount, StackItem data, bool callOnPayment)
         {
             await base.PostTransfer(engine, from, to, amount, data, callOnPayment);
-            var list = engine.CurrentContext.GetState<List<GasDistribution>>();
+            var list = engine._currentContext.GetState<List<GasDistribution>>();
             foreach (var distribution in list)
                 await GAS.Mint(engine, distribution.Account, distribution.Amount, callOnPayment);
         }

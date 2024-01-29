@@ -59,7 +59,7 @@ namespace Neo.VM
                 engine.ExecuteNext();
                 try
                 {
-                    var instruction = engine.CurrentContext!.CurrentInstruction!.OpCode;
+                    var instruction = engine._currentContext!.CurrentInstruction!.OpCode;
                     if (instruction == opCode) break;
                 }
                 catch (Exception e)

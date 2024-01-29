@@ -212,10 +212,10 @@ namespace Neo.SmartContract
             if ((callFlags & ~CallFlags.All) != 0)
                 throw new ArgumentOutOfRangeException(nameof(callFlags));
 
-            ExecutionContextState state = CurrentContext.GetState<ExecutionContextState>();
+            ExecutionContextState state = _currentContext.GetState<ExecutionContextState>();
             ExecutionContext context = LoadScript(new Script(script, true), configureState: p =>
             {
-                p.CallingContext = CurrentContext;
+                p.CallingContext = _currentContext;
                 p.CallFlags = callFlags & state.CallFlags & CallFlags.ReadOnly;
                 p.IsDynamicCall = true;
             });
@@ -347,7 +347,7 @@ namespace Neo.SmartContract
             }
             if (eventName.Length > MaxEventName) throw new ArgumentException(null, nameof(eventName));
             string name = Utility.StrictUTF8.GetString(eventName);
-            ContractState contract = CurrentContext.GetState<ExecutionContextState>().Contract;
+            ContractState contract = _currentContext.GetState<ExecutionContextState>().Contract;
             if (contract is null)
                 throw new InvalidOperationException("Notifications are not allowed in dynamic scripts.");
             var @event = contract.Manifest.Abi.Events.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.Ordinal));
@@ -370,7 +370,7 @@ namespace Neo.SmartContract
         protected internal void RuntimeNotifyV1(byte[] eventName, Array state)
         {
             if (eventName.Length > MaxEventName) throw new ArgumentException(null, nameof(eventName));
-            if (CurrentContext.GetState<ExecutionContextState>().Contract is null)
+            if (_currentContext.GetState<ExecutionContextState>().Contract is null)
                 throw new InvalidOperationException("Notifications are not allowed in dynamic scripts.");
             using MemoryStream ms = new(MaxNotificationSize);
             using BinaryWriter writer = new(ms, Utility.StrictUTF8, true);
@@ -390,7 +390,7 @@ namespace Neo.SmartContract
             Notify?.Invoke(this, notification);
             notifications ??= new List<NotifyEventArgs>();
             notifications.Add(notification);
-            CurrentContext.GetState<ExecutionContextState>().NotificationCount++;
+            _currentContext.GetState<ExecutionContextState>().NotificationCount++;
         }
 
         /// <summary>

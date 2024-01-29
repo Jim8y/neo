@@ -235,7 +235,7 @@ namespace Neo.SmartContract.Native
             {
                 if (version != 0)
                     throw new InvalidOperationException($"The native contract of version {version} is not active.");
-                ExecutionContext context = engine.CurrentContext;
+                ExecutionContext context = engine._currentContext;
                 ContractMethodMetadata method = methods[context.InstructionPointer];
                 ExecutionContextState state = context.GetState<ExecutionContextState>();
                 if (!state.CallFlags.HasFlag(method.RequiredCallFlags))

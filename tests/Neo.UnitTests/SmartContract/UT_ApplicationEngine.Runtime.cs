@@ -37,7 +37,7 @@ namespace Neo.UnitTests.SmartContract
         {
             using var engine = ApplicationEngine.Create(TriggerType.Application, null, null, TestBlockchain.TheNeoSystem.GenesisBlock, settings: TestBlockchain.TheNeoSystem.Settings, gas: 1100_00000000);
             engine.LoadScript(Array.Empty<byte>());
-            engine.CurrentContext.GetState<ExecutionContextState>().Contract = new()
+            engine._currentContext.GetState<ExecutionContextState>().Contract = new()
             {
                 Manifest = new()
                 {
@@ -72,7 +72,7 @@ namespace Neo.UnitTests.SmartContract
 
             array.Clear();
             array.Add(new VM.Types.Buffer(1));
-            engine.CurrentContext.GetState<ExecutionContextState>().Contract.Manifest.Abi.Events[0].Parameters[0].Type = ContractParameterType.ByteArray;
+            engine._currentContext.GetState<ExecutionContextState>().Contract.Manifest.Abi.Events[0].Parameters[0].Type = ContractParameterType.ByteArray;
 
             engine.RuntimeNotify(Encoding.ASCII.GetBytes("e1"), array);
             engine.Notifications[0].State[0].Type.Should().Be(VM.Types.StackItemType.ByteString);
@@ -88,7 +88,7 @@ namespace Neo.UnitTests.SmartContract
 
             array.Clear();
             array.Add(new VM.Types.InteropInterface(new object()));
-            engine.CurrentContext.GetState<ExecutionContextState>().Contract.Manifest.Abi.Events[0].Parameters[0].Type = ContractParameterType.InteropInterface;
+            engine._currentContext.GetState<ExecutionContextState>().Contract.Manifest.Abi.Events[0].Parameters[0].Type = ContractParameterType.InteropInterface;
 
             Assert.ThrowsException<NotSupportedException>(() => engine.RuntimeNotify(Encoding.ASCII.GetBytes("e1"), array));
         }

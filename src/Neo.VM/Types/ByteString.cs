@@ -141,16 +141,19 @@ namespace Neo.VM.Types
 
         public void SetValue(string value)
         {
+            this._hashCode = 0;
             this.Memory = Utility.StrictUTF8.GetBytes(value);
         }
 
         public void SetValue(ReadOnlyMemory<byte> value)
         {
+            this._hashCode = 0;
             this.Memory = value;
         }
 
         public void SetValue(byte[] value)
         {
+            this._hashCode = 0;
             this.Memory = value;
         }
     }

@@ -21,6 +21,7 @@ using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Neo.SmartContract
 {
@@ -108,6 +109,7 @@ namespace Neo.SmartContract
         /// </summary>
         /// <param name="context">The specified <see cref="ExecutionContext"/>.</param>
         /// <returns>The script hash of the context.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt160 GetScriptHash(this ExecutionContext context)
         {
             return context.GetState<ExecutionContextState>().ScriptHash;
@@ -118,6 +120,7 @@ namespace Neo.SmartContract
         /// </summary>
         /// <param name="script">The script of the contract.</param>
         /// <returns><see langword="true"/> if the contract is a multi-signature contract; otherwise, <see langword="false"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsMultiSigContract(ReadOnlySpan<byte> script)
         {
             return IsMultiSigContract(script, out _, out _, null);
@@ -130,6 +133,7 @@ namespace Neo.SmartContract
         /// <param name="m">The minimum number of correct signatures that need to be provided in order for the verification to pass.</param>
         /// <param name="n">The number of public keys in the account.</param>
         /// <returns><see langword="true"/> if the contract is a multi-signature contract; otherwise, <see langword="false"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsMultiSigContract(ReadOnlySpan<byte> script, out int m, out int n)
         {
             return IsMultiSigContract(script, out m, out n, null);
@@ -142,6 +146,7 @@ namespace Neo.SmartContract
         /// <param name="m">The minimum number of correct signatures that need to be provided in order for the verification to pass.</param>
         /// <param name="points">The public keys in the account.</param>
         /// <returns><see langword="true"/> if the contract is a multi-signature contract; otherwise, <see langword="false"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsMultiSigContract(ReadOnlySpan<byte> script, out int m, out ECPoint[] points)
         {
             List<ECPoint> list = new();
@@ -218,6 +223,7 @@ namespace Neo.SmartContract
         /// </summary>
         /// <param name="script">The script of the contract.</param>
         /// <returns><see langword="true"/> if the contract is a signature contract; otherwise, <see langword="false"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsSignatureContract(ReadOnlySpan<byte> script)
         {
             if (script.Length != 40) return false;
@@ -234,6 +240,7 @@ namespace Neo.SmartContract
         /// </summary>
         /// <param name="script">The script of the contract.</param>
         /// <returns><see langword="true"/> if the contract is a standard contract; otherwise, <see langword="false"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsStandardContract(ReadOnlySpan<byte> script)
         {
             return IsSignatureContract(script) || IsMultiSigContract(script);
@@ -245,6 +252,7 @@ namespace Neo.SmartContract
         /// <typeparam name="T">The type of the <see cref="IInteroperable"/>.</typeparam>
         /// <param name="item">The <see cref="StackItem"/> to convert.</param>
         /// <returns>The converted <see cref="IInteroperable"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T ToInteroperable<T>(this StackItem item) where T : IInteroperable, new()
         {
             T t = new();

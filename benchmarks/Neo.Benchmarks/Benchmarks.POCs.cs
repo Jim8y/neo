@@ -20,14 +20,7 @@ namespace Neo
     public class BenchmarkPoCs
     {
         private static readonly ProtocolSettings s_protocol = ProtocolSettings.Load("config.json");
-        private static readonly NeoSystem s_system = new NeoSystem(s_protocol);
-
-        // [GlobalSetup]
-        // public void Setup()
-        // {
-        //     s_protocol = ProtocolSettings.Load("c");
-        //     s_system
-        // }
+        private static readonly NeoSystem s_system = new(s_protocol);
 
         [Benchmark]
         public void NeoIssue2725()

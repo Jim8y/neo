@@ -41,10 +41,10 @@ namespace Neo.VM.Types
         /// Create a new <see cref="ByteString"/> with the specified data.
         /// </summary>
         /// <param name="data">The data to be contained in this <see cref="ByteString"/>.</param>
-        // public ByteString(ReadOnlyMemory<byte> data)
-        // {
-        //     this.Memory = data;
-        // }
+        public ByteString(ReadOnlyMemory<byte> data)
+        {
+            this.Memory = data;
+        }
 
         public ByteString()
         { }
@@ -124,19 +124,19 @@ namespace Neo.VM.Types
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator ByteString(byte[] value)
         {
-            return ObjectFactory.Get(value);
+            return new ByteString(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator ByteString(ReadOnlyMemory<byte> value)
         {
-            return ObjectFactory.Get(value);
+            return new ByteString(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator ByteString(string value)
         {
-            return ObjectFactory.Get(value);
+            return new ByteString(Utility.StrictUTF8.GetBytes(value));
         }
 
         public void SetValue(string value)

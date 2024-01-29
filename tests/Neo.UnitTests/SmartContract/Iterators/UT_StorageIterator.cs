@@ -47,7 +47,7 @@ namespace Neo.UnitTests.SmartContract.Iterators
             list.Add((storageKey, storageItem));
             StorageIterator storageIterator = new(list.GetEnumerator(), 0, FindOptions.ValuesOnly);
             storageIterator.Next();
-            Assert.AreEqual(ObjectFactory.Get(new byte[1]), storageIterator.Value(null));
+            Assert.AreEqual(new ByteString(new byte[1]), storageIterator.Value(null));
         }
     }
 }

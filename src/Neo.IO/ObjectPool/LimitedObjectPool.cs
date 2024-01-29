@@ -33,7 +33,7 @@ public class LimitedObjectPool<T, E> where T : IPoolable<E>, new()
         MinSize = minSize;
 
         // Preallocate the pool with the minimum size
-        for (int i = 0; i < MinSize; i++)
+        for (var i = 0; i < MinSize; i++)
         {
             Available.Enqueue(new T());
         }

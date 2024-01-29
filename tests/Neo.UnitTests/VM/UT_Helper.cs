@@ -589,7 +589,7 @@ namespace Neo.UnitTests.VMT
 
         private void TestToParameter2Integer()
         {
-            StackItem item = ObjectFactory.Get(0);
+            StackItem item = new Integer(0);
             ContractParameter parameter = VM.Helper.ToParameter(item);
             Assert.AreEqual(ContractParameterType.Integer, parameter.Type);
             Assert.AreEqual(BigInteger.Zero, parameter.Value);
@@ -597,7 +597,7 @@ namespace Neo.UnitTests.VMT
 
         private void TestToParameter2ByteArray()
         {
-            StackItem item = ObjectFactory.Get(new byte[] { 0x00 });
+            StackItem item = new ByteString(new byte[] { 0x00 });
             ContractParameter parameter = VM.Helper.ToParameter(item);
             Assert.AreEqual(ContractParameterType.ByteArray, parameter.Type);
             Assert.AreEqual(Encoding.Default.GetString(new byte[] { 0x00 }), Encoding.Default.GetString((byte[])parameter.Value));

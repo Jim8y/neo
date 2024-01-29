@@ -15,11 +15,13 @@ using Neo.Json;
 using Neo.Network.P2P.Payloads.Conditions;
 using Neo.SmartContract;
 using Neo.VM;
+using Neo.VM.Types;
 using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Array = System.Array;
 
 namespace Neo.Network.P2P.Payloads
 {
@@ -195,8 +197,8 @@ namespace Neo.Network.P2P.Payloads
             {
                 Account.ToArray(),
                 (byte)Scopes,
-                new VM.Types.Array(referenceCounter, AllowedContracts.Select(u => ObjectFactory.Get(u.ToArray()))),
-                new VM.Types.Array(referenceCounter, AllowedGroups.Select(u => ObjectFactory.Get(u.ToArray()))),
+                new VM.Types.Array(referenceCounter, AllowedContracts.Select(u => new ByteString(u.ToArray()))),
+                new VM.Types.Array(referenceCounter, AllowedGroups.Select(u => new ByteString(u.ToArray()))),
                 new VM.Types.Array(referenceCounter, Rules.Select(u => u.ToStackItem(referenceCounter)))
             });
         }

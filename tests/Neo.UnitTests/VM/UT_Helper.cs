@@ -17,6 +17,7 @@ using Neo.SmartContract;
 using Neo.SmartContract.Native;
 using Neo.VM;
 using Neo.VM.Types;
+using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -149,7 +150,7 @@ namespace Neo.UnitTests.VMT
             sb.EmitDynamicCall(UInt160.Zero, "AAAAA", true);
             byte[] tempArray = new byte[38];
             tempArray[0] = (byte)OpCode.PUSHT;
-            tempArray[1] = (byte)OpCode.PUSH1;//arg.Length 
+            tempArray[1] = (byte)OpCode.PUSH1;//arg.Length
             tempArray[2] = (byte)OpCode.PACK;
             tempArray[3] = (byte)OpCode.PUSH15;//(byte)CallFlags.All;
             tempArray[4] = (byte)OpCode.PUSHDATA1;
@@ -588,7 +589,7 @@ namespace Neo.UnitTests.VMT
 
         private void TestToParameter2Integer()
         {
-            StackItem item = new VM.Types.Integer(0);
+            StackItem item = ObjectFactory.Get(0);
             ContractParameter parameter = VM.Helper.ToParameter(item);
             Assert.AreEqual(ContractParameterType.Integer, parameter.Type);
             Assert.AreEqual(BigInteger.Zero, parameter.Value);

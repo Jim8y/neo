@@ -50,31 +50,14 @@ public class LimitedObjectPool<T, E> where T : IPoolable<E>, new()
         {
             item = new T();
         }
-        // if (InUse.Count < MaxSize)
-        // {
-            item.SetValue(value);
-            // InUse.Add(item);
-            return item;
-        // }
-        // throw new InvalidOperationException("No available objects in the pool.");
+        item.SetValue(value);
+        return item;
     }
 
     public void Return(T item)
     {
-        // try
-        // {
-        //     InUse.Remove(item);
-        // }
-        // catch (Exception e)
-        // {
-        //     // Can not be removed from _inUse as its not added to the _inUse
-        // }
-        // finally
-        // {
-        if (Available.Count >= MinSize) return;
-
+        if (Available.Count >= MaxSize) return;
         item.Reset();
         Available.Enqueue(item);
-        // }
     }
 }

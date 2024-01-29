@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.SmartContract;
 using Neo.VM;
 using Neo.VM.Types;
+using Neo.VM.Types.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,7 +97,7 @@ namespace Neo.UnitTests.SmartContract
             StackItem result2 = BinarySerializer.Deserialize(byteArray2, ExecutionEngineLimits.Default);
             Assert.AreEqual(stackItem2, result2);
 
-            StackItem stackItem3 = new Integer(1);
+            StackItem stackItem3 = ObjectFactory.Get(1);
             byte[] byteArray3 = BinarySerializer.Serialize(stackItem3, ExecutionEngineLimits.Default);
             StackItem result3 = BinarySerializer.Deserialize(byteArray3, ExecutionEngineLimits.Default);
             Assert.AreEqual(stackItem3, result3);

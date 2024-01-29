@@ -29,15 +29,10 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
         }
         else
         {
-            item = (ByteString)value;
+            item = new ByteString();
         }
-
-        // if (InUse.Count < MaxSize)
-        // {
-        //     InUse.Add(item);
-            return item;
-        // }
-        // throw new InvalidOperationException("No available objects in the pool.");
+        item.SetValue(value);
+        return item;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -51,15 +46,10 @@ public class StringPool : LimitedObjectPool<ByteString, ReadOnlyMemory<byte>>
         }
         else
         {
-            item = (ByteString)value;
+            item = new ByteString();
         }
-
-        // if (InUse.Count < MaxSize)
-        // {
-        //     InUse.Add(item);
+        item.SetValue(value);
         return item;
-        // }
-        // throw new InvalidOperationException("No available objects in the pool.");
     }
 
     public StringPool(uint maxSize) : base(maxSize, maxSize)

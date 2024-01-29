@@ -10,6 +10,7 @@
 // modifications are permitted.
 
 using Neo.IO.ObjectPool;
+using Neo.VM.Types.ObjectPool;
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -47,19 +48,19 @@ namespace Neo.VM.Types
         /// Create an integer with the specified value.
         /// </summary>
         /// <param name="value">The value of the integer.</param>
-        public Integer(BigInteger value)
-        {
-            if (value.IsZero)
-            {
-                Size = 0;
-            }
-            else
-            {
-                Size = value.GetByteCount();
-                if (Size > MaxSize) throw new ArgumentException($"MaxSize exceed: {Size}");
-            }
-            this.value = value;
-        }
+        // public Integer(BigInteger value)
+        // {
+        //     if (value.IsZero)
+        //     {
+        //         Size = 0;
+        //     }
+        //     else
+        //     {
+        //         Size = value.GetByteCount();
+        //         if (Size > MaxSize) throw new ArgumentException($"MaxSize exceed: {Size}");
+        //     }
+        //     this.value = value;
+        // }
 
         public Integer() { }
 
@@ -88,55 +89,55 @@ namespace Neo.VM.Types
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(sbyte value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(byte value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(short value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(ushort value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(int value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(uint value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(long value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(ulong value)
         {
-            return (BigInteger)value;
+            return ObjectFactory.Get(value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator Integer(BigInteger value)
         {
-            return new Integer(value);
+            return ObjectFactory.Get(value);
         }
 
         public void SetValue(BigInteger value)

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Neo.Plugins.RpcServer.Tests
+namespace Neo.Plugins.Tests
 {
     [TestClass]
     public class UT_RpcError

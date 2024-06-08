@@ -150,19 +150,27 @@ jobs:
     - name: Create Tarball File (linux)
       if: ${{ startsWith(matrix.runtime, 'linux') }}
       working-directory: ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}
-      run: tar -czvf ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.tar.gz .
+      run: tar -czvf ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.tar.gz .
 
     - name: Create Zip File (win)
       if: ${{ startsWith(matrix.runtime, 'win') }}
       working-directory: ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}
-      run: zip ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.zip -r *
+      run: zip ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.zip -r *
 
-    - name: Create Checksum Files
+    - name: Create Checksum Files (linux)
+      if: ${{ startsWith(matrix.runtime, 'linux') }}
       working-directory: ${{ env.DIST_PATH }}
       env:
-        FILENAME: neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}
+        FILENAME: neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}
       run: |
           sha256sum ${{ env.FILENAME }}.tar.gz > ${{ env.FILENAME }}.sha256
+
+    - name: Create Checksum Files (win)
+      if: ${{ startsWith(matrix.runtime, 'win') }}
+      working-directory: ${{ env.DIST_PATH }}
+      env:
+        FILENAME: neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}
+      run: |
           sha256sum ${{ env.FILENAME }}.zip > ${{ env.FILENAME }}.sha256
 
     - name: Output/Distribution Directory Contents
@@ -177,8 +185,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.tar.gz
-          asset_name: neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.tar.gz
+          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.tar.gz
+          asset_name: neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.tar.gz
           asset_content_type: application/x-gtar
 
     - name: Upload Zip File (win)
@@ -198,8 +206,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.sha256
-          asset_name: neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.sha256
+          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.sha256
+          asset_name: neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.sha256
           asset_content_type: text/plain
 
   # codesign-macos:

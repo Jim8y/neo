@@ -89,7 +89,6 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: .NET Publish (neo-cli)
-      working-directory: ./neo
       run: |
         dotnet publish ./src/Neo.CLI \
         --version-suffix ${{ env.APP_VERSION }}

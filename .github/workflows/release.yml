@@ -98,6 +98,7 @@ jobs:
         --self-contained true \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }} \
         --verbosity normal \
+        -p:BaseOutputPath=./bin/build
         -p:RuntimeIdentifier=${{ matrix.runtime }} \
         -p:SelfContained=true \
         -p:IncludeNativeLibrariesForSelfExtract=false \
@@ -107,7 +108,6 @@ jobs:
         -p:EnableCompressionInSingleFile=true \
         -p:DebugType=embedded \
         -p:ServerGarbageCollection=true
-        -p:BaseOutputPath=${{ github.workspace }}/bin/Neo.CLI/build
 
     - name: .NET Build (LevelDBStore)
       run: |

@@ -191,6 +191,16 @@ jobs:
           asset_name: neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.zip
           asset_content_type: application/zip
 
+    - name: Upload Checksum File (all)
+      uses: actions/upload-release-asset@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.sha256
+          asset_name: neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.sha256
+          asset_content_type: text/plain
+
   # codesign-macos:
   #   name: Build TarBalls (${{ matrix.runtime }})
   #   runs-on: macos-latest

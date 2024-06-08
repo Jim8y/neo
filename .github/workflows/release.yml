@@ -66,7 +66,7 @@ jobs:
 
   build-neo-cli:
     needs: [build-leveldb]
-    name: Build TarBalls (${{ matrix.runtime }})
+    name: Build & Publish TarBalls (${{ matrix.runtime }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -91,7 +91,7 @@ jobs:
     - name: .NET Publish (neo-cli)
       run: |
         dotnet publish ./src/Neo.CLI \
-        --version-suffix ${{ env.APP_VERSION }}
+        --version-suffix ${{ env.APP_VERSION }} \
         --framework net8.0 \
         --configuration ${{ env.CONFIGURATION }} \
         --runtime ${{ matrix.runtime }} \

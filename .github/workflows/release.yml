@@ -281,7 +281,7 @@ jobs:
   #       key: ${{ matrix.runtime }}
 
   cleanup:
-    needs: [release-neo-cli]
+    needs: [build-neo-cli]
     runs-on: ubuntu-latest
     steps:
       - name: Cleanup

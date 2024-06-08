@@ -196,8 +196,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.zip
-          asset_name: neo-cli-${{ matrix.runtime }}.v${{ env.APP_VERSION }}.zip
+          asset_path: ${{ env.DIST_PATH }}/neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.zip
+          asset_name: neo-cli-${{ matrix.runtime }}-v${{ env.APP_VERSION }}.zip
           asset_content_type: application/zip
 
     - name: Upload Checksum File (all)

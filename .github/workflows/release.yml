@@ -87,6 +87,11 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: .NET Build (neo-cli)
+      run: |
+        dotnet build ./src/Neo.CLI \
+        --version-suffix ${{ env.APP_VERSION }}
+        --output ./bin/Neo.CLI
 
     - name: .NET Publish (neo-cli)
       run: |
@@ -97,6 +102,7 @@ jobs:
         --runtime ${{ matrix.runtime }} \
         --self-contained true \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }} \
+        --no-build
         --verbosity normal \
         -p:RuntimeIdentifier=${{ matrix.runtime }} \
         -p:SelfContained=true \

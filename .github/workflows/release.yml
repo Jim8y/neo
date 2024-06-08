@@ -89,9 +89,8 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: .NET Build (neo-cli)
       run: |
-        dotnet build ./src/Neo.CLI \
+        dotnet build neo.sln \
         --version-suffix ${{ env.APP_VERSION }}
-        --artifacts-path ./bin/Neo.CLI
 
     - name: .NET Publish (neo-cli)
       run: |

@@ -87,10 +87,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: .NET Build (neo-cli)
-      run: |
-        dotnet build neo.sln \
-        --version-suffix ${{ env.APP_VERSION }}
 
     - name: .NET Publish (neo-cli)
       run: |
@@ -101,7 +97,6 @@ jobs:
         --runtime ${{ matrix.runtime }} \
         --self-contained true \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }} \
-        --no-build
         --verbosity normal \
         -p:RuntimeIdentifier=${{ matrix.runtime }} \
         -p:SelfContained=true \
@@ -112,14 +107,16 @@ jobs:
         -p:EnableCompressionInSingleFile=true \
         -p:DebugType=embedded \
         -p:ServerGarbageCollection=true
+        -p:BaseOutputPath=${{ github.workspace }}/bin/Neo.CLI/build
 
     - name: .NET Build (LevelDBStore)
       run: |
-        dotnet build ./src/Plugins/LevelDBStore/LevelDBStore.csproj \
+        dotnet publish ./src/Plugins/LevelDBStore/LevelDBStore.csproj \
         --framework net8.0 \
         --configuration ${{ env.CONFIGURATION }} \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}/Plugins/LevelDBStore \
         --verbosity normal
+        -p:BaseOutputPath=${{ github.workspace }}/bin/LevelDBStore/build
 
     - name: Remove Xml Comment Files
       working-directory: ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}

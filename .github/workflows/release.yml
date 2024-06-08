@@ -111,13 +111,19 @@ jobs:
 
     - name: .NET Build (LevelDBStore)
       run: |
-        dotnet build ./src/Plugins/LevelDBStore/LevelDBStore.csproj \
+        dotnet build ./src/Plugins/LevelDBStore \
         --version-suffix ${{ matrix.runtime }} \
         --framework net8.0 \
         --configuration ${{ env.CONFIGURATION }} \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}/Plugins/LevelDBStore \
         --verbosity normal \
         -p:VersionPrefix=${{ env.APP_VERSION }}
+
+    - name: Remove files
+      working-directory: ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}/Plugins/LevelDBStore
+      run: |
+        rm ./!(*LevelDBStore*)
+        rm *.pdb
 
     - name: Remove Xml Comment Files
       working-directory: ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}
@@ -235,16 +241,16 @@ jobs:
   #       dotnet-version: ${{ env.DOTNET_VERSION }}
 
   #   - name: .NET Publish (neo-cli)
-  #     working-directory: ./neo
   #     run: |
   #       dotnet publish ./src/Neo.CLI \
-  #       --version-suffix ${{ env.APP_VERSION }}
+  #       --version-suffix ${{ matrix.runtime }} \
   #       --framework net8.0 \
   #       --configuration ${{ env.CONFIGURATION }} \
   #       --runtime ${{ matrix.runtime }} \
   #       --self-contained true \
   #       --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }} \
   #       --verbosity normal \
+  #       -p:VersionPrefix=${{ env.APP_VERSION }} \
   #       -p:RuntimeIdentifier=${{ matrix.runtime }} \
   #       -p:SelfContained=true \
   #       -p:IncludeNativeLibrariesForSelfExtract=false \
@@ -256,13 +262,14 @@ jobs:
   #       -p:ServerGarbageCollection=true
 
   #   - name: .NET Build (LevelDBStore)
-  #     working-directory: ./neo-modules
   #     run: |
-  #       dotnet build ./src/Plugins/LevelDBStore/LevelDBStore.csproj \
+  #       dotnet build ./src/Plugins/LevelDBStore \
+  #       --version-suffix ${{ matrix.runtime }} \
   #       --framework net8.0 \
   #       --configuration ${{ env.CONFIGURATION }} \
   #       --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}/Plugins/LevelDBStore \
-  #       --verbosity normal
+  #       --verbosity normal \
+  #       -p:VersionPrefix=${{ env.APP_VERSION }}
 
   #   - name: Remove Xml Comment Files
   #     working-directory: ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}

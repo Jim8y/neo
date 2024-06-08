@@ -91,7 +91,7 @@ jobs:
       run: |
         dotnet build ./src/Neo.CLI \
         --version-suffix ${{ env.APP_VERSION }}
-        --output ./bin/Neo.CLI
+        --artifacts-path ./bin/Neo.CLI
 
     - name: .NET Publish (neo-cli)
       run: |

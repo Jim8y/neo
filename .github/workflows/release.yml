@@ -98,7 +98,7 @@ jobs:
         --self-contained true \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }} \
         --verbosity normal \
-        -p:BaseOutputPath=bin/build
+        -p:BaseOutputPath=${{ github.workspace }}/bin/Neo.CLI/build \
         -p:RuntimeIdentifier=${{ matrix.runtime }} \
         -p:SelfContained=true \
         -p:IncludeNativeLibrariesForSelfExtract=false \
@@ -115,7 +115,7 @@ jobs:
         --framework net8.0 \
         --configuration ${{ env.CONFIGURATION }} \
         --output ${{ env.OUTPUT_PATH }}/${{ matrix.runtime }}/Plugins/LevelDBStore \
-        --verbosity normal
+        --verbosity normal \
         -p:BaseOutputPath=${{ github.workspace }}/bin/LevelDBStore/build
 
     - name: Remove Xml Comment Files

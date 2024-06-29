@@ -12,11 +12,13 @@
 using Akka.Actor;
 using Neo.ConsoleService;
 using Neo.Cryptography.ECC;
+using Neo.Exceptions;
 using Neo.IO;
 using Neo.Json;
 using Neo.Ledger;
 using Neo.Network.P2P;
 using Neo.Network.P2P.Payloads;
+using Neo.Persistence;
 using Neo.Plugins;
 using Neo.SmartContract;
 using Neo.SmartContract.Manifest;
@@ -411,6 +413,21 @@ namespace Neo.CLI
             {
                 DisplayError("Neo CLI is broken, please reinstall it.",
                     "From https://github.com/neo-project/neo/releases");
+            } catch (StorageProviderNotFoundException ex)
+            {
+                var plugins = await GetPluginListAsync();
+                var b = plugins.ToList();
+                b.ForEach(Console.WriteLine);
+                var p = b.FirstOrDefault(p => ex.Message.Contains(p));
+                if (p != null)
+                {
+                    ConsoleHelper.Warning("Storage provider not found, installing plugin: " + p);
+                    InstallPluginAsync(p).Wait();
+                }
+                else
+                {
+                    DisplayError("Storage provider not found, please install it into the plugins folder.");
+                }
             }
 
             NeoSystem.AddService(this);

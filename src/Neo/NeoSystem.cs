@@ -10,6 +10,7 @@
 // modifications are permitted.
 
 using Akka.Actor;
+using Neo.Exceptions;
 using Neo.IO.Caching;
 using Neo.Ledger;
 using Neo.Network.P2P;
@@ -118,7 +119,7 @@ namespace Neo
         /// <param name="storagePath">The path of the storage. If <paramref name="storageProvider"/> is the default in-memory storage engine, this parameter is ignored.</param>
         public NeoSystem(ProtocolSettings settings, string storageProvider = null, string storagePath = null) :
             this(settings, StoreFactory.GetStoreProvider(storageProvider ?? nameof(MemoryStore))
-                ?? throw new ArgumentException($"Can't find the storage provider {storageProvider}", nameof(storageProvider)), storagePath)
+                ?? throw new StorageProviderNotFoundException(storageProvider))
         {
         }
 

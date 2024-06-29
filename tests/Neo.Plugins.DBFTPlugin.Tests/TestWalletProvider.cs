@@ -11,10 +11,9 @@
 
 using Neo.UnitTests;
 using Neo.Wallets;
-using Neo.Wallets.NEP6;
 using System;
 
-namespace Neo.Plugins.RpcServer.Tests;
+namespace Neo.Plugins.DBFTPlugin.Tests;
 
 public class TestWalletProvider(string wif) : IWalletProvider
 {

@@ -9,7 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
-namespace Neo.Plugins.RpcServer.Tests;
+namespace Neo.Plugins.DBFTPlugin.Tests;
 
 public class TestP2PSettings
 {

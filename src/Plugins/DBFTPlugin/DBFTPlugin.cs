@@ -39,7 +39,7 @@ namespace Neo.Plugins.DBFTPlugin
         }
 
 #if DEBUG
-        public DBFTPlugin(NeoSystem neoSystem, IWalletProvider wallet) : this()
+        internal DBFTPlugin(NeoSystem neoSystem, IWalletProvider wallet) : this()
         {
             this.neoSystem = neoSystem;
             walletProvider = wallet;

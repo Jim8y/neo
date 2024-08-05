@@ -142,4 +142,53 @@ partial class CryptoLib
         };
         return new(Bls12.Pairing(in g1a, in g2a));
     }
+
+    /// <summary>
+    /// Pairing operation for multiple G1 and G2 points, verifying the equation:
+    /// e(P1, Q1) * e(P2, Q2) * ... * e(Pk, Qk) = 1
+    /// </summary>
+    /// <param name="g1Points">Array of G1 points.</param>
+    /// <param name="g2Points">Array of G2 points.</param>
+    /// <returns>True if the pairing equation holds, false otherwise.</returns>
+    [ContractMethod(CpuFee = 1 << 23)]
+    public static bool Bls12381MultiPairing(InteropInterface[] g1Points, InteropInterface[] g2Points)
+    {
+        if (g1Points == null || g2Points == null || g1Points.Length != g2Points.Length || g1Points.Length == 0)
+            throw new ArgumentException("Invalid input: The number of G1 and G2 points must be equal and non-zero.");
+
+        var result = Gt.Identity;
+            for (var i = 0; i < g1Points.Length; i++)
+            {
+                if (g1Points[i] == null || g2Points[i] == null)
+                    throw new ArgumentNullException($"Null point at index {i}");
+
+                var g1A = ValidateAndConvertG1Point(g1Points[i], i);
+                var g2A = ValidateAndConvertG2Point(g2Points[i], i);
+
+                result *= Bls12.Pairing(in g1A, in g2A);
+            }
+
+            return result.Equals(Gt.Identity);
+    }
+
+    private static G1Affine ValidateAndConvertG1Point(InteropInterface point, int index)
+    {
+        return point.GetInterface<object>() switch
+        {
+            G1Affine g => g,
+            G1Projective g => new G1Affine(g),
+            _ => throw new ArgumentException($"Invalid G1 point type at index {index}")
+        };
+    }
+
+    private static G2Affine ValidateAndConvertG2Point(InteropInterface point, int index)
+    {
+        return point.GetInterface<object>() switch
+        {
+            G2Affine g => g,
+            G2Projective g => new G2Affine(g),
+            _ => throw new ArgumentException($"Invalid G2 point type at index {index}")
+        };
+    }
+
 }

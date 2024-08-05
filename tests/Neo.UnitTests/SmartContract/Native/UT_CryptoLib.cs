@@ -181,6 +181,56 @@ namespace Neo.UnitTests.SmartContract.Native
         }
 
         [TestMethod]
+    public void TestBls12381Bls12381MultiPairingEquation()
+{
+    var snapshotCache = TestBlockchain.GetTestSnapshotCache();
+
+    var g1Points = new[]
+    {
+        "97f1d3a73197d7942695638c4fa9ac0fc3688c4f9774b905a14e3a3f171bac586c55e83ff97a1aeffb3af00adb22c6bb",
+        "a1f9855f7670a63e4c80d64dfe6ddedc2ed2bfaebae27e4da82d71ba474987a39808e8921d3df97df6e5d4b979234de8"
+    };
+    var g2Points = new[]
+    {
+        "93e02b6052719f607dacd3a088274f65596bd0d09920b61ab5da61bbdc7f5049334cf11213945d57e5ac7d055d042b7e024aa2b2f08f0a91260805272dc51051c6e47ad4fa403b02b4510b647ae3d1770bac0326a805bbefd48056c8c121bdb8",
+        "a41e586fdd58d39616fea921a855e65417a5732809afc35e28466e3acaeed3d53dd4b97ca398b2f29bf6bbcaca026a6609a42bdeaaeef42813ae225e35c23c61c293e6ecb6759048fb76ac648ba3bc49f0fcf62f73fca38cdc5e7fa5bf511365"
+    };
+
+    using (ScriptBuilder script = new())
+    {
+        for (int i = 0; i < g1Points.Length; i++)
+        {
+            script.EmitDynamicCall(NativeContract.CryptoLib.Hash, "bls12381Deserialize", g1Points[i].HexToBytes());
+        }
+        script.EmitPush(g1Points.Length);
+        script.Emit(OpCode.PACK);
+
+        for (int i = 0; i < g2Points.Length; i++)
+        {
+            script.EmitDynamicCall(NativeContract.CryptoLib.Hash, "bls12381Deserialize", g2Points[i].HexToBytes());
+        }
+        script.EmitPush(g2Points.Length);
+        script.Emit(OpCode.PACK);
+
+        // Call Bls12381Pairing
+        script.EmitPush(2);
+        script.Emit(OpCode.PACK);
+        script.EmitPush(CallFlags.All);
+        script.EmitPush("bls12381MultiPairing");
+        script.EmitPush(NativeContract.CryptoLib.Hash);
+        script.EmitSysCall(ApplicationEngine.System_Contract_Call);
+
+        using var engine = ApplicationEngine.Create(TriggerType.Application, null, snapshotCache, settings: TestBlockchain.TheNeoSystem.Settings);
+        engine.LoadScript(script.ToArray());
+
+        Assert.AreEqual(VMState.HALT, engine.Execute());
+        var result = engine.ResultStack.Pop();
+
+        result.GetBoolean().Should().BeTrue();
+    }
+}
+
+        [TestMethod]
         public void Bls12381Equal()
         {
             var snapshotCache = TestBlockchain.GetTestSnapshotCache();

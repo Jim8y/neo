@@ -132,4 +132,9 @@ public readonly struct Gt : IEquatable<Gt>
 
         return acc;
     }
+
+    public static Gt operator *(in Gt a, in Gt b)
+    {
+        return new Gt(a.Value * b.Value);
+    }
 }

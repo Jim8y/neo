@@ -421,9 +421,9 @@ namespace Neo.Ledger
         {
             using (var snapshot = system.GetSnapshotCache())
             {
-                List<ApplicationExecuted> all_application_executed = new();
+                List<ApplicationExecuted> allApplicationExecuted = new();
                 TransactionState[] transactionStates;
-                using (ApplicationEngine engine = ApplicationEngine.Create(TriggerType.OnPersist, null, snapshot, block, system.Settings, 0))
+                using (var engine = ApplicationEngine.Create(TriggerType.OnPersist, null, snapshot, block, system.Settings, 0))
                 {
                     engine.LoadScript(onPersistScript);
                     if (engine.Execute() != VMState.HALT)
@@ -432,17 +432,17 @@ namespace Neo.Ledger
                             throw engine.FaultException;
                         throw new InvalidOperationException();
                     }
-                    ApplicationExecuted application_executed = new(engine);
-                    Context.System.EventStream.Publish(application_executed);
-                    all_application_executed.Add(application_executed);
+                    ApplicationExecuted applicationExecuted = new(engine);
+                    Context.System.EventStream.Publish(applicationExecuted);
+                    allApplicationExecuted.Add(applicationExecuted);
                     transactionStates = engine.GetState<TransactionState[]>();
                 }
                 var clonedSnapshot = snapshot.CloneCache();
                 // Warning: Do not write into variable snapshot directly. Write into variable clonedSnapshot and commit instead.
-                foreach (TransactionState transactionState in transactionStates)
+                foreach (var transactionState in transactionStates)
                 {
-                    Transaction tx = transactionState.Transaction;
-                    using ApplicationEngine engine = ApplicationEngine.Create(TriggerType.Application, tx, clonedSnapshot, block, system.Settings, tx.SystemFee);
+                    var tx = transactionState.Transaction;
+                    using var engine = ApplicationEngine.Create(TriggerType.Application, tx, clonedSnapshot, block, system.Settings, tx.SystemFee);
                     engine.LoadScript(tx.Script);
                     transactionState.State = engine.Execute();
                     if (transactionState.State == VMState.HALT)
@@ -453,11 +453,11 @@ namespace Neo.Ledger
                     {
                         clonedSnapshot = snapshot.CloneCache();
                     }
-                    ApplicationExecuted application_executed = new(engine);
-                    Context.System.EventStream.Publish(application_executed);
-                    all_application_executed.Add(application_executed);
+                    ApplicationExecuted applicationExecuted = new(engine);
+                    Context.System.EventStream.Publish(applicationExecuted);
+                    allApplicationExecuted.Add(applicationExecuted);
                 }
-                using (ApplicationEngine engine = ApplicationEngine.Create(TriggerType.PostPersist, null, snapshot, block, system.Settings, 0))
+                using (var engine = ApplicationEngine.Create(TriggerType.PostPersist, null, snapshot, block, system.Settings, 0))
                 {
                     engine.LoadScript(postPersistScript);
                     if (engine.Execute() != VMState.HALT)
@@ -466,11 +466,11 @@ namespace Neo.Ledger
                             throw engine.FaultException;
                         throw new InvalidOperationException();
                     }
-                    ApplicationExecuted application_executed = new(engine);
-                    Context.System.EventStream.Publish(application_executed);
-                    all_application_executed.Add(application_executed);
+                    ApplicationExecuted applicationExecuted = new(engine);
+                    Context.System.EventStream.Publish(applicationExecuted);
+                    allApplicationExecuted.Add(applicationExecuted);
                 }
-                InvokeCommitting(system, block, snapshot, all_application_executed);
+                InvokeCommitting(system, block, snapshot, allApplicationExecuted);
                 snapshot.Commit();
             }
             InvokeCommitted(system, block);

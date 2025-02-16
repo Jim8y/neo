@@ -25,7 +25,7 @@ namespace Neo.Extensions
 
         private readonly int _direction;
 
-        private ByteArrayComparer(int direction)
+        public ByteArrayComparer(int direction)
         {
             _direction = direction;
         }

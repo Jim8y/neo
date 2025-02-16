@@ -44,6 +44,16 @@ namespace Neo.Persistence
 
         private readonly Dictionary<StorageKey, Trackable> _dictionary = [];
         private readonly HashSet<StorageKey> _changeSet = [];
+        private readonly Dictionary<StorageKey, StorageItem> _readSet = new();
+
+        private void RecordRead(StorageKey key, StorageItem value)
+        {
+            // Only record the first read value for each key
+            if (!_dictionary.ContainsKey(key))
+            {
+                _readSet[key] = value.Clone(); // Clone to preserve the original state
+            }
+        }
 
         /// <summary>
         /// Reads a specified entry from the cache. If the entry is not in the cache, it will be automatically loaded from the underlying storage.
@@ -64,8 +74,10 @@ namespace Neo.Persistence
                     }
                     else
                     {
-                        trackable = new Trackable(GetInternal(key), TrackState.None);
+                        var value = GetInternal(key);
+                        trackable = new Trackable(value, TrackState.None);
                         _dictionary.Add(key, trackable);
+                        RecordRead(key, value);
                     }
                     return trackable.Item;
                 }
@@ -497,6 +509,7 @@ namespace Neo.Persistence
                 var value = TryGetInternal(key);
                 if (value == null) return null;
                 _dictionary.Add(key, new Trackable(value, TrackState.None));
+                RecordRead(key, value);
                 return value;
             }
         }
@@ -522,6 +535,14 @@ namespace Neo.Persistence
         /// <param name="key">The key of the entry.</param>
         /// <param name="value">The data of the entry.</param>
         protected abstract void UpdateInternal(StorageKey key, StorageItem value);
+
+        public Dictionary<StorageKey, StorageItem> GetReadSet()
+        {
+            return _readSet.ToDictionary(
+                kvp => kvp.Key,
+                kvp => kvp.Value.Clone()
+            );
+        }
     }
 }
 

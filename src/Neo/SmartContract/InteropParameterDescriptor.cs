@@ -1,10 +1,11 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// InteropParameterDescriptor.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
@@ -15,6 +16,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using Array = Neo.VM.Types.Array;
+using Pointer = Neo.VM.Types.Pointer;
 
 namespace Neo.SmartContract
 {
@@ -23,7 +26,7 @@ namespace Neo.SmartContract
     /// </summary>
     public class InteropParameterDescriptor
     {
-        private readonly ValidatorAttribute[] validators;
+        private readonly ValidatorAttribute[] _validators;
 
         /// <summary>
         /// The name of the parameter.
@@ -58,8 +61,8 @@ namespace Neo.SmartContract
         private static readonly Dictionary<Type, Func<StackItem, object>> converters = new()
         {
             [typeof(StackItem)] = p => p,
-            [typeof(VM.Types.Pointer)] = p => p,
-            [typeof(VM.Types.Array)] = p => p,
+            [typeof(Pointer)] = p => p,
+            [typeof(Array)] = p => p,
             [typeof(InteropInterface)] = p => p,
             [typeof(bool)] = p => p.GetBoolean(),
             [typeof(sbyte)] = p => (sbyte)p.GetInteger(),
@@ -79,15 +82,15 @@ namespace Neo.SmartContract
         };
 
         internal InteropParameterDescriptor(ParameterInfo parameterInfo)
-            : this(parameterInfo.ParameterType)
+            : this(parameterInfo.ParameterType, parameterInfo.GetCustomAttributes<ValidatorAttribute>(true).ToArray())
         {
-            this.Name = parameterInfo.Name;
-            this.validators = parameterInfo.GetCustomAttributes<ValidatorAttribute>(true).ToArray();
+            Name = parameterInfo.Name;
         }
 
-        internal InteropParameterDescriptor(Type type)
+        internal InteropParameterDescriptor(Type type, params ValidatorAttribute[] validators)
         {
-            this.Type = type;
+            Type = type;
+            _validators = validators;
             if (IsEnum)
             {
                 Converter = converters[type.GetEnumUnderlyingType()];
@@ -108,7 +111,7 @@ namespace Neo.SmartContract
 
         public void Validate(StackItem item)
         {
-            foreach (ValidatorAttribute validator in validators)
+            foreach (var validator in _validators)
                 validator.Validate(item);
         }
     }

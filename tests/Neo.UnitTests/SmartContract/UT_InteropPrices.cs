@@ -1,39 +1,60 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_InteropPrices.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Neo.Persistence;
 using Neo.SmartContract;
 using Neo.UnitTests.Extensions;
 using Neo.VM;
+using System;
 
 namespace Neo.UnitTests.SmartContract
 {
     [TestClass]
     public class UT_InteropPrices
     {
+        private DataCache _snapshotCache;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            _snapshotCache = TestBlockchain.GetTestSnapshotCache();
+        }
+
         [TestMethod]
         public void ApplicationEngineFixedPrices()
         {
+            var snapshot = _snapshotCache.CloneCache();
             // System.Runtime.CheckWitness: f827ec8c (price is 200)
             byte[] SyscallSystemRuntimeCheckWitnessHash = new byte[] { 0x68, 0xf8, 0x27, 0xec, 0x8c };
-            using (ApplicationEngine ae = ApplicationEngine.Create(TriggerType.Application, null, null, gas: 0))
+            using (ApplicationEngine ae = ApplicationEngine.Create(TriggerType.Application, null, snapshot, gas: 0))
             {
                 ae.LoadScript(SyscallSystemRuntimeCheckWitnessHash);
-                ApplicationEngine.System_Runtime_CheckWitness.FixedPrice.Should().Be(0_00001024L);
+                Assert.AreEqual(0_00001024L, ApplicationEngine.System_Runtime_CheckWitness.FixedPrice);
             }
 
             // System.Storage.GetContext: 9bf667ce (price is 1)
             byte[] SyscallSystemStorageGetContextHash = new byte[] { 0x68, 0x9b, 0xf6, 0x67, 0xce };
-            using (ApplicationEngine ae = ApplicationEngine.Create(TriggerType.Application, null, null, gas: 0))
+            using (ApplicationEngine ae = ApplicationEngine.Create(TriggerType.Application, null, snapshot, gas: 0))
             {
                 ae.LoadScript(SyscallSystemStorageGetContextHash);
-                ApplicationEngine.System_Storage_GetContext.FixedPrice.Should().Be(0_00000016L);
+                Assert.AreEqual(0_00000016L, ApplicationEngine.System_Storage_GetContext.FixedPrice);
             }
 
             // System.Storage.Get: 925de831 (price is 100)
             byte[] SyscallSystemStorageGetHash = new byte[] { 0x68, 0x92, 0x5d, 0xe8, 0x31 };
-            using (ApplicationEngine ae = ApplicationEngine.Create(TriggerType.Application, null, null, gas: 0))
+            using (ApplicationEngine ae = ApplicationEngine.Create(TriggerType.Application, null, snapshot, gas: 0))
             {
                 ae.LoadScript(SyscallSystemStorageGetHash);
-                ApplicationEngine.System_Storage_Get.FixedPrice.Should().Be(32768L);
+                Assert.AreEqual(32768L, ApplicationEngine.System_Storage_Get.FixedPrice);
             }
         }
 
@@ -43,6 +64,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void ApplicationEngineRegularPut()
         {
+            var snapshot = _snapshotCache.CloneCache();
             var key = new byte[] { (byte)OpCode.PUSH1 };
             var value = new byte[] { (byte)OpCode.PUSH1 };
 
@@ -51,9 +73,8 @@ namespace Neo.UnitTests.SmartContract
             ContractState contractState = TestUtils.GetContract(script);
 
             StorageKey skey = TestUtils.GetStorageKey(contractState.Id, key);
-            StorageItem sItem = TestUtils.GetStorageItem(System.Array.Empty<byte>());
+            StorageItem sItem = TestUtils.GetStorageItem(Array.Empty<byte>());
 
-            var snapshot = TestBlockchain.GetTestSnapshot();
             snapshot.Add(skey, sItem);
             snapshot.AddContract(script.ToScriptHash(), contractState);
 
@@ -63,9 +84,9 @@ namespace Neo.UnitTests.SmartContract
             debugger.StepInto();
             debugger.StepInto();
             debugger.StepInto();
-            var setupPrice = ae.GasConsumed;
+            var setupPrice = ae.FeeConsumed;
             debugger.Execute();
-            (ae.GasConsumed - setupPrice).Should().Be(ae.StoragePrice * value.Length + (1 << 15) * 30);
+            Assert.AreEqual(ae.StoragePrice * value.Length + (1 << 15) * 30, ae.FeeConsumed - setupPrice);
         }
 
         /// <summary>
@@ -74,6 +95,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void ApplicationEngineReusedStorage_FullReuse()
         {
+            var snapshot = _snapshotCache.CloneCache();
             var key = new byte[] { (byte)OpCode.PUSH1 };
             var value = new byte[] { (byte)OpCode.PUSH1 };
 
@@ -84,7 +106,6 @@ namespace Neo.UnitTests.SmartContract
             StorageKey skey = TestUtils.GetStorageKey(contractState.Id, key);
             StorageItem sItem = TestUtils.GetStorageItem(value);
 
-            var snapshot = TestBlockchain.GetTestSnapshot();
             snapshot.Add(skey, sItem);
             snapshot.AddContract(script.ToScriptHash(), contractState);
 
@@ -94,9 +115,9 @@ namespace Neo.UnitTests.SmartContract
             debugger.StepInto();
             debugger.StepInto();
             debugger.StepInto();
-            var setupPrice = applicationEngine.GasConsumed;
+            var setupPrice = applicationEngine.FeeConsumed;
             debugger.Execute();
-            (applicationEngine.GasConsumed - setupPrice).Should().Be(1 * applicationEngine.StoragePrice + (1 << 15) * 30);
+            Assert.AreEqual(1 * applicationEngine.StoragePrice + (1 << 15) * 30, applicationEngine.FeeConsumed - setupPrice);
         }
 
         /// <summary>
@@ -106,6 +127,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void ApplicationEngineReusedStorage_PartialReuse()
         {
+            var snapshot = _snapshotCache.CloneCache();
             var key = new byte[] { (byte)OpCode.PUSH1 };
             var oldValue = new byte[] { (byte)OpCode.PUSH1 };
             var value = new byte[] { (byte)OpCode.PUSH1, (byte)OpCode.PUSH1 };
@@ -117,7 +139,6 @@ namespace Neo.UnitTests.SmartContract
             StorageKey skey = TestUtils.GetStorageKey(contractState.Id, key);
             StorageItem sItem = TestUtils.GetStorageItem(oldValue);
 
-            var snapshot = TestBlockchain.GetTestSnapshot();
             snapshot.Add(skey, sItem);
             snapshot.AddContract(script.ToScriptHash(), contractState);
 
@@ -127,10 +148,10 @@ namespace Neo.UnitTests.SmartContract
             debugger.StepInto();
             debugger.StepInto();
             debugger.StepInto();
-            var setupPrice = ae.GasConsumed;
+            var setupPrice = ae.FeeConsumed;
             debugger.StepInto();
             debugger.StepInto();
-            (ae.GasConsumed - setupPrice).Should().Be((1 + (oldValue.Length / 4) + value.Length - oldValue.Length) * ae.StoragePrice + (1 << 15) * 30);
+            Assert.AreEqual((1 + (oldValue.Length / 4) + value.Length - oldValue.Length) * ae.StoragePrice + (1 << 15) * 30, ae.FeeConsumed - setupPrice);
         }
 
         /// <summary>
@@ -140,6 +161,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void ApplicationEngineReusedStorage_PartialReuseTwice()
         {
+            var snapshot = _snapshotCache.CloneCache();
             var key = new byte[] { (byte)OpCode.PUSH1 };
             var oldValue = new byte[] { (byte)OpCode.PUSH1 };
             var value = new byte[] { (byte)OpCode.PUSH1, (byte)OpCode.PUSH1 };
@@ -151,7 +173,6 @@ namespace Neo.UnitTests.SmartContract
             StorageKey skey = TestUtils.GetStorageKey(contractState.Id, key);
             StorageItem sItem = TestUtils.GetStorageItem(oldValue);
 
-            var snapshot = TestBlockchain.GetTestSnapshot();
             snapshot.Add(skey, sItem);
             snapshot.AddContract(script.ToScriptHash(), contractState);
 
@@ -165,9 +186,9 @@ namespace Neo.UnitTests.SmartContract
             debugger.StepInto(); //push value
             debugger.StepInto(); //push key
             debugger.StepInto(); //syscall Storage.GetContext
-            var setupPrice = ae.GasConsumed;
+            var setupPrice = ae.FeeConsumed;
             debugger.StepInto(); //syscall Storage.Put
-            (ae.GasConsumed - setupPrice).Should().Be((sItem.Value.Length / 4 + 1) * ae.StoragePrice + (1 << 15) * 30); // = PUT basic fee
+            Assert.AreEqual((sItem.Value.Length / 4 + 1) * ae.StoragePrice + (1 << 15) * 30, ae.FeeConsumed - setupPrice); // = PUT basic fee
         }
 
         private static byte[] CreateMultiplePutScript(byte[] key, byte[] value, int times = 2)

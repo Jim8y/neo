@@ -1,13 +1,15 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// Header.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.Extensions;
 using Neo.IO;
 using Neo.Json;
 using Neo.Ledger;
@@ -129,11 +131,11 @@ namespace Neo.Network.P2P.Payloads
             UInt256.Length +    // PrevHash
             UInt256.Length +    // MerkleRoot
             sizeof(ulong) +     // Timestamp
-            sizeof(ulong) +      // Nonce
+            sizeof(ulong) +     // Nonce
             sizeof(uint) +      // Index
             sizeof(byte) +      // PrimaryIndex
             UInt160.Length +    // NextConsensus
-            1 + Witness.Size;   // Witness
+            (Witness is null ? 1 : 1 + Witness.Size); // Witness, cannot be null for valid header
 
         Witness[] IVerifiable.Witnesses
         {
@@ -143,7 +145,10 @@ namespace Neo.Network.P2P.Payloads
             }
             set
             {
-                if (value.Length != 1) throw new ArgumentException(null, nameof(value));
+                if (value is null)
+                    throw new ArgumentNullException(nameof(IVerifiable.Witnesses));
+                if (value.Length != 1)
+                    throw new ArgumentException($"Expected 1 witness, got {value.Length}.", nameof(IVerifiable.Witnesses));
                 Witness = value[0];
             }
         }
@@ -242,6 +247,7 @@ namespace Neo.Network.P2P.Payloads
             TrimmedBlock prev = NativeContract.Ledger.GetTrimmedBlock(snapshot, prevHash);
             if (prev is null) return false;
             if (prev.Index + 1 != index) return false;
+            if (prev.Hash != prevHash) return false;
             if (prev.Header.timestamp >= timestamp) return false;
             if (!this.VerifyWitnesses(settings, snapshot, 3_00000000L)) return false;
             return true;

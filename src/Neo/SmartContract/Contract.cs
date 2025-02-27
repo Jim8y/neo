@@ -1,10 +1,11 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// Contract.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
@@ -81,7 +82,7 @@ namespace Neo.SmartContract
         /// <summary>
         /// Creates a multi-sig contract.
         /// </summary>
-        /// <param name="m">The minimum number of correct signatures that need to be provided in order for the verification to pass.</param>
+        /// <param name="m">The number of correct signatures that need to be provided in order for the verification to pass.</param>
         /// <param name="publicKeys">The public keys of the contract.</param>
         /// <returns>The created contract.</returns>
         public static Contract CreateMultiSigContract(int m, IReadOnlyCollection<ECPoint> publicKeys)
@@ -96,14 +97,14 @@ namespace Neo.SmartContract
         /// <summary>
         /// Creates the script of multi-sig contract.
         /// </summary>
-        /// <param name="m">The minimum number of correct signatures that need to be provided in order for the verification to pass.</param>
+        /// <param name="m">The number of correct signatures that need to be provided in order for the verification to pass.</param>
         /// <param name="publicKeys">The public keys of the contract.</param>
         /// <returns>The created script.</returns>
         public static byte[] CreateMultiSigRedeemScript(int m, IReadOnlyCollection<ECPoint> publicKeys)
         {
             if (!(1 <= m && m <= publicKeys.Count && publicKeys.Count <= 1024))
-                throw new ArgumentException();
-            using ScriptBuilder sb = new();
+                throw new ArgumentException($"Invalid multisig parameters: m={m}, publicKeys.Count={publicKeys.Count}");
+            using ScriptBuilder sb = new(2 /* m */ + 34 * publicKeys.Count + 8 /* extra space */);
             sb.EmitPush(m);
             foreach (ECPoint publicKey in publicKeys.OrderBy(p => p))
             {

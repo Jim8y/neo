@@ -1,13 +1,15 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// OracleResponse.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.Extensions;
 using Neo.IO;
 using Neo.Json;
 using Neo.Persistence;
@@ -70,7 +72,8 @@ namespace Neo.Network.P2P.Payloads
             Id = reader.ReadUInt64();
             Code = (OracleResponseCode)reader.ReadByte();
             if (!Enum.IsDefined(typeof(OracleResponseCode), Code))
-                throw new FormatException();
+                throw new FormatException($"Invalid response code: {Code}.");
+
             Result = reader.ReadVarMemory(MaxResultSize);
             if (Code != OracleResponseCode.Success && Result.Length > 0)
                 throw new FormatException();

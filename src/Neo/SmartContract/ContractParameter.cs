@@ -1,14 +1,16 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// ContractParameter.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
 using Neo.Cryptography.ECC;
+using Neo.Extensions;
 using Neo.Json;
 using System;
 using System.Collections.Generic;
@@ -44,8 +46,8 @@ namespace Neo.SmartContract
         /// <param name="type">The type of the parameter.</param>
         public ContractParameter(ContractParameterType type)
         {
-            this.Type = type;
-            this.Value = type switch
+            Type = type;
+            Value = type switch
             {
                 ContractParameterType.Any => null,
                 ContractParameterType.Signature => new byte[64],
@@ -160,19 +162,14 @@ namespace Neo.SmartContract
                         json["value"] = parameter.Value.ToString();
                         break;
                     case ContractParameterType.Array:
-                        if (context is null)
-                            context = new HashSet<ContractParameter>();
-                        else if (context.Contains(parameter))
-                            throw new InvalidOperationException();
-                        context.Add(parameter);
+                        context ??= [];
+                        if (!context.Add(parameter)) throw new InvalidOperationException("Circular reference.");
                         json["value"] = new JArray(((IList<ContractParameter>)parameter.Value).Select(p => ToJson(p, context)));
+                        if (!context.Remove(parameter)) throw new InvalidOperationException("Circular reference.");
                         break;
                     case ContractParameterType.Map:
-                        if (context is null)
-                            context = new HashSet<ContractParameter>();
-                        else if (context.Contains(parameter))
-                            throw new InvalidOperationException();
-                        context.Add(parameter);
+                        context ??= [];
+                        if (!context.Add(parameter)) throw new InvalidOperationException("Circular reference.");
                         json["value"] = new JArray(((IList<KeyValuePair<ContractParameter, ContractParameter>>)parameter.Value).Select(p =>
                         {
                             JObject item = new();
@@ -180,6 +177,7 @@ namespace Neo.SmartContract
                             item["value"] = ToJson(p.Value, context);
                             return item;
                         }));
+                        if (!context.Remove(parameter)) throw new InvalidOperationException("Circular reference.");
                         break;
                 }
             return json;

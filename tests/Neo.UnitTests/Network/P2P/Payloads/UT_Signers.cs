@@ -1,7 +1,17 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_Signers.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Cryptography.ECC;
-using Neo.IO;
+using Neo.Extensions;
 using Neo.Network.P2P.Payloads;
 using Neo.Network.P2P.Payloads.Conditions;
 using System;
@@ -12,6 +22,85 @@ namespace Neo.UnitTests.Network.P2P.Payloads
     public class UT_Signers
     {
         [TestMethod]
+        public void Test_IEquatable()
+        {
+            var ecPoint = ECPoint.Parse("03b209fd4f53a7170ea4444e0cb0a6bb6a53c2bd016926989cf85f9b0fba17a70c", ECCurve.Secp256r1);
+            var expected = new Signer()
+            {
+                Account = UInt160.Zero,
+                Scopes = WitnessScope.Global,
+                AllowedContracts = [UInt160.Zero],
+                AllowedGroups = [ecPoint],
+                Rules = [
+                    new WitnessRule
+                    {
+                        Condition = new BooleanCondition
+                        {
+                            Expression = true,
+                        },
+                        Action = WitnessRuleAction.Allow,
+                    },
+                ]
+            };
+
+            var actual = new Signer()
+            {
+                Account = UInt160.Zero,
+                Scopes = WitnessScope.Global,
+                AllowedContracts = [UInt160.Zero],
+                AllowedGroups = [ecPoint],
+                Rules = [
+                    new WitnessRule
+                    {
+                        Condition = new BooleanCondition
+                        {
+                            Expression = true,
+                        },
+                        Action = WitnessRuleAction.Allow,
+                    },
+                ]
+            };
+
+            var notEqual = new Signer()
+            {
+                Account = UInt160.Zero,
+                Scopes = WitnessScope.WitnessRules,
+                AllowedContracts = [],
+                AllowedGroups = [],
+                Rules = []
+            };
+
+            var cnull = new Signer
+            {
+                Account = null,
+                Scopes = WitnessScope.Global,
+                AllowedContracts = null,
+                AllowedGroups = null,
+                Rules = null,
+            };
+
+            Assert.IsTrue(expected.Equals(expected));
+
+            Assert.AreEqual(expected, actual);
+            Assert.IsTrue(expected == actual);
+            Assert.IsTrue(expected.Equals(actual));
+
+            Assert.AreNotEqual(expected, notEqual);
+            Assert.IsTrue(expected != notEqual);
+            Assert.IsFalse(expected.Equals(notEqual));
+
+            Assert.IsFalse(expected == null);
+            Assert.IsFalse(null == expected);
+            Assert.AreNotEqual(expected, null);
+            Assert.IsFalse(expected.Equals(null));
+
+            //Check null
+            Assert.AreNotEqual(cnull, notEqual);
+            Assert.IsFalse(cnull.Equals(notEqual));
+        }
+
+
+        [TestMethod]
         public void Serialize_Deserialize_Global()
         {
             var attr = new Signer()
@@ -21,7 +110,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var hex = "000000000000000000000000000000000000000080";
-            attr.ToArray().ToHexString().Should().Be(hex);
+            CollectionAssert.AreEqual(attr.ToArray(), hex.HexToBytes());
 
             var copy = hex.HexToBytes().AsSerializable<Signer>();
 
@@ -39,7 +128,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var hex = "000000000000000000000000000000000000000001";
-            attr.ToArray().ToHexString().Should().Be(hex);
+            CollectionAssert.AreEqual(attr.ToArray(), hex.HexToBytes());
 
             var copy = hex.HexToBytes().AsSerializable<Signer>();
 
@@ -80,9 +169,9 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var hex = "00000000000000000000000000000000000000004001010201020102010001";
-            attr.ToArray().ToHexString().Should().Be(hex);
+            CollectionAssert.AreEqual(attr.ToArray(), hex.HexToBytes());
 
-            Assert.ThrowsException<FormatException>(() => hex.HexToBytes().AsSerializable<Signer>());
+            Assert.ThrowsExactly<FormatException>(() => _ = hex.HexToBytes().AsSerializable<Signer>());
         }
 
         [TestMethod]
@@ -118,9 +207,9 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var hex = "00000000000000000000000000000000000000004001010301030103010001";
-            attr.ToArray().ToHexString().Should().Be(hex);
+            CollectionAssert.AreEqual(attr.ToArray(), hex.HexToBytes());
 
-            Assert.ThrowsException<FormatException>(() => hex.HexToBytes().AsSerializable<Signer>());
+            Assert.ThrowsExactly<FormatException>(() => _ = hex.HexToBytes().AsSerializable<Signer>());
         }
 
         [TestMethod]
@@ -134,7 +223,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var hex = "000000000000000000000000000000000000000010010000000000000000000000000000000000000000";
-            attr.ToArray().ToHexString().Should().Be(hex);
+            CollectionAssert.AreEqual(attr.ToArray(), hex.HexToBytes());
 
             var copy = hex.HexToBytes().AsSerializable<Signer>();
 
@@ -154,7 +243,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var hex = "0000000000000000000000000000000000000000200103b209fd4f53a7170ea4444e0cb0a6bb6a53c2bd016926989cf85f9b0fba17a70c";
-            attr.ToArray().ToHexString().Should().Be(hex);
+            CollectionAssert.AreEqual(attr.ToArray(), hex.HexToBytes());
 
             var copy = hex.HexToBytes().AsSerializable<Signer>();
 
@@ -173,7 +262,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var json = "{\"account\":\"0x0000000000000000000000000000000000000000\",\"scopes\":\"Global\"}";
-            attr.ToJson().ToString().Should().Be(json);
+            Assert.AreEqual(json, attr.ToJson().ToString());
         }
 
         [TestMethod]
@@ -186,7 +275,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var json = "{\"account\":\"0x0000000000000000000000000000000000000000\",\"scopes\":\"CalledByEntry\"}";
-            attr.ToJson().ToString().Should().Be(json);
+            Assert.AreEqual(json, attr.ToJson().ToString());
         }
 
         [TestMethod]
@@ -200,7 +289,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var json = "{\"account\":\"0x0000000000000000000000000000000000000000\",\"scopes\":\"CustomContracts\",\"allowedcontracts\":[\"0x0000000000000000000000000000000000000000\"]}";
-            attr.ToJson().ToString().Should().Be(json);
+            Assert.AreEqual(json, attr.ToJson().ToString());
         }
 
         [TestMethod]
@@ -214,7 +303,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             };
 
             var json = "{\"account\":\"0x0000000000000000000000000000000000000000\",\"scopes\":\"CustomGroups\",\"allowedgroups\":[\"03b209fd4f53a7170ea4444e0cb0a6bb6a53c2bd016926989cf85f9b0fba17a70c\"]}";
-            attr.ToJson().ToString().Should().Be(json);
+            Assert.AreEqual(json, attr.ToJson().ToString());
         }
 
         [TestMethod]

@@ -1,5 +1,17 @@
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_DeployedContract.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.SmartContract;
+using Neo.SmartContract.Manifest;
 using System;
 
 namespace Neo.UnitTests.SmartContract
@@ -12,16 +24,16 @@ namespace Neo.UnitTests.SmartContract
         {
             var contract = new DeployedContract(new ContractState()
             {
-                Manifest = new Neo.SmartContract.Manifest.ContractManifest()
+                Manifest = new ContractManifest()
                 {
-                    Abi = new Neo.SmartContract.Manifest.ContractAbi()
+                    Abi = new ContractAbi()
                     {
-                        Methods = new Neo.SmartContract.Manifest.ContractMethodDescriptor[]
+                        Methods = new ContractMethodDescriptor[]
                          {
-                             new Neo.SmartContract.Manifest.ContractMethodDescriptor()
+                             new ContractMethodDescriptor()
                              {
                                   Name = "verify",
-                                  Parameters = Array.Empty<Neo.SmartContract.Manifest.ContractParameterDefinition>()
+                                  Parameters = Array.Empty<ContractParameterDefinition>()
                              }
                          }
                     }
@@ -36,19 +48,19 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void TestErrors()
         {
-            Assert.ThrowsException<ArgumentNullException>(() => new DeployedContract(null));
-            Assert.ThrowsException<NotSupportedException>(() => new DeployedContract(new ContractState()
+            Assert.ThrowsExactly<ArgumentNullException>(() => _ = new DeployedContract(null));
+            Assert.ThrowsExactly<NotSupportedException>(() => _ = new DeployedContract(new ContractState()
             {
-                Manifest = new Neo.SmartContract.Manifest.ContractManifest()
+                Manifest = new ContractManifest()
                 {
-                    Abi = new Neo.SmartContract.Manifest.ContractAbi()
+                    Abi = new ContractAbi()
                     {
-                        Methods = new Neo.SmartContract.Manifest.ContractMethodDescriptor[]
+                        Methods = new ContractMethodDescriptor[]
                          {
-                             new Neo.SmartContract.Manifest.ContractMethodDescriptor()
+                             new ContractMethodDescriptor()
                              {
                                   Name = "noverify",
-                                  Parameters = Array.Empty<Neo.SmartContract.Manifest.ContractParameterDefinition>()
+                                  Parameters = Array.Empty<ContractParameterDefinition>()
                              }
                          }
                     }

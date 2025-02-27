@@ -1,4 +1,14 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_ContractState.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Json;
 using Neo.SmartContract;
@@ -12,7 +22,7 @@ namespace Neo.UnitTests.SmartContract
     public class UT_ContractState
     {
         ContractState contract;
-        byte[] script = { 0x01 };
+        readonly byte[] script = { 0x01 };
         ContractManifest manifest;
 
         [TestInitialize]
@@ -38,9 +48,9 @@ namespace Neo.UnitTests.SmartContract
         public void TestGetScriptHash()
         {
             // _scriptHash == null
-            contract.Hash.Should().Be(script.ToScriptHash());
+            Assert.AreEqual(script.ToScriptHash(), contract.Hash);
             // _scriptHash != null
-            contract.Hash.Should().Be(script.ToScriptHash());
+            Assert.AreEqual(script.ToScriptHash(), contract.Hash);
         }
 
         [TestMethod]
@@ -48,8 +58,8 @@ namespace Neo.UnitTests.SmartContract
         {
             IInteroperable newContract = new ContractState();
             newContract.FromStackItem(contract.ToStackItem(null));
-            ((ContractState)newContract).Manifest.ToJson().ToString().Should().Be(contract.Manifest.ToJson().ToString());
-            ((ContractState)newContract).Script.Span.SequenceEqual(contract.Script.Span).Should().BeTrue();
+            Assert.AreEqual(contract.Manifest.ToJson().ToString(), ((ContractState)newContract).Manifest.ToJson().ToString());
+            Assert.IsTrue(((ContractState)newContract).Script.Span.SequenceEqual(contract.Script.Span));
         }
 
         [TestMethod]
@@ -64,9 +74,9 @@ namespace Neo.UnitTests.SmartContract
         public void TestToJson()
         {
             JObject json = contract.ToJson();
-            json["hash"].AsString().Should().Be("0x820944cfdc70976602d71b0091445eedbc661bc5");
-            json["nef"]["script"].AsString().Should().Be("AQ==");
-            json["manifest"].AsString().Should().Be(manifest.ToJson().AsString());
+            Assert.AreEqual("0x820944cfdc70976602d71b0091445eedbc661bc5", json["hash"].AsString());
+            Assert.AreEqual("AQ==", json["nef"]["script"].AsString());
+            Assert.AreEqual(manifest.ToJson().AsString(), json["manifest"].AsString());
         }
     }
 }

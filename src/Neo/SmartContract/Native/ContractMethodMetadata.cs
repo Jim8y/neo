@@ -1,10 +1,11 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// ContractMethodMetadata.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
@@ -14,14 +15,18 @@ using Neo.Persistence;
 using Neo.SmartContract.Manifest;
 using Neo.VM.Types;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using Array = Neo.VM.Types.Array;
+using Boolean = Neo.VM.Types.Boolean;
+using Buffer = Neo.VM.Types.Buffer;
 
 namespace Neo.SmartContract.Native
 {
-    internal class ContractMethodMetadata
+    [DebuggerDisplay("{Name}")]
+    internal class ContractMethodMetadata : IHardforkActivable
     {
         public string Name { get; }
         public MethodInfo Handler { get; }
@@ -32,30 +37,36 @@ namespace Neo.SmartContract.Native
         public long StorageFee { get; }
         public CallFlags RequiredCallFlags { get; }
         public ContractMethodDescriptor Descriptor { get; }
+        public Hardfork? ActiveIn { get; init; } = null;
+        public Hardfork? DeprecatedIn { get; init; } = null;
 
         public ContractMethodMetadata(MemberInfo member, ContractMethodAttribute attribute)
         {
-            this.Name = attribute.Name ?? member.Name.ToLower()[0] + member.Name[1..];
-            this.Handler = member switch
+            Name = attribute.Name ?? member.Name;
+            Name = Name.ToLowerInvariant()[0] + Name[1..];
+            Handler = member switch
             {
                 MethodInfo m => m,
                 PropertyInfo p => p.GetMethod,
                 _ => throw new ArgumentException(null, nameof(member))
             };
-            ParameterInfo[] parameterInfos = this.Handler.GetParameters();
+            ParameterInfo[] parameterInfos = Handler.GetParameters();
             if (parameterInfos.Length > 0)
             {
                 NeedApplicationEngine = parameterInfos[0].ParameterType.IsAssignableFrom(typeof(ApplicationEngine));
+                // snapshot is a DataCache instance, and DataCache implements IReadOnlyStoreView
                 NeedSnapshot = parameterInfos[0].ParameterType.IsAssignableFrom(typeof(DataCache));
             }
             if (NeedApplicationEngine || NeedSnapshot)
-                this.Parameters = parameterInfos.Skip(1).Select(p => new InteropParameterDescriptor(p)).ToArray();
+                Parameters = parameterInfos.Skip(1).Select(p => new InteropParameterDescriptor(p)).ToArray();
             else
-                this.Parameters = parameterInfos.Select(p => new InteropParameterDescriptor(p)).ToArray();
-            this.CpuFee = attribute.CpuFee;
-            this.StorageFee = attribute.StorageFee;
-            this.RequiredCallFlags = attribute.RequiredCallFlags;
-            this.Descriptor = new ContractMethodDescriptor
+                Parameters = parameterInfos.Select(p => new InteropParameterDescriptor(p)).ToArray();
+            CpuFee = attribute.CpuFee;
+            StorageFee = attribute.StorageFee;
+            RequiredCallFlags = attribute.RequiredCallFlags;
+            ActiveIn = attribute.ActiveIn;
+            DeprecatedIn = attribute.DeprecatedIn;
+            Descriptor = new ContractMethodDescriptor
             {
                 Name = Name,
                 ReturnType = ToParameterType(Handler.ReturnType),
@@ -84,10 +95,10 @@ namespace Neo.SmartContract.Native
             if (type == typeof(UInt160)) return ContractParameterType.Hash160;
             if (type == typeof(UInt256)) return ContractParameterType.Hash256;
             if (type == typeof(ECPoint)) return ContractParameterType.PublicKey;
-            if (type == typeof(VM.Types.Boolean)) return ContractParameterType.Boolean;
+            if (type == typeof(Boolean)) return ContractParameterType.Boolean;
             if (type == typeof(Integer)) return ContractParameterType.Integer;
             if (type == typeof(ByteString)) return ContractParameterType.ByteArray;
-            if (type == typeof(VM.Types.Buffer)) return ContractParameterType.ByteArray;
+            if (type == typeof(Buffer)) return ContractParameterType.ByteArray;
             if (type == typeof(Array)) return ContractParameterType.Array;
             if (type == typeof(Struct)) return ContractParameterType.Array;
             if (type == typeof(Map)) return ContractParameterType.Map;

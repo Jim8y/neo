@@ -1,10 +1,11 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// NodeCapability.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
@@ -15,7 +16,12 @@ using System.IO;
 namespace Neo.Network.P2P.Capabilities
 {
     /// <summary>
-    /// Represents the capabilities of a NEO node.
+    /// Represents the capabilities of a Neo node. Each capability has a type
+    /// and some type-specific node metadata to other peers that can take it
+    /// into account when interacting with this node. This metadata is
+    /// serialized in a type-specific way, but for compatibility reasons any
+    /// new capabilities MUST be compatible with UnknownCapability serialization
+    /// scheme.
     /// </summary>
     public abstract class NodeCapability : ISerializable
     {
@@ -32,7 +38,7 @@ namespace Neo.Network.P2P.Capabilities
         /// <param name="type">The type of the <see cref="NodeCapability"/>.</param>
         protected NodeCapability(NodeCapabilityType type)
         {
-            this.Type = type;
+            Type = type;
         }
 
         void ISerializable.Deserialize(ref MemoryReader reader)
@@ -55,9 +61,12 @@ namespace Neo.Network.P2P.Capabilities
             NodeCapabilityType type = (NodeCapabilityType)reader.ReadByte();
             NodeCapability capability = type switch
             {
+#pragma warning disable CS0612 // Type or member is obsolete
                 NodeCapabilityType.TcpServer or NodeCapabilityType.WsServer => new ServerCapability(type),
+#pragma warning restore CS0612 // Type or member is obsolete
                 NodeCapabilityType.FullNode => new FullNodeCapability(),
-                _ => throw new FormatException(),
+                NodeCapabilityType.ArchivalNode => new ArchivalNodeCapability(),
+                _ => new UnknownCapability(type),
             };
             capability.DeserializeWithoutType(ref reader);
             return capability;

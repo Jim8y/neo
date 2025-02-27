@@ -1,16 +1,18 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// TaskManager.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
 using Akka.Actor;
 using Akka.Configuration;
 using Akka.IO;
+using Neo.Extensions;
 using Neo.IO.Actors;
 using Neo.IO.Caching;
 using Neo.Ledger;
@@ -73,7 +75,7 @@ namespace Neo.Network.P2P
         public TaskManager(NeoSystem system)
         {
             this.system = system;
-            this.knownHashes = new HashSetCache<UInt256>(system.MemPool.Capacity * 2 / 5);
+            knownHashes = new HashSetCache<UInt256>(system.MemPool.Capacity * 2 / 5);
             Context.System.EventStream.Subscribe(Self, typeof(Blockchain.PersistCompleted));
             Context.System.EventStream.Subscribe(Self, typeof(Blockchain.RelayResult));
         }
@@ -131,7 +133,7 @@ namespace Neo.Network.P2P
                 session.InvTasks[hash] = TimeProvider.Current.UtcNow;
             }
 
-            foreach (InvPayload group in InvPayload.CreateGroup(payload.Type, hashes.ToArray()))
+            foreach (InvPayload group in InvPayload.CreateGroup(payload.Type, hashes))
                 Sender.Tell(Message.Create(MessageCommand.GetData, group));
         }
 
@@ -315,18 +317,9 @@ namespace Neo.Network.P2P
         {
             foreach (TaskSession session in sessions.Values)
             {
-                foreach (var (hash, time) in session.InvTasks.ToArray())
-                    if (TimeProvider.Current.UtcNow - time > TaskTimeout)
-                    {
-                        if (session.InvTasks.Remove(hash))
-                            DecrementGlobalTask(hash);
-                    }
-                foreach (var (index, time) in session.IndexTasks.ToArray())
-                    if (TimeProvider.Current.UtcNow - time > TaskTimeout)
-                    {
-                        if (session.IndexTasks.Remove(index))
-                            DecrementGlobalTask(index);
-                    }
+                var now = TimeProvider.Current.UtcNow;
+                session.InvTasks.RemoveWhere(p => now - p.Value > TaskTimeout, p => DecrementGlobalTask(p.Key));
+                session.IndexTasks.RemoveWhere(p => now - p.Value > TaskTimeout, p => DecrementGlobalTask(p.Key));
             }
             foreach (var (actor, session) in sessions)
                 RequestTasks(actor, session);
@@ -352,7 +345,7 @@ namespace Neo.Network.P2P
         {
             if (session.HasTooManyTasks) return;
 
-            DataCache snapshot = system.StoreView;
+            var snapshot = system.StoreView;
 
             // If there are pending tasks of InventoryType.Block we should process them
             if (session.AvailableTasks.Count > 0)
@@ -363,15 +356,13 @@ namespace Neo.Network.P2P
                 HashSet<UInt256> hashes = new(session.AvailableTasks);
                 if (hashes.Count > 0)
                 {
-                    foreach (UInt256 hash in hashes.ToArray())
-                    {
-                        if (!IncrementGlobalTask(hash))
-                            hashes.Remove(hash);
-                    }
+                    hashes.RemoveWhere(p => !IncrementGlobalTask(p));
                     session.AvailableTasks.Remove(hashes);
+
                     foreach (UInt256 hash in hashes)
                         session.InvTasks[hash] = DateTime.UtcNow;
-                    foreach (InvPayload group in InvPayload.CreateGroup(InventoryType.Block, hashes.ToArray()))
+
+                    foreach (InvPayload group in InvPayload.CreateGroup(InventoryType.Block, hashes))
                         remoteNode.Tell(Message.Create(MessageCommand.GetData, group));
                     return;
                 }
@@ -413,7 +404,7 @@ namespace Neo.Network.P2P
 
     internal class TaskManagerMailbox : PriorityMailbox
     {
-        public TaskManagerMailbox(Akka.Actor.Settings settings, Config config)
+        public TaskManagerMailbox(Settings settings, Config config)
             : base(settings, config)
         {
         }

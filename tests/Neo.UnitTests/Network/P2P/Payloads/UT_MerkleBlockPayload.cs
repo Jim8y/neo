@@ -1,6 +1,16 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_MerkleBlockPayload.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neo.IO;
+using Neo.Extensions;
 using Neo.Network.P2P.Payloads;
 using System;
 using System.Collections;
@@ -14,10 +24,10 @@ namespace Neo.UnitTests.Network.P2P.Payloads
         public void Size_Get()
         {
             var test = MerkleBlockPayload.Create(TestBlockchain.TheNeoSystem.GenesisBlock, new BitArray(1024, false));
-            test.Size.Should().Be(247); // 239 + nonce 
+            Assert.AreEqual(247, test.Size); // 239 + nonce
 
             test = MerkleBlockPayload.Create(TestBlockchain.TheNeoSystem.GenesisBlock, new BitArray(0, false));
-            test.Size.Should().Be(119); // 111 + nonce
+            Assert.AreEqual(119, test.Size); // 111 + nonce
         }
 
         [TestMethod]
@@ -27,7 +37,8 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             var clone = test.ToArray().AsSerializable<MerkleBlockPayload>();
 
             Assert.AreEqual(test.TxCount, clone.TxCount);
-            Assert.AreEqual(test.Hashes.Length, clone.TxCount);
+            Assert.AreEqual(test.Hashes.Length, clone.Hashes.Length);
+            Assert.AreEqual(test.Flags.Length, clone.Flags.Length);
             CollectionAssert.AreEqual(test.Hashes, clone.Hashes);
             Assert.IsTrue(test.Flags.Span.SequenceEqual(clone.Flags.Span));
         }

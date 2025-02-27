@@ -1,15 +1,17 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// ExecutionContextState.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
 using Neo.Persistence;
 using Neo.VM;
+using System;
 
 namespace Neo.SmartContract
 {
@@ -43,7 +45,10 @@ namespace Neo.SmartContract
         /// </summary>
         public CallFlags CallFlags { get; set; } = CallFlags.All;
 
-        public DataCache Snapshot { get; set; }
+        [Obsolete("Use SnapshotCache instead")]
+        public DataCache Snapshot => SnapshotCache;
+
+        public DataCache SnapshotCache { get; set; }
 
         public int NotificationCount { get; set; }
 

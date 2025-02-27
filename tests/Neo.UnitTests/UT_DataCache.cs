@@ -1,3 +1,14 @@
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_DataCache.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Persistence;
 using Neo.SmartContract;
@@ -11,8 +22,8 @@ namespace Neo.UnitTests
         [TestMethod]
         public void TestCachedFind_Between()
         {
-            var snapshot = TestBlockchain.GetTestSnapshot();
-            var storages = snapshot.CreateSnapshot();
+            var snapshotCache = TestBlockchain.GetTestSnapshotCache();
+            var storages = snapshotCache.CloneCache();
             var cache = new ClonedCache(storages);
 
             storages.Add
@@ -50,8 +61,8 @@ namespace Neo.UnitTests
         [TestMethod]
         public void TestCachedFind_Last()
         {
-            var snapshot = TestBlockchain.GetTestSnapshot();
-            var storages = snapshot.CreateSnapshot();
+            var snapshotCache = TestBlockchain.GetTestSnapshotCache();
+            var storages = snapshotCache.CloneCache();
             var cache = new ClonedCache(storages);
 
             storages.Add
@@ -82,8 +93,8 @@ namespace Neo.UnitTests
         [TestMethod]
         public void TestCachedFind_Empty()
         {
-            var snapshot = TestBlockchain.GetTestSnapshot();
-            var storages = snapshot.CreateSnapshot();
+            var snapshotCache = TestBlockchain.GetTestSnapshotCache();
+            var storages = snapshotCache.CloneCache();
             var cache = new ClonedCache(storages);
 
             cache.Add

@@ -1,22 +1,16 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// Wallet.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using Neo.Cryptography;
-using Neo.IO;
+using Neo.Extensions;
 using Neo.Network.P2P.Payloads;
 using Neo.Persistence;
 using Neo.SmartContract;
@@ -24,8 +18,17 @@ using Neo.SmartContract.Native;
 using Neo.VM;
 using Neo.Wallets.NEP6;
 using Org.BouncyCastle.Crypto.Generators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using static Neo.SmartContract.Helper;
 using static Neo.Wallets.Helper;
+using ECCurve = Neo.Cryptography.ECC.ECCurve;
 using ECPoint = Neo.Cryptography.ECC.ECPoint;
 
 namespace Neo.Wallets
@@ -126,8 +129,8 @@ namespace Neo.Wallets
         /// <param name="settings">The <see cref="Neo.ProtocolSettings"/> to be used by the wallet.</param>
         protected Wallet(string path, ProtocolSettings settings)
         {
-            this.ProtocolSettings = settings;
-            this.Path = path;
+            ProtocolSettings = settings;
+            Path = path;
         }
 
         /// <summary>
@@ -136,24 +139,26 @@ namespace Neo.Wallets
         /// <returns>The created account.</returns>
         public WalletAccount CreateAccount()
         {
-            byte[] privateKey = new byte[32];
-        generate:
-            try
+            var privateKey = new byte[32];
+            using var rng = RandomNumberGenerator.Create();
+
+            do
             {
-                using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+                try
                 {
                     rng.GetBytes(privateKey);
+                    return CreateAccount(privateKey);
                 }
-                return CreateAccount(privateKey);
+                catch (ArgumentException)
+                {
+                    // Try again
+                }
+                finally
+                {
+                    Array.Clear(privateKey, 0, privateKey.Length);
+                }
             }
-            catch (ArgumentException)
-            {
-                goto generate;
-            }
-            finally
-            {
-                Array.Clear(privateKey, 0, privateKey.Length);
-            }
+            while (true);
         }
 
         /// <summary>
@@ -171,7 +176,7 @@ namespace Neo.Wallets
         private static List<(UInt160 Account, BigInteger Value)> FindPayingAccounts(List<(UInt160 Account, BigInteger Value)> orderedAccounts, BigInteger amount)
         {
             var result = new List<(UInt160 Account, BigInteger Value)>();
-            BigInteger sum_balance = orderedAccounts.Select(p => p.Value).Sum();
+            var sum_balance = orderedAccounts.Select(p => p.Value).Sum();
             if (sum_balance == amount)
             {
                 result.AddRange(orderedAccounts);
@@ -357,7 +362,7 @@ namespace Neo.Wallets
             byte[] prikey = XOR(Decrypt(encryptedkey, derivedhalf2), derivedhalf1);
             Array.Clear(derivedhalf1, 0, derivedhalf1.Length);
             Array.Clear(derivedhalf2, 0, derivedhalf2.Length);
-            ECPoint pubkey = Cryptography.ECC.ECCurve.Secp256r1.G * prikey;
+            ECPoint pubkey = ECCurve.Secp256r1.G * prikey;
             UInt160 script_hash = Contract.CreateSignatureRedeemScript(pubkey).ToScriptHash();
             string address = script_hash.ToAddress(version);
             if (!Encoding.ASCII.GetBytes(address).Sha256().Sha256().AsSpan(0, 4).SequenceEqual(addresshash))
@@ -409,6 +414,10 @@ namespace Neo.Wallets
         /// <returns>The imported account.</returns>
         public virtual WalletAccount Import(X509Certificate2 cert)
         {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                throw new PlatformNotSupportedException("Importing certificates is not supported on macOS.");
+            }
             byte[] privateKey;
             using (ECDsa ecdsa = cert.GetECDsaPrivateKey())
             {
@@ -532,7 +541,7 @@ namespace Neo.Wallets
         /// <param name="sender">The sender of the transaction.</param>
         /// <param name="cosigners">The cosigners to be added to the transaction.</param>
         /// <param name="attributes">The attributes to be added to the transaction.</param>
-        /// <param name="maxGas">The maximum gas that can be spent to execute the script.</param>
+        /// <param name="maxGas">The maximum gas that can be spent to execute the script, in the unit of datoshi, 1 datoshi = 1e-8 GAS.</param>
         /// <param name="persistingBlock">The block environment to execute the transaction. If null, <see cref="ApplicationEngine.CreateDummyBlock"></see> will be used.</param>
         /// <returns>The created transaction.</returns>
         public Transaction MakeTransaction(DataCache snapshot, ReadOnlyMemory<byte> script, UInt160 sender = null, Signer[] cosigners = null, TransactionAttribute[] attributes = null, long maxGas = ApplicationEngine.TestModeGas, Block persistingBlock = null)
@@ -566,113 +575,29 @@ namespace Neo.Wallets
                 };
 
                 // will try to execute 'transfer' script to check if it works
-                using (ApplicationEngine engine = ApplicationEngine.Run(script, snapshot.CreateSnapshot(), tx, settings: ProtocolSettings, gas: maxGas, persistingBlock: persistingBlock))
+                using (ApplicationEngine engine = ApplicationEngine.Run(script, snapshot.CloneCache(), tx, settings: ProtocolSettings, gas: maxGas, persistingBlock: persistingBlock))
                 {
                     if (engine.State == VMState.FAULT)
                     {
                         throw new InvalidOperationException($"Failed execution for '{Convert.ToBase64String(script.Span)}'", engine.FaultException);
                     }
-                    tx.SystemFee = engine.GasConsumed;
+                    tx.SystemFee = engine.FeeConsumed;
                 }
 
-                tx.NetworkFee = CalculateNetworkFee(snapshot, tx, maxGas);
+                tx.NetworkFee = tx.CalculateNetworkFee(snapshot, ProtocolSettings, this, maxGas);
                 if (value >= tx.SystemFee + tx.NetworkFee) return tx;
             }
             throw new InvalidOperationException("Insufficient GAS");
         }
 
         /// <summary>
-        /// Calculates the network fee for the specified transaction.
-        /// </summary>
-        /// <param name="snapshot">The snapshot used to read data.</param>
-        /// <param name="tx">The transaction to calculate.</param>
-        /// <param name="maxExecutionCost">The maximum cost that can be spent when a contract is executed.</param>
-        /// <returns>The network fee of the transaction.</returns>
-        public long CalculateNetworkFee(DataCache snapshot, Transaction tx, long maxExecutionCost = ApplicationEngine.TestModeGas)
-        {
-            UInt160[] hashes = tx.GetScriptHashesForVerifying(snapshot);
-
-            // base size for transaction: includes const_header + signers + attributes + script + hashes
-            int size = Transaction.HeaderSize + tx.Signers.GetVarSize() + tx.Attributes.GetVarSize() + tx.Script.GetVarSize() + IO.Helper.GetVarSize(hashes.Length);
-            uint exec_fee_factor = NativeContract.Policy.GetExecFeeFactor(snapshot);
-            long networkFee = 0;
-            int index = -1;
-            foreach (UInt160 hash in hashes)
-            {
-                index++;
-                byte[] witness_script = GetAccount(hash)?.Contract?.Script;
-                byte[] invocationScript = null;
-
-                if (tx.Witnesses != null)
-                {
-                    if (witness_script is null)
-                    {
-                        // Try to find the script in the witnesses
-                        Witness witness = tx.Witnesses[index];
-                        witness_script = witness?.VerificationScript.ToArray();
-
-                        if (witness_script is null || witness_script.Length == 0)
-                        {
-                            // Then it's a contract-based witness, so try to get the corresponding invocation script for it
-                            invocationScript = witness?.InvocationScript.ToArray();
-                        }
-                    }
-                }
-
-                if (witness_script is null || witness_script.Length == 0)
-                {
-                    var contract = NativeContract.ContractManagement.GetContract(snapshot, hash);
-                    if (contract is null)
-                        throw new ArgumentException($"The smart contract or address {hash} is not found");
-                    var md = contract.Manifest.Abi.GetMethod("verify", -1);
-                    if (md is null)
-                        throw new ArgumentException($"The smart contract {contract.Hash} haven't got verify method");
-                    if (md.ReturnType != ContractParameterType.Boolean)
-                        throw new ArgumentException("The verify method doesn't return boolean value.");
-                    if (md.Parameters.Length > 0 && invocationScript is null)
-                        throw new ArgumentException("The verify method requires parameters that need to be passed via the witness' invocation script.");
-
-                    // Empty verification and non-empty invocation scripts
-                    var invSize = invocationScript?.GetVarSize() ?? Array.Empty<byte>().GetVarSize();
-                    size += Array.Empty<byte>().GetVarSize() + invSize;
-
-                    // Check verify cost
-                    using ApplicationEngine engine = ApplicationEngine.Create(TriggerType.Verification, tx, snapshot.CreateSnapshot(), settings: ProtocolSettings, gas: maxExecutionCost);
-                    engine.LoadContract(contract, md, CallFlags.ReadOnly);
-                    if (invocationScript != null) engine.LoadScript(invocationScript, configureState: p => p.CallFlags = CallFlags.None);
-                    if (engine.Execute() == VMState.FAULT) throw new ArgumentException($"Smart contract {contract.Hash} verification fault.");
-                    if (!engine.ResultStack.Pop().GetBoolean()) throw new ArgumentException($"Smart contract {contract.Hash} returns false.");
-
-                    maxExecutionCost -= engine.GasConsumed;
-                    if (maxExecutionCost <= 0) throw new InvalidOperationException("Insufficient GAS.");
-                    networkFee += engine.GasConsumed;
-                }
-                else if (IsSignatureContract(witness_script))
-                {
-                    size += 67 + witness_script.GetVarSize();
-                    networkFee += exec_fee_factor * SignatureContractCost();
-                }
-                else if (IsMultiSigContract(witness_script, out int m, out int n))
-                {
-                    int size_inv = 66 * m;
-                    size += IO.Helper.GetVarSize(size_inv) + size_inv + witness_script.GetVarSize();
-                    networkFee += exec_fee_factor * MultiSignatureContractCost(m, n);
-                }
-                // We can support more contract types in the future.
-            }
-            networkFee += size * NativeContract.Policy.GetFeePerByte(snapshot);
-            foreach (TransactionAttribute attr in tx.Attributes)
-            {
-                networkFee += attr.CalculateNetworkFee(snapshot, tx);
-            }
-            return networkFee;
-        }
-
-        /// <summary>
         /// Signs the <see cref="IVerifiable"/> in the specified <see cref="ContractParametersContext"/> with the wallet.
         /// </summary>
         /// <param name="context">The <see cref="ContractParametersContext"/> to be used.</param>
-        /// <returns><see langword="true"/> if the signature is successfully added to the context; otherwise, <see langword="false"/>.</returns>
+        /// <returns>
+        /// <see langword="true"/> if any signature is successfully added to the context;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         public bool Sign(ContractParametersContext context)
         {
             if (context.Network != ProtocolSettings.Network) return false;
@@ -694,10 +619,13 @@ namespace Neo.Wallets
                         {
                             account = GetAccount(point);
                             if (account?.HasKey != true) continue;
+
                             KeyPair key = account.GetKey();
                             byte[] signature = context.Verifiable.Sign(key, context.Network);
-                            fSuccess |= context.AddSignature(multiSigContract, key.PublicKey, signature);
-                            if (fSuccess) m--;
+                            var ok = context.AddSignature(multiSigContract, key.PublicKey, signature);
+                            if (ok) m--;
+
+                            fSuccess |= ok;
                             if (context.Completed || m <= 0) break;
                         }
                         continue;
@@ -714,7 +642,7 @@ namespace Neo.Wallets
 
                 // Try Smart contract verification
 
-                var contract = NativeContract.ContractManagement.GetContract(context.Snapshot, scriptHash);
+                var contract = NativeContract.ContractManagement.GetContract(context.SnapshotCache, scriptHash);
 
                 if (contract != null)
                 {
@@ -730,6 +658,49 @@ namespace Neo.Wallets
             }
 
             return fSuccess;
+        }
+
+        /// <summary>
+        /// Signs the specified data with the corresponding private key of the specified public key.
+        /// </summary>
+        /// <param name="signData">The data to sign.</param>
+        /// <param name="publicKey">The public key.</param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="signData"/> or <paramref name="publicKey"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="SignException">
+        /// Thrown when no account is found for the given public key or no private key is found for the given public key.
+        /// </exception>
+        /// <returns>The signature</returns>
+        public byte[] Sign(byte[] signData, ECPoint publicKey)
+        {
+            if (signData is null) throw new ArgumentNullException(nameof(signData));
+            if (publicKey is null) throw new ArgumentNullException(nameof(publicKey));
+
+            var account = GetAccount(publicKey);
+            if (account is null)
+                throw new SignException("No such account found");
+
+            var privateKey = account.GetKey()?.PrivateKey;
+            if (privateKey is null)
+                throw new SignException("No private key found for the given public key");
+
+            return Crypto.Sign(signData, privateKey);
+        }
+
+        /// <summary>
+        /// Checks if the wallet contains the specified public key and the corresponding private key.
+        /// If the wallet has the public key but not the private key, it will return <see langword="false"/>.
+        /// </summary>
+        /// <param name="publicKey">The public key.</param>
+        /// <returns>
+        /// <see langword="true"/> if the wallet contains the specified public key and the corresponding private key;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
+        public bool ContainsKeyPair(ECPoint publicKey)
+        {
+            var account = GetAccount(publicKey);
+            return account != null && account.HasKey;
         }
 
         /// <summary>

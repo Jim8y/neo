@@ -1,10 +1,11 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// ApplicationEngine.Storage.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
@@ -76,7 +77,7 @@ namespace Neo.SmartContract
         /// <returns>The storage context for the current contract.</returns>
         protected internal StorageContext GetStorageContext()
         {
-            ContractState contract = NativeContract.ContractManagement.GetContract(Snapshot, CurrentScriptHash);
+            ContractState contract = NativeContract.ContractManagement.GetContract(SnapshotCache, CurrentScriptHash);
             return new StorageContext
             {
                 Id = contract.Id,
@@ -91,7 +92,7 @@ namespace Neo.SmartContract
         /// <returns>The storage context for the current contract.</returns>
         protected internal StorageContext GetReadOnlyContext()
         {
-            ContractState contract = NativeContract.ContractManagement.GetContract(Snapshot, CurrentScriptHash);
+            ContractState contract = NativeContract.ContractManagement.GetContract(SnapshotCache, CurrentScriptHash);
             return new StorageContext
             {
                 Id = contract.Id,
@@ -105,7 +106,7 @@ namespace Neo.SmartContract
         /// </summary>
         /// <param name="context">The storage context to convert.</param>
         /// <returns>The readonly storage context.</returns>
-        internal protected static StorageContext AsReadOnly(StorageContext context)
+        protected internal static StorageContext AsReadOnly(StorageContext context)
         {
             if (!context.IsReadOnly)
                 context = new StorageContext
@@ -125,7 +126,7 @@ namespace Neo.SmartContract
         /// <returns>The value of the entry. Or <see langword="null"/> if the entry doesn't exist.</returns>
         protected internal ReadOnlyMemory<byte>? Get(StorageContext context, byte[] key)
         {
-            return Snapshot.TryGet(new StorageKey
+            return SnapshotCache.TryGet(new StorageKey
             {
                 Id = context.Id,
                 Key = key
@@ -154,7 +155,7 @@ namespace Neo.SmartContract
                 throw new ArgumentException(null, nameof(options));
             byte[] prefix_key = StorageKey.CreateSearchPrefix(context.Id, prefix);
             SeekDirection direction = options.HasFlag(FindOptions.Backwards) ? SeekDirection.Backward : SeekDirection.Forward;
-            return new StorageIterator(Snapshot.Find(prefix_key, direction).GetEnumerator(), prefix.Length, options);
+            return new StorageIterator(SnapshotCache.Find(prefix_key, direction).GetEnumerator(), prefix.Length, options);
         }
 
         /// <summary>
@@ -166,8 +167,9 @@ namespace Neo.SmartContract
         /// <param name="value">The value of the entry.</param>
         protected internal void Put(StorageContext context, byte[] key, byte[] value)
         {
-            if (key.Length > MaxStorageKeySize || value.Length > MaxStorageValueSize || context.IsReadOnly)
-                throw new ArgumentException();
+            if (key.Length > MaxStorageKeySize) throw new ArgumentException("Key length too big", nameof(key));
+            if (value.Length > MaxStorageValueSize) throw new ArgumentException("Value length too big", nameof(value));
+            if (context.IsReadOnly) throw new ArgumentException("StorageContext is readonly", nameof(context));
 
             int newDataSize;
             StorageKey skey = new()
@@ -175,11 +177,11 @@ namespace Neo.SmartContract
                 Id = context.Id,
                 Key = key
             };
-            StorageItem item = Snapshot.GetAndChange(skey);
+            StorageItem item = SnapshotCache.GetAndChange(skey);
             if (item is null)
             {
                 newDataSize = key.Length + value.Length;
-                Snapshot.Add(skey, item = new StorageItem());
+                SnapshotCache.Add(skey, item = new StorageItem());
             }
             else
             {
@@ -192,7 +194,7 @@ namespace Neo.SmartContract
                 else
                     newDataSize = (item.Value.Length - 1) / 4 + 1 + value.Length - item.Value.Length;
             }
-            AddGas(newDataSize * StoragePrice);
+            AddFee(newDataSize * StoragePrice);
 
             item.Value = value;
         }
@@ -206,7 +208,7 @@ namespace Neo.SmartContract
         protected internal void Delete(StorageContext context, byte[] key)
         {
             if (context.IsReadOnly) throw new ArgumentException(null, nameof(context));
-            Snapshot.Delete(new StorageKey
+            SnapshotCache.Delete(new StorageKey
             {
                 Id = context.Id,
                 Key = key

@@ -1,8 +1,20 @@
-using Akka.TestKit.Xunit2;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_Syscalls.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
+using Akka.TestKit.MsTest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Cryptography.ECC;
-using Neo.IO;
+using Neo.Extensions;
 using Neo.Network.P2P.Payloads;
+using Neo.Persistence;
 using Neo.SmartContract;
 using Neo.SmartContract.Native;
 using Neo.UnitTests.Extensions;
@@ -16,6 +28,14 @@ namespace Neo.UnitTests.SmartContract
     [TestClass]
     public partial class UT_Syscalls : TestKit
     {
+        private DataCache _snapshotCache;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            _snapshotCache = TestBlockchain.GetTestSnapshotCache();
+        }
+
         [TestMethod]
         public void System_Blockchain_GetBlock()
         {
@@ -51,7 +71,7 @@ namespace Neo.UnitTests.SmartContract
                 Hashes = new[] { tx.Hash }
             };
 
-            var snapshot = TestBlockchain.GetTestSnapshot();
+            var snapshot = _snapshotCache.CloneCache();
 
             using ScriptBuilder script = new();
             script.EmitDynamicCall(NativeContract.Ledger.Hash, "getBlock", block.Hash.ToArray());
@@ -70,10 +90,11 @@ namespace Neo.UnitTests.SmartContract
             const byte Prefix_Transaction = 11;
             const byte Prefix_CurrentBlock = 12;
 
-            var height = snapshot[NativeContract.Ledger.CreateStorageKey(Prefix_CurrentBlock)].GetInteroperable<HashIndexState>();
-            height.Index = block.Index + ProtocolSettings.Default.MaxTraceableBlocks;
+            TestUtils.BlocksAdd(snapshot, block.Hash, block);
 
-            UT_SmartContractHelper.BlocksAdd(snapshot, block.Hash, block);
+            var height = snapshot[NativeContract.Ledger.CreateStorageKey(Prefix_CurrentBlock)].GetInteroperable<HashIndexState>();
+            height.Index = block.Index + TestProtocolSettings.Default.MaxTraceableBlocks;
+
             snapshot.Add(NativeContract.Ledger.CreateStorageKey(Prefix_Transaction, tx.Hash), new StorageItem(new TransactionState
             {
                 BlockIndex = block.Index,
@@ -105,7 +126,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void System_ExecutionEngine_GetScriptContainer()
         {
-            var snapshot = TestBlockchain.GetTestSnapshot();
+            var snapshot = _snapshotCache.CloneCache();
             using ScriptBuilder script = new();
             script.EmitSysCall(ApplicationEngine.System_Runtime_GetScriptContainer);
 
@@ -154,7 +175,7 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void System_Runtime_GasLeft()
         {
-            var snapshot = TestBlockchain.GetTestSnapshot();
+            var snapshot = _snapshotCache.CloneCache();
 
             using (var script = new ScriptBuilder())
             {
@@ -205,8 +226,8 @@ namespace Neo.UnitTests.SmartContract
         [TestMethod]
         public void System_Runtime_GetInvocationCounter()
         {
+            var snapshot = _snapshotCache.CloneCache();
             ContractState contractA, contractB, contractC;
-            var snapshot = TestBlockchain.GetTestSnapshot();
 
             // Create dummy contracts
 
@@ -246,7 +267,7 @@ namespace Neo.UnitTests.SmartContract
 
                 // Execute
 
-                var engine = ApplicationEngine.Create(TriggerType.Application, null, snapshot);
+                var engine = ApplicationEngine.Create(TriggerType.Application, null, snapshot, null, ProtocolSettings.Default);
                 engine.LoadScript(script.ToArray());
                 Assert.AreEqual(VMState.HALT, engine.Execute());
 

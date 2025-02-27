@@ -1,17 +1,23 @@
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_Blockchain.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Akka.TestKit;
-using Akka.TestKit.Xunit2;
+using Akka.TestKit.MsTest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Ledger;
 using Neo.Network.P2P.Payloads;
-using Neo.Persistence;
 using Neo.SmartContract;
 using Neo.SmartContract.Native;
 using Neo.VM;
-using Neo.Wallets;
-using Neo.Wallets.NEP6;
 using System;
-using System.Linq;
-using System.Numerics;
 
 namespace Neo.UnitTests.Ledger
 {
@@ -27,20 +33,26 @@ namespace Neo.UnitTests.Ledger
         {
             system = TestBlockchain.TheNeoSystem;
             senderProbe = CreateTestProbe();
-            txSample = new Transaction()
+            txSample = new Transaction
             {
-                Attributes = Array.Empty<TransactionAttribute>(),
+                Attributes = [],
                 Script = Array.Empty<byte>(),
-                Signers = new Signer[] { new Signer() { Account = UInt160.Zero } },
-                Witnesses = Array.Empty<Witness>()
+                Signers = [new Signer { Account = UInt160.Zero }],
+                Witnesses = []
             };
-            system.MemPool.TryAdd(txSample, TestBlockchain.GetTestSnapshot());
+            system.MemPool.TryAdd(txSample, TestBlockchain.GetTestSnapshotCache());
+        }
+
+        [TestCleanup]
+        public void Clean()
+        {
+            TestBlockchain.ResetStore();
         }
 
         [TestMethod]
         public void TestValidTransaction()
         {
-            var snapshot = TestBlockchain.TheNeoSystem.GetSnapshot();
+            var snapshot = TestBlockchain.TheNeoSystem.GetSnapshotCache();
             var walletA = TestUtils.GenerateTestWallet("123");
             var acc = walletA.CreateAccount();
 
@@ -53,13 +65,13 @@ namespace Neo.UnitTests.Ledger
 
             // Make transaction
 
-            var tx = CreateValidTx(snapshot, walletA, acc.ScriptHash, 0);
+            var tx = TestUtils.CreateValidTx(snapshot, walletA, acc.ScriptHash, 0);
 
             senderProbe.Send(system.Blockchain, tx);
             senderProbe.ExpectMsg<Blockchain.RelayResult>(p => p.Result == VerifyResult.Succeed);
 
             senderProbe.Send(system.Blockchain, tx);
-            senderProbe.ExpectMsg<Blockchain.RelayResult>(p => p.Result == VerifyResult.AlreadyExists);
+            senderProbe.ExpectMsg<Blockchain.RelayResult>(p => p.Result == VerifyResult.AlreadyInPool);
         }
 
         internal static StorageKey CreateStorageKey(byte prefix, byte[] key = null)
@@ -74,35 +86,11 @@ namespace Neo.UnitTests.Ledger
             };
         }
 
-        private static Transaction CreateValidTx(DataCache snapshot, NEP6Wallet wallet, UInt160 account, uint nonce)
-        {
-            var tx = wallet.MakeTransaction(snapshot, new TransferOutput[]
-                {
-                    new TransferOutput()
-                    {
-                        AssetId = NativeContract.GAS.Hash,
-                        ScriptHash = account,
-                        Value = new BigDecimal(BigInteger.One,8)
-                    }
-                },
-                account);
-
-            tx.Nonce = nonce;
-
-            var data = new ContractParametersContext(snapshot, tx, ProtocolSettings.Default.Network);
-            Assert.IsNull(data.GetSignatures(tx.Sender));
-            Assert.IsTrue(wallet.Sign(data));
-            Assert.IsTrue(data.Completed);
-            Assert.AreEqual(1, data.GetSignatures(tx.Sender).Count());
-
-            tx.Witnesses = data.GetWitnesses();
-            return tx;
-        }
 
         [TestMethod]
         public void TestMaliciousOnChainConflict()
         {
-            var snapshot = TestBlockchain.TheNeoSystem.GetSnapshot();
+            var snapshot = TestBlockchain.TheNeoSystem.GetSnapshotCache();
             var walletA = TestUtils.GenerateTestWallet("123");
             var accA = walletA.CreateAccount();
             var walletB = TestUtils.GenerateTestWallet("456");
@@ -124,9 +112,9 @@ namespace Neo.UnitTests.Ledger
             // Create transactions:
             //    tx1 conflicts with tx2 and has the same sender (thus, it's a valid conflict and must prevent tx2 from entering the chain);
             //    tx2 conflicts with tx3 and has different sender (thus, this conflict is invalid and must not prevent tx3 from entering the chain).
-            var tx1 = CreateValidTx(snapshot, walletA, accA.ScriptHash, 0);
-            var tx2 = CreateValidTx(snapshot, walletA, accA.ScriptHash, 1);
-            var tx3 = CreateValidTx(snapshot, walletB, accB.ScriptHash, 2);
+            var tx1 = TestUtils.CreateValidTx(snapshot, walletA, accA.ScriptHash, 0);
+            var tx2 = TestUtils.CreateValidTx(snapshot, walletA, accA.ScriptHash, 1);
+            var tx3 = TestUtils.CreateValidTx(snapshot, walletB, accB.ScriptHash, 2);
 
             tx1.Attributes = new TransactionAttribute[] { new Conflicts() { Hash = tx2.Hash }, new Conflicts() { Hash = tx3.Hash } };
 
@@ -135,7 +123,7 @@ namespace Neo.UnitTests.Ledger
             {
                 Header = new Header()
                 {
-                    Index = 10000,
+                    Index = 5, // allow tx1, tx2 and tx3 to fit into MaxValidUntilBlockIncrement.
                     MerkleRoot = UInt256.Zero,
                     NextConsensus = UInt160.Zero,
                     PrevHash = UInt256.Zero,
@@ -149,14 +137,27 @@ namespace Neo.UnitTests.Ledger
                 sb.EmitSysCall(ApplicationEngine.System_Contract_NativeOnPersist);
                 onPersistScript = sb.ToArray();
             }
-            TransactionState[] transactionStates;
             using (ApplicationEngine engine2 = ApplicationEngine.Create(TriggerType.OnPersist, null, snapshot, block, TestBlockchain.TheNeoSystem.Settings, 0))
             {
                 engine2.LoadScript(onPersistScript);
-                if (engine2.Execute() != VMState.HALT) throw new InvalidOperationException();
-                Blockchain.ApplicationExecuted application_executed = new(engine2);
-                transactionStates = engine2.GetState<TransactionState[]>();
-                engine2.Snapshot.Commit();
+                if (engine2.Execute() != VMState.HALT) throw engine2.FaultException;
+                engine2.SnapshotCache.Commit();
+            }
+            snapshot.Commit();
+
+            // Run PostPersist to update current block index in native Ledger.
+            // Relevant current block index is needed for conflict records checks.
+            byte[] postPersistScript;
+            using (ScriptBuilder sb = new())
+            {
+                sb.EmitSysCall(ApplicationEngine.System_Contract_NativePostPersist);
+                postPersistScript = sb.ToArray();
+            }
+            using (ApplicationEngine engine2 = ApplicationEngine.Create(TriggerType.PostPersist, null, snapshot, block, TestBlockchain.TheNeoSystem.Settings, 0))
+            {
+                engine2.LoadScript(postPersistScript);
+                if (engine2.Execute() != VMState.HALT) throw engine2.FaultException;
+                engine2.SnapshotCache.Commit();
             }
             snapshot.Commit();
 

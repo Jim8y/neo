@@ -1,10 +1,11 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// RemoteNode.ProtocolHandler.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
@@ -29,9 +30,9 @@ namespace Neo.Network.P2P
     partial class RemoteNode
     {
         private class Timer { }
-        private class PendingKnownHashesCollection : KeyedCollectionSlim<UInt256, (UInt256, DateTime)>
+        private class PendingKnownHashesCollection : KeyedCollectionSlim<UInt256, Tuple<UInt256, DateTime>>
         {
-            protected override UInt256 GetKeyForItem((UInt256, DateTime) item)
+            protected override UInt256 GetKeyForItem(Tuple<UInt256, DateTime> item)
             {
                 return item.Item1;
             }
@@ -189,7 +190,7 @@ namespace Neo.Network.P2P
         {
             // The default value of payload.Count is -1
             int count = payload.Count < 0 || payload.Count > InvPayload.MaxHashesCount ? InvPayload.MaxHashesCount : payload.Count;
-            DataCache snapshot = system.StoreView;
+            var snapshot = system.StoreView;
             UInt256 hash = payload.HashStart;
             TrimmedBlock state = NativeContract.Ledger.GetTrimmedBlock(snapshot, hash);
             if (state == null) return;
@@ -277,7 +278,7 @@ namespace Neo.Network.P2P
 
             if (notFound.Count > 0)
             {
-                foreach (InvPayload entry in InvPayload.CreateGroup(payload.Type, notFound.ToArray()))
+                foreach (InvPayload entry in InvPayload.CreateGroup(payload.Type, notFound))
                     EnqueueMessage(Message.Create(MessageCommand.NotFound, entry));
             }
         }
@@ -290,7 +291,7 @@ namespace Neo.Network.P2P
         /// <param name="payload">A GetBlockByIndexPayload including start block index and number of blocks' headers requested.</param>
         private void OnGetHeadersMessageReceived(GetBlockByIndexPayload payload)
         {
-            DataCache snapshot = system.StoreView;
+            var snapshot = system.StoreView;
             if (payload.IndexStart > NativeContract.Ledger.CurrentIndex(snapshot)) return;
             List<Header> headers = new();
             uint count = payload.Count == -1 ? HeadersPayload.MaxHeadersCount : (uint)payload.Count;
@@ -318,7 +319,7 @@ namespace Neo.Network.P2P
             switch (inventory)
             {
                 case Transaction transaction:
-                    if (!(system.ContainsTransaction(transaction.Hash) || system.ContainsConflictHash(transaction.Hash, transaction.Signers.Select(s => s.Account))))
+                    if (!(system.ContainsTransaction(transaction.Hash) != ContainsTransactionType.NotExist || system.ContainsConflictHash(transaction.Hash, transaction.Signers.Select(s => s.Account))))
                         system.TxRouter.Tell(new TransactionRouter.Preverify(transaction, true));
                     break;
                 case Block block:
@@ -340,20 +341,20 @@ namespace Neo.Network.P2P
             {
                 case InventoryType.Block:
                     {
-                        DataCache snapshot = system.StoreView;
+                        var snapshot = system.StoreView;
                         hashes = hashes.Where(p => !NativeContract.Ledger.ContainsBlock(snapshot, p)).ToArray();
                     }
                     break;
                 case InventoryType.TX:
                     {
-                        DataCache snapshot = system.StoreView;
+                        var snapshot = system.StoreView;
                         hashes = hashes.Where(p => !NativeContract.Ledger.ContainsTransaction(snapshot, p)).ToArray();
                     }
                     break;
             }
             if (hashes.Length == 0) return;
             foreach (UInt256 hash in hashes)
-                pendingKnownHashes.Add((hash, TimeProvider.Current.UtcNow));
+                pendingKnownHashes.Add(Tuple.Create(hash, TimeProvider.Current.UtcNow));
             system.TaskManager.Tell(new TaskManager.NewTasks { Payload = InvPayload.Create(payload.Type, hashes) });
         }
 

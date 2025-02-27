@@ -1,14 +1,16 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// ContractParametersContext.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
 using Neo.Cryptography.ECC;
+using Neo.Extensions;
 using Neo.IO;
 using Neo.Json;
 using Neo.Network.P2P.Payloads;
@@ -36,16 +38,16 @@ namespace Neo.SmartContract
 
             public ContextItem(Contract contract)
             {
-                this.Script = contract.Script;
-                this.Parameters = contract.ParameterList.Select(p => new ContractParameter { Type = p }).ToArray();
-                this.Signatures = new Dictionary<ECPoint, byte[]>();
+                Script = contract.Script;
+                Parameters = contract.ParameterList.Select(p => new ContractParameter { Type = p }).ToArray();
+                Signatures = new Dictionary<ECPoint, byte[]>();
             }
 
             public ContextItem(JObject json)
             {
-                this.Script = Convert.FromBase64String(json["script"].AsString());
-                this.Parameters = ((JArray)json["parameters"]).Select(p => ContractParameter.FromJson((JObject)p)).ToArray();
-                this.Signatures = ((JObject)json["signatures"]).Properties.Select(p => new
+                Script = json["script"] is JToken.Null ? null : Convert.FromBase64String(json["script"].AsString());
+                Parameters = ((JArray)json["parameters"]).Select(p => ContractParameter.FromJson((JObject)p)).ToArray();
+                Signatures = ((JObject)json["signatures"]).Properties.Select(p => new
                 {
                     PublicKey = ECPoint.Parse(p.Key, ECCurve.Secp256r1),
                     Signature = Convert.FromBase64String(p.Value.AsString())
@@ -55,7 +57,7 @@ namespace Neo.SmartContract
             public JObject ToJson()
             {
                 JObject json = new();
-                json["script"] = Convert.ToBase64String(Script);
+                json["script"] = Script == null ? null : Convert.ToBase64String(Script);
                 json["parameters"] = new JArray(Parameters.Select(p => p.ToJson()));
                 json["signatures"] = new JObject();
                 foreach (var signature in Signatures)
@@ -72,7 +74,18 @@ namespace Neo.SmartContract
         /// <summary>
         /// The snapshot used to read data.
         /// </summary>
-        public readonly DataCache Snapshot;
+        [Obsolete("Use SnapshotCache instead")]
+        public DataCache Snapshot => SnapshotCache;
+
+        /// <summary>
+        /// The snapshotcache <see cref="SnapshotCache"/> used to read data.
+        /// </summary>
+        public readonly DataCache SnapshotCache;
+
+        // /// <summary>
+        // /// The snapshot used to read data.
+        // /// </summary>
+        // public readonly DataCache Snapshot;
 
         /// <summary>
         /// The magic number of the network.
@@ -98,20 +111,20 @@ namespace Neo.SmartContract
         /// <summary>
         /// Gets the script hashes to be verified for the <see cref="Verifiable"/>.
         /// </summary>
-        public IReadOnlyList<UInt160> ScriptHashes => _ScriptHashes ??= Verifiable.GetScriptHashesForVerifying(Snapshot);
+        public IReadOnlyList<UInt160> ScriptHashes => _ScriptHashes ??= Verifiable.GetScriptHashesForVerifying(SnapshotCache);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ContractParametersContext"/> class.
         /// </summary>
-        /// <param name="snapshot">The snapshot used to read data.</param>
+        /// <param name="snapshotCache">The snapshot used to read data.</param>
         /// <param name="verifiable">The <see cref="IVerifiable"/> to add witnesses.</param>
         /// <param name="network">The magic number of the network.</param>
-        public ContractParametersContext(DataCache snapshot, IVerifiable verifiable, uint network)
+        public ContractParametersContext(DataCache snapshotCache, IVerifiable verifiable, uint network)
         {
-            this.Verifiable = verifiable;
-            this.Snapshot = snapshot;
-            this.ContextItems = new Dictionary<UInt160, ContextItem>();
-            this.Network = network;
+            Verifiable = verifiable;
+            SnapshotCache = snapshotCache;
+            ContextItems = new Dictionary<UInt160, ContextItem>();
+            Network = network;
         }
 
         /// <summary>

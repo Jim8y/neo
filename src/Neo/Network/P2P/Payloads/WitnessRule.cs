@@ -1,13 +1,15 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// WitnessRule.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.Extensions;
 using Neo.IO;
 using Neo.Json;
 using Neo.Network.P2P.Payloads.Conditions;
@@ -16,13 +18,15 @@ using Neo.VM;
 using Neo.VM.Types;
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
+using Array = Neo.VM.Types.Array;
 
 namespace Neo.Network.P2P.Payloads
 {
     /// <summary>
     /// The rule used to describe the scope of the witness.
     /// </summary>
-    public class WitnessRule : IInteroperable, ISerializable
+    public class WitnessRule : IInteroperable, ISerializable, IEquatable<WitnessRule>
     {
         /// <summary>
         /// Indicates the action to be taken if the current context meets with the rule.
@@ -36,11 +40,32 @@ namespace Neo.Network.P2P.Payloads
 
         int ISerializable.Size => sizeof(WitnessRuleAction) + Condition.Size;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool Equals(WitnessRule other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return Action == other.Action &&
+                Condition == other.Condition;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            return obj is WitnessRule wr && Equals(wr);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Action, Condition.GetHashCode());
+        }
+
         void ISerializable.Deserialize(ref MemoryReader reader)
         {
             Action = (WitnessRuleAction)reader.ReadByte();
             if (Action != WitnessRuleAction.Allow && Action != WitnessRuleAction.Deny)
-                throw new FormatException();
+                throw new FormatException($"Invalid action: {Action}.");
             Condition = WitnessCondition.DeserializeFrom(ref reader, WitnessCondition.MaxNestingDepth);
         }
 
@@ -57,10 +82,14 @@ namespace Neo.Network.P2P.Payloads
         /// <returns>The converted <see cref="WitnessRule"/>.</returns>
         public static WitnessRule FromJson(JObject json)
         {
+            WitnessRuleAction action = Enum.Parse<WitnessRuleAction>(json["action"].GetString());
+            if (action != WitnessRuleAction.Allow && action != WitnessRuleAction.Deny)
+                throw new FormatException($"Invalid action: {action}.");
+
             return new()
             {
-                Action = Enum.Parse<WitnessRuleAction>(json["action"].GetString()),
-                Condition = WitnessCondition.FromJson((JObject)json["condition"])
+                Action = action,
+                Condition = WitnessCondition.FromJson((JObject)json["condition"], WitnessCondition.MaxNestingDepth)
             };
         }
 
@@ -82,13 +111,31 @@ namespace Neo.Network.P2P.Payloads
             throw new NotSupportedException();
         }
 
-        public StackItem ToStackItem(ReferenceCounter referenceCounter)
+        public StackItem ToStackItem(IReferenceCounter referenceCounter)
         {
-            return new VM.Types.Array(referenceCounter, new StackItem[]
+            return new Array(referenceCounter, new StackItem[]
             {
                 (byte)Action,
                 Condition.ToStackItem(referenceCounter)
             });
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool operator ==(WitnessRule left, WitnessRule right)
+        {
+            if (left is null || right is null)
+                return Equals(left, right);
+
+            return left.Equals(right);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool operator !=(WitnessRule left, WitnessRule right)
+        {
+            if (left is null || right is null)
+                return !Equals(left, right);
+
+            return !left.Equals(right);
         }
     }
 }

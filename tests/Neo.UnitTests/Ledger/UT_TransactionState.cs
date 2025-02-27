@@ -1,6 +1,15 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_TransactionState.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neo.Cryptography;
 using Neo.IO;
 using Neo.Network.P2P.Payloads;
 using Neo.SmartContract;
@@ -36,41 +45,35 @@ namespace Neo.UnitTests.Ledger
             };
             originTrimmed = new TransactionState
             {
-                ConflictingSigners = new UInt160[]
-            {
-                new UInt160(Crypto.Hash160(new byte[] { 1, 2, 3 })),
-                new UInt160(Crypto.Hash160(new byte[] { 4, 5, 6 }))
-            }
+                BlockIndex = 1,
             };
         }
 
         [TestMethod]
         public void TestDeserialize()
         {
-            var data = BinarySerializer.Serialize(((IInteroperable)origin).ToStackItem(null), 1024);
+            var data = BinarySerializer.Serialize(((IInteroperable)origin).ToStackItem(null), ExecutionEngineLimits.Default);
             var reader = new MemoryReader(data);
 
             TransactionState dest = new();
             ((IInteroperable)dest).FromStackItem(BinarySerializer.Deserialize(ref reader, ExecutionEngineLimits.Default, null));
 
-            dest.BlockIndex.Should().Be(origin.BlockIndex);
-            dest.Transaction.Hash.Should().Be(origin.Transaction.Hash);
-            dest.Transaction.Should().NotBeNull();
+            Assert.AreEqual(origin.BlockIndex, dest.BlockIndex);
+            Assert.AreEqual(origin.Transaction.Hash, dest.Transaction.Hash);
+            Assert.IsNotNull(dest.Transaction);
         }
 
         [TestMethod]
         public void TestDeserializeTrimmed()
         {
-            var data = BinarySerializer.Serialize(((IInteroperable)originTrimmed).ToStackItem(null), 1024);
+            var data = BinarySerializer.Serialize(((IInteroperable)originTrimmed).ToStackItem(null), ExecutionEngineLimits.Default);
             var reader = new MemoryReader(data);
 
             TransactionState dest = new();
             ((IInteroperable)dest).FromStackItem(BinarySerializer.Deserialize(ref reader, ExecutionEngineLimits.Default, null));
 
-            dest.BlockIndex.Should().Be(0);
-            dest.Transaction.Should().Be(null);
-            dest.Transaction.Should().BeNull();
-            CollectionAssert.AreEqual(originTrimmed.ConflictingSigners, dest.ConflictingSigners);
+            Assert.AreEqual(originTrimmed.BlockIndex, dest.BlockIndex);
+            Assert.IsNull(dest.Transaction);
         }
     }
 }

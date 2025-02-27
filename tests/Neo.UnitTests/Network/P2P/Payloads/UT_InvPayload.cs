@@ -1,6 +1,16 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_InvPayload.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neo.IO;
+using Neo.Extensions;
 using Neo.Network.P2P.Payloads;
 using System;
 using System.Linq;
@@ -14,10 +24,10 @@ namespace Neo.UnitTests.Network.P2P.Payloads
         public void Size_Get()
         {
             var test = InvPayload.Create(InventoryType.TX, UInt256.Zero);
-            test.Size.Should().Be(34);
+            Assert.AreEqual(34, test.Size);
 
             test = InvPayload.Create(InventoryType.TX, UInt256.Zero, UInt256.Parse("01ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00a4"));
-            test.Size.Should().Be(66);
+            Assert.AreEqual(66, test.Size);
         }
 
         [TestMethod]
@@ -50,7 +60,7 @@ namespace Neo.UnitTests.Network.P2P.Payloads
             Assert.AreEqual(test.Type, clone.Type);
             CollectionAssert.AreEqual(test.Hashes, clone.Hashes);
 
-            Assert.ThrowsException<FormatException>(() => InvPayload.Create((InventoryType)0xff, UInt256.Zero).ToArray().AsSerializable<InvPayload>());
+            Assert.ThrowsExactly<FormatException>(() => _ = InvPayload.Create((InventoryType)0xff, UInt256.Zero).ToArray().AsSerializable<InvPayload>());
         }
     }
 }

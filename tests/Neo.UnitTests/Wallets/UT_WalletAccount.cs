@@ -1,4 +1,14 @@
-using FluentAssertions;
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// UT_WalletAccount.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
+// for more details.
+//
+// Redistribution and use in source and binary forms with or without
+// modifications are permitted.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.SmartContract;
 using Neo.Wallets;
@@ -11,7 +21,7 @@ namespace Neo.UnitTests.Wallets
         public override bool HasKey => key != null;
 
         public MyWalletAccount(UInt160 scriptHash)
-            : base(scriptHash, ProtocolSettings.Default)
+            : base(scriptHash, TestProtocolSettings.Default)
         {
         }
 
@@ -33,16 +43,16 @@ namespace Neo.UnitTests.Wallets
         public void TestGetAddress()
         {
             MyWalletAccount walletAccount = new MyWalletAccount(UInt160.Zero);
-            walletAccount.Address.Should().Be("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf");
+            Assert.AreEqual("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf", walletAccount.Address);
         }
 
         [TestMethod]
         public void TestGetWatchOnly()
         {
             MyWalletAccount walletAccount = new MyWalletAccount(UInt160.Zero);
-            walletAccount.WatchOnly.Should().BeTrue();
+            Assert.IsTrue(walletAccount.WatchOnly);
             walletAccount.Contract = new Contract();
-            walletAccount.WatchOnly.Should().BeFalse();
+            Assert.IsFalse(walletAccount.WatchOnly);
         }
     }
 }

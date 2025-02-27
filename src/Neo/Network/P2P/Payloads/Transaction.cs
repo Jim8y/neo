@@ -1,15 +1,17 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// Transaction.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
 using Neo.Cryptography;
 using Neo.Cryptography.ECC;
+using Neo.Extensions;
 using Neo.IO;
 using Neo.Json;
 using Neo.Ledger;
@@ -45,7 +47,9 @@ namespace Neo.Network.P2P.Payloads
 
         private byte version;
         private uint nonce;
+        // In the unit of datoshi, 1 datoshi = 1e-8 GAS
         private long sysfee;
+        // In the unit of datoshi, 1 datoshi = 1e-8 GAS
         private long netfee;
         private uint validUntilBlock;
         private Signer[] _signers;
@@ -227,13 +231,18 @@ namespace Neo.Network.P2P.Payloads
         public void DeserializeUnsigned(ref MemoryReader reader)
         {
             Version = reader.ReadByte();
-            if (Version > 0) throw new FormatException();
+            if (Version > 0) throw new FormatException($"Invalid version: {Version}.");
+
             Nonce = reader.ReadUInt32();
             SystemFee = reader.ReadInt64();
-            if (SystemFee < 0) throw new FormatException();
+            if (SystemFee < 0) throw new FormatException($"Invalid system fee: {SystemFee}.");
+
             NetworkFee = reader.ReadInt64();
-            if (NetworkFee < 0) throw new FormatException();
-            if (SystemFee + NetworkFee < SystemFee) throw new FormatException();
+            if (NetworkFee < 0) throw new FormatException($"Invalid network fee: {NetworkFee}.");
+
+            if (SystemFee + NetworkFee < SystemFee)
+                throw new FormatException($"Invalid fee: {SystemFee} + {NetworkFee} < {SystemFee}.");
+
             ValidUntilBlock = reader.ReadUInt32();
             Signers = DeserializeSigners(ref reader, MaxTransactionAttributes);
             Attributes = DeserializeAttributes(ref reader, MaxTransactionAttributes - Signers.Length);
@@ -371,26 +380,26 @@ namespace Neo.Network.P2P.Payloads
                     return VerifyResult.InvalidAttribute;
                 else
                     attributesFee += attribute.CalculateNetworkFee(snapshot, this);
-            long net_fee = NetworkFee - (Size * NativeContract.Policy.GetFeePerByte(snapshot)) - attributesFee;
-            if (net_fee < 0) return VerifyResult.InsufficientFunds;
+            long netFeeDatoshi = NetworkFee - (Size * NativeContract.Policy.GetFeePerByte(snapshot)) - attributesFee;
+            if (netFeeDatoshi < 0) return VerifyResult.InsufficientFunds;
 
-            if (net_fee > MaxVerificationGas) net_fee = MaxVerificationGas;
+            if (netFeeDatoshi > MaxVerificationGas) netFeeDatoshi = MaxVerificationGas;
             uint execFeeFactor = NativeContract.Policy.GetExecFeeFactor(snapshot);
             for (int i = 0; i < hashes.Length; i++)
             {
                 if (IsSignatureContract(witnesses[i].VerificationScript.Span))
-                    net_fee -= execFeeFactor * SignatureContractCost();
+                    netFeeDatoshi -= execFeeFactor * SignatureContractCost();
                 else if (IsMultiSigContract(witnesses[i].VerificationScript.Span, out int m, out int n))
                 {
-                    net_fee -= execFeeFactor * MultiSignatureContractCost(m, n);
+                    netFeeDatoshi -= execFeeFactor * MultiSignatureContractCost(m, n);
                 }
                 else
                 {
-                    if (!this.VerifyWitness(settings, snapshot, hashes[i], witnesses[i], net_fee, out long fee))
+                    if (!this.VerifyWitness(settings, snapshot, hashes[i], witnesses[i], netFeeDatoshi, out long fee))
                         return VerifyResult.Invalid;
-                    net_fee -= fee;
+                    netFeeDatoshi -= fee;
                 }
-                if (net_fee < 0) return VerifyResult.InsufficientFunds;
+                if (netFeeDatoshi < 0) return VerifyResult.InsufficientFunds;
             }
             return VerifyResult.Succeed;
         }
@@ -455,8 +464,9 @@ namespace Neo.Network.P2P.Payloads
             return VerifyResult.Succeed;
         }
 
-        public StackItem ToStackItem(ReferenceCounter referenceCounter)
+        public StackItem ToStackItem(IReferenceCounter referenceCounter)
         {
+            if (_signers == null || _signers.Length == 0) throw new ArgumentException("Sender is not specified in the transaction.");
             return new Array(referenceCounter, new StackItem[]
             {
                 // Computed properties
@@ -475,18 +485,18 @@ namespace Neo.Network.P2P.Payloads
 
         private static ReadOnlyMemory<byte>[] GetMultiSignatures(ReadOnlyMemory<byte> script)
         {
-            ReadOnlySpan<byte> span = script.Span;
-            int i = 0;
+            var span = script.Span;
+            var i = 0;
             var signatures = new List<ReadOnlyMemory<byte>>();
             while (i < script.Length)
             {
-                if (span[i++] != (byte)OpCode.PUSHDATA1) return null;
-                if (i + 65 > script.Length) return null;
-                if (span[i++] != 64) return null;
+                if (span[i++] != (byte)OpCode.PUSHDATA1) return [];
+                if (i + 65 > script.Length) return [];
+                if (span[i++] != 64) return [];
                 signatures.Add(script[i..(i + 64)]);
                 i += 64;
             }
-            return signatures.ToArray();
+            return [.. signatures];
         }
     }
 }

@@ -1,19 +1,22 @@
-// Copyright (C) 2015-2022 The Neo Project.
-// 
-// The neo is free software distributed under the MIT software license, 
-// see the accompanying file LICENSE in the main directory of the
-// project or http://www.opensource.org/licenses/mit-license.php 
+// Copyright (C) 2015-2025 The Neo Project.
+//
+// NeoSystem.cs file belongs to the neo project and is free
+// software distributed under the MIT software license, see the
+// accompanying file LICENSE in the main directory of the
+// repository or http://www.opensource.org/licenses/mit-license.php
 // for more details.
-// 
+//
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
 using Akka.Actor;
+using Neo.Extensions;
 using Neo.IO.Caching;
 using Neo.Ledger;
 using Neo.Network.P2P;
 using Neo.Network.P2P.Payloads;
 using Neo.Persistence;
+using Neo.Persistence.Providers;
 using Neo.Plugins;
 using Neo.SmartContract;
 using Neo.SmartContract.Native;
@@ -79,9 +82,9 @@ namespace Neo
         /// A readonly view of the store.
         /// </summary>
         /// <remarks>
-        /// It doesn't need to be disposed because the <see cref="ISnapshot"/> inside it is null.
+        /// It doesn't need to be disposed because the <see cref="IStoreSnapshot"/> inside it is null.
         /// </remarks>
-        public DataCache StoreView => new SnapshotCache(store);
+        public DataCache StoreView => new StoreCache(store);
 
         /// <summary>
         /// The memory pool of the <see cref="NeoSystem"/>.
@@ -96,8 +99,8 @@ namespace Neo
         internal RelayCache RelayCache { get; } = new(100);
 
         private ImmutableList<object> services = ImmutableList<object>.Empty;
-        private readonly string storage_engine;
         private readonly IStore store;
+        private readonly IStoreProvider storageProvider;
         private ChannelsConfig start_message = null;
         private int suspend = 0;
 
@@ -113,19 +116,31 @@ namespace Neo
         /// Initializes a new instance of the <see cref="NeoSystem"/> class.
         /// </summary>
         /// <param name="settings">The protocol settings of the <see cref="NeoSystem"/>.</param>
-        /// <param name="storageEngine">The storage engine used to create the <see cref="IStore"/> objects. If this parameter is <see langword="null"/>, a default in-memory storage engine will be used.</param>
-        /// <param name="storagePath">The path of the storage. If <paramref name="storageEngine"/> is the default in-memory storage engine, this parameter is ignored.</param>
-        public NeoSystem(ProtocolSettings settings, string storageEngine = null, string storagePath = null)
+        /// <param name="storageProvider">The storage engine used to create the <see cref="IStoreProvider"/> objects. If this parameter is <see langword="null"/>, a default in-memory storage engine will be used.</param>
+        /// <param name="storagePath">The path of the storage. If <paramref name="storageProvider"/> is the default in-memory storage engine, this parameter is ignored.</param>
+        public NeoSystem(ProtocolSettings settings, string storageProvider = null, string storagePath = null) :
+            this(settings, StoreFactory.GetStoreProvider(storageProvider ?? nameof(MemoryStore))
+                ?? throw new ArgumentException($"Can't find the storage provider {storageProvider}", nameof(storageProvider)), storagePath)
         {
-            this.Settings = settings;
-            this.GenesisBlock = CreateGenesisBlock(settings);
-            this.storage_engine = storageEngine ?? nameof(MemoryStore);
-            this.store = LoadStore(storagePath);
-            this.MemPool = new MemoryPool(this);
-            this.Blockchain = ActorSystem.ActorOf(Ledger.Blockchain.Props(this));
-            this.LocalNode = ActorSystem.ActorOf(Network.P2P.LocalNode.Props(this));
-            this.TaskManager = ActorSystem.ActorOf(Network.P2P.TaskManager.Props(this));
-            this.TxRouter = ActorSystem.ActorOf(TransactionRouter.Props(this));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NeoSystem"/> class.
+        /// </summary>
+        /// <param name="settings">The protocol settings of the <see cref="NeoSystem"/>.</param>
+        /// <param name="storageProvider">The <see cref="IStoreProvider"/> to use.</param>
+        /// <param name="storagePath">The path of the storage. If <paramref name="storageProvider"/> is the default in-memory storage engine, this parameter is ignored.</param>
+        public NeoSystem(ProtocolSettings settings, IStoreProvider storageProvider, string storagePath = null)
+        {
+            Settings = settings;
+            GenesisBlock = CreateGenesisBlock(settings);
+            this.storageProvider = storageProvider;
+            store = storageProvider.GetStore(storagePath);
+            MemPool = new MemoryPool(this);
+            Blockchain = ActorSystem.ActorOf(Ledger.Blockchain.Props(this));
+            LocalNode = ActorSystem.ActorOf(Network.P2P.LocalNode.Props(this));
+            TaskManager = ActorSystem.ActorOf(Network.P2P.TaskManager.Props(this));
+            TxRouter = ActorSystem.ActorOf(TransactionRouter.Props(this));
             foreach (var plugin in Plugin.Plugins)
                 plugin.OnSystemLoaded(this);
             Blockchain.Ask(new Blockchain.Initialize()).Wait();
@@ -207,7 +222,7 @@ namespace Neo
             using Inbox inbox = Inbox.Create(ActorSystem);
             inbox.Watch(actor);
             ActorSystem.Stop(actor);
-            inbox.Receive(TimeSpan.FromMinutes(5));
+            inbox.Receive(TimeSpan.FromSeconds(30));
         }
 
         /// <summary>
@@ -217,7 +232,7 @@ namespace Neo
         /// <returns>The loaded <see cref="IStore"/>.</returns>
         public IStore LoadStore(string path)
         {
-            return StoreFactory.GetStore(storage_engine, path);
+            return storageProvider.GetStore(path);
         }
 
         /// <summary>
@@ -262,10 +277,22 @@ namespace Neo
         /// <summary>
         /// Gets a snapshot of the blockchain storage.
         /// </summary>
-        /// <returns></returns>
-        public SnapshotCache GetSnapshot()
+        /// <returns>An instance of <see cref="StoreCache"/></returns>
+        [Obsolete("This method is obsolete, use GetSnapshotCache instead.")]
+        public StoreCache GetSnapshot()
         {
-            return new SnapshotCache(store.GetSnapshot());
+            return new StoreCache(store.GetSnapshot());
+        }
+
+        /// <summary>
+        /// Gets a snapshot of the blockchain storage with an execution cache.
+        /// With the snapshot, we have the latest state of the blockchain, with the cache,
+        /// we can run transactions in a sandboxed environment.
+        /// </summary>
+        /// <returns>An instance of <see cref="StoreCache"/></returns>
+        public StoreCache GetSnapshotCache()
+        {
+            return new StoreCache(store.GetSnapshot());
         }
 
         /// <summary>
@@ -273,10 +300,11 @@ namespace Neo
         /// </summary>
         /// <param name="hash">The hash of the transaction</param>
         /// <returns><see langword="true"/> if the transaction exists; otherwise, <see langword="false"/>.</returns>
-        public bool ContainsTransaction(UInt256 hash)
+        public ContainsTransactionType ContainsTransaction(UInt256 hash)
         {
-            if (MemPool.ContainsKey(hash)) return true;
-            return NativeContract.Ledger.ContainsTransaction(StoreView, hash);
+            if (MemPool.ContainsKey(hash)) return ContainsTransactionType.ExistsInPool;
+            return NativeContract.Ledger.ContainsTransaction(StoreView, hash) ?
+                ContainsTransactionType.ExistsInLedger : ContainsTransactionType.NotExist;
         }
 
         /// <summary>
@@ -287,7 +315,7 @@ namespace Neo
         /// <returns><see langword="true"/> if the transaction conflicts with on-chain transaction; otherwise, <see langword="false"/>.</returns>
         public bool ContainsConflictHash(UInt256 hash, IEnumerable<UInt160> signers)
         {
-            return NativeContract.Ledger.ContainsConflictHash(StoreView, hash, signers);
+            return NativeContract.Ledger.ContainsConflictHash(StoreView, hash, signers, Settings.MaxTraceableBlocks);
         }
     }
 }

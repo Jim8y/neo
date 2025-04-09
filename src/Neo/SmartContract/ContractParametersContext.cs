@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // ContractParametersContext.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -325,7 +325,7 @@ namespace Neo.SmartContract
                 witnesses[i] = new Witness
                 {
                     InvocationScript = sb.ToArray(),
-                    VerificationScript = item.Script ?? Array.Empty<byte>()
+                    VerificationScript = item.Script ?? ReadOnlyMemory<byte>.Empty,
                 };
             }
             return witnesses;

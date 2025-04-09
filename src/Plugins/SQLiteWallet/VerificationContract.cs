@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // VerificationContract.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -21,12 +21,12 @@ namespace Neo.Wallets.SQLite
 
         public void Deserialize(ref MemoryReader reader)
         {
-            ReadOnlySpan<byte> span = reader.ReadVarMemory().Span;
+            var span = reader.ReadVarMemory().Span;
             ParameterList = new ContractParameterType[span.Length];
-            for (int i = 0; i < span.Length; i++)
+            for (var i = 0; i < span.Length; i++)
             {
                 ParameterList[i] = (ContractParameterType)span[i];
-                if (!Enum.IsDefined(typeof(ContractParameterType), ParameterList[i]))
+                if (!Enum.IsDefined(ParameterList[i]))
                     throw new FormatException();
             }
             Script = reader.ReadVarMemory().ToArray();

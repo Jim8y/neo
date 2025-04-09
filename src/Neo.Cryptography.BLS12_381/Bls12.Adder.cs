@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // Bls12.Adder.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -56,14 +56,14 @@ namespace Neo.Cryptography.BLS12_381
             }
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            Fp12 IMillerLoopDriver<Fp12>.Square(in Fp12 f) => Adder.Square(f);
+            Fp12 IMillerLoopDriver<Fp12>.Square(in Fp12 f) => Square(f);
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            Fp12 IMillerLoopDriver<Fp12>.Conjugate(in Fp12 f) => Adder.Conjugate(f);
+            Fp12 IMillerLoopDriver<Fp12>.Conjugate(in Fp12 f) => Conjugate(f);
             Fp12 IMillerLoopDriver<Fp12>.One
             {
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                get => Adder.One;
+                get => One;
             }
 
             #endregion

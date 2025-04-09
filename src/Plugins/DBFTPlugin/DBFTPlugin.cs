@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // DBFTPlugin.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -15,6 +15,7 @@ using Neo.IEventHandlers;
 using Neo.Network.P2P;
 using Neo.Network.P2P.Payloads;
 using Neo.Plugins.DBFTPlugin.Consensus;
+using Neo.Sign;
 using Neo.Wallets;
 
 namespace Neo.Plugins.DBFTPlugin
@@ -83,11 +84,11 @@ namespace Neo.Plugins.DBFTPlugin
             Start(walletProvider.GetWallet());
         }
 
-        public void Start(Wallet wallet)
+        public void Start(ISigner signer)
         {
             if (started) return;
             started = true;
-            consensus = neoSystem.ActorSystem.ActorOf(ConsensusService.Props(neoSystem, settings, wallet));
+            consensus = neoSystem.ActorSystem.ActorOf(ConsensusService.Props(neoSystem, settings, signer));
             consensus.Tell(new ConsensusService.Start());
         }
 

@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // Peer.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -12,7 +12,6 @@
 using Akka.Actor;
 using Akka.IO;
 using Neo.Extensions;
-using Neo.IO;
 using System;
 using System.Buffers.Binary;
 using System.Collections.Concurrent;
@@ -58,6 +57,11 @@ namespace Neo.Network.P2P
         }
 
         private class Timer { }
+
+        /// <summary>
+        /// The default value for enable compression.
+        /// </summary>
+        public const bool DefaultEnableCompression = true;
 
         /// <summary>
         /// The default minimum number of desired connections.
@@ -112,6 +116,11 @@ namespace Neo.Network.P2P
         /// Indicates the minimum number of desired connections.
         /// </summary>
         public int MinDesiredConnections { get; private set; } = DefaultMinDesiredConnections;
+
+        /// <summary>
+        /// Indicates if the compression is enabled.
+        /// </summary>
+        public bool EnableCompression { get; private set; } = DefaultEnableCompression;
 
         /// <summary>
         /// Indicates the maximum number of connections.
@@ -228,7 +237,7 @@ namespace Neo.Network.P2P
         private void OnStart(ChannelsConfig config)
         {
             ListenerTcpPort = config.Tcp?.Port ?? 0;
-
+            EnableCompression = config.EnableCompression;
             MinDesiredConnections = config.MinDesiredConnections;
             MaxConnections = config.MaxConnections;
             MaxConnectionsPerAddress = config.MaxConnectionsPerAddress;
@@ -326,7 +335,7 @@ namespace Neo.Network.P2P
             // Check if the number of desired connections is already enough
             if (ConnectedPeers.Count >= MinDesiredConnections) return;
 
-            // If there aren't available UnconnectedPeers, it triggers an abstract implementation of NeedMorePeers 
+            // If there aren't available UnconnectedPeers, it triggers an abstract implementation of NeedMorePeers
             if (UnconnectedPeers.Count == 0)
                 NeedMorePeers(MinDesiredConnections - ConnectedPeers.Count);
 

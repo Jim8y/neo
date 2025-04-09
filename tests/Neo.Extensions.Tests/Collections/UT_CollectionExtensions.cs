@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // UT_CollectionExtensions.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -9,7 +9,6 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted. 
 
-using Neo.Extensions;
 using System;
 using System.Collections.Generic;
 
@@ -44,7 +43,7 @@ namespace Neo.Extensions.Tests.Collections
             // Zero chunk size
             var zero = new List<int> { 1, 2, 3 };
             var zeroChunks = zero.Chunk(0).GetEnumerator();
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => zeroChunks.MoveNext());
+            Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => _ = zeroChunks.MoveNext());
 
             // Null source
             IReadOnlyCollection<int>? nullSource = null;

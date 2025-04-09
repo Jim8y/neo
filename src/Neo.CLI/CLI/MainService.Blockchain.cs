@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // MainService.Blockchain.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -119,7 +119,7 @@ namespace Neo.CLI
             {
                 var tx = NativeContract.Ledger.GetTransactionState(NeoSystem.StoreView, hash);
 
-                if (tx is null)
+                if (tx?.Transaction is null)
                 {
                     ConsoleHelper.Error($"Transaction {hash} doesn't exist.");
                     return;
@@ -127,7 +127,7 @@ namespace Neo.CLI
 
                 var block = NativeContract.Ledger.GetHeader(NeoSystem.StoreView, tx.BlockIndex);
 
-                DateTime transactionDatetime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                var transactionDatetime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
                 transactionDatetime = transactionDatetime.AddMilliseconds(block.Timestamp).ToLocalTime();
 
                 ConsoleHelper.Info("", "-------------", "Transaction", "-------------");
@@ -211,6 +211,10 @@ namespace Neo.CLI
                             case NotValidBefore n:
                                 ConsoleHelper.Info("", "    Type: ", $"{n.Type}");
                                 ConsoleHelper.Info("", "  Height: ", $"{n.Height}");
+                                break;
+                            case NotaryAssisted n:
+                                ConsoleHelper.Info("", "    Type: ", $"{n.Type}");
+                                ConsoleHelper.Info("", "   NKeys: ", $"{n.NKeys}");
                                 break;
                             default:
                                 ConsoleHelper.Info("", "  Type: ", $"{attribute.Type}");

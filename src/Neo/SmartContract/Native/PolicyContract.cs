@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // PolicyContract.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -45,6 +45,11 @@ namespace Neo.SmartContract.Native
         public const uint DefaultAttributeFee = 0;
 
         /// <summary>
+        /// The default fee for NotaryAssisted attribute.
+        /// </summary>
+        public const uint DefaultNotaryAssistedAttributeFee = 1000_0000;
+
+        /// <summary>
         /// The maximum execution fee factor that the committee can set.
         /// </summary>
         public const uint MaxExecFeeFactor = 100;
@@ -85,6 +90,10 @@ namespace Neo.SmartContract.Native
                 engine.SnapshotCache.Add(_execFeeFactor, new StorageItem(DefaultExecFeeFactor));
                 engine.SnapshotCache.Add(_storagePrice, new StorageItem(DefaultStoragePrice));
             }
+            if (hardfork == Hardfork.HF_Echidna)
+            {
+                engine.SnapshotCache.Add(CreateStorageKey(Prefix_AttributeFee, (byte)TransactionAttributeType.NotaryAssisted), new StorageItem(DefaultNotaryAssistedAttributeFee));
+            }
             return ContractTask.CompletedTask;
         }
 
@@ -94,7 +103,7 @@ namespace Neo.SmartContract.Native
         /// <param name="snapshot">The snapshot used to read data.</param>
         /// <returns>The network fee per transaction byte.</returns>
         [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates)]
-        public long GetFeePerByte(DataCache snapshot)
+        public long GetFeePerByte(IReadOnlyStore snapshot)
         {
             return (long)(BigInteger)snapshot[_feePerByte];
         }
@@ -105,7 +114,7 @@ namespace Neo.SmartContract.Native
         /// <param name="snapshot">The snapshot used to read data.</param>
         /// <returns>The execution fee factor.</returns>
         [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates)]
-        public uint GetExecFeeFactor(DataCache snapshot)
+        public uint GetExecFeeFactor(IReadOnlyStore snapshot)
         {
             return (uint)(BigInteger)snapshot[_execFeeFactor];
         }
@@ -116,25 +125,50 @@ namespace Neo.SmartContract.Native
         /// <param name="snapshot">The snapshot used to read data.</param>
         /// <returns>The storage price.</returns>
         [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates)]
-        public uint GetStoragePrice(DataCache snapshot)
+        public uint GetStoragePrice(IReadOnlyStore snapshot)
         {
             return (uint)(BigInteger)snapshot[_storagePrice];
         }
 
         /// <summary>
-        /// Gets the fee for attribute.
+        /// Gets the fee for attribute before Echidna hardfork.
+        /// </summary>
+        /// <param name="snapshot">The snapshot used to read data.</param>
+        /// <param name="attributeType">Attribute type excluding <see cref="TransactionAttributeType.NotaryAssisted"/></param>
+        /// <returns>The fee for attribute.</returns>
+        [ContractMethod(true, Hardfork.HF_Echidna, CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates, Name = "getAttributeFee")]
+        public uint GetAttributeFeeV0(IReadOnlyStore snapshot, byte attributeType)
+        {
+            return GetAttributeFee(snapshot, attributeType, false);
+        }
+
+        /// <summary>
+        /// Gets the fee for attribute after Echidna hardfork.
         /// </summary>
         /// <param name="snapshot">The snapshot used to read data.</param>
         /// <param name="attributeType">Attribute type</param>
         /// <returns>The fee for attribute.</returns>
-        [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates)]
-        public uint GetAttributeFee(DataCache snapshot, byte attributeType)
+        [ContractMethod(Hardfork.HF_Echidna, CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates, Name = "getAttributeFee")]
+        public uint GetAttributeFeeV1(IReadOnlyStore snapshot, byte attributeType)
         {
-            if (!Enum.IsDefined(typeof(TransactionAttributeType), attributeType)) throw new InvalidOperationException();
-            StorageItem entry = snapshot.TryGet(CreateStorageKey(Prefix_AttributeFee).Add(attributeType));
-            if (entry == null) return DefaultAttributeFee;
+            return GetAttributeFee(snapshot, attributeType, true);
+        }
 
-            return (uint)(BigInteger)entry;
+        /// <summary>
+        /// Generic handler for GetAttributeFeeV0 and GetAttributeFee that
+        /// gets the fee for attribute.
+        /// </summary>
+        /// <param name="snapshot">The snapshot used to read data.</param>
+        /// <param name="attributeType">Attribute type</param>
+        /// <param name="allowNotaryAssisted">Whether to support <see cref="TransactionAttributeType.NotaryAssisted"/> attribute type.</param>
+        /// <returns>The fee for attribute.</returns>
+        private uint GetAttributeFee(IReadOnlyStore snapshot, byte attributeType, bool allowNotaryAssisted)
+        {
+            if (!Enum.IsDefined(typeof(TransactionAttributeType), attributeType) || (!allowNotaryAssisted && attributeType == (byte)(TransactionAttributeType.NotaryAssisted)))
+                throw new InvalidOperationException($"Unsupported value {attributeType} of {nameof(attributeType)}");
+
+            var key = CreateStorageKey(Prefix_AttributeFee, attributeType);
+            return snapshot.TryGet(key, out var item) ? (uint)(BigInteger)item : DefaultAttributeFee;
         }
 
         /// <summary>
@@ -144,19 +178,54 @@ namespace Neo.SmartContract.Native
         /// <param name="account">The account to be checked.</param>
         /// <returns><see langword="true"/> if the account is blocked; otherwise, <see langword="false"/>.</returns>
         [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.ReadStates)]
-        public bool IsBlocked(DataCache snapshot, UInt160 account)
+        public bool IsBlocked(IReadOnlyStore snapshot, UInt160 account)
         {
-            return snapshot.Contains(CreateStorageKey(Prefix_BlockedAccount).Add(account));
+            return snapshot.Contains(CreateStorageKey(Prefix_BlockedAccount, account));
         }
 
-        [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.States)]
-        private void SetAttributeFee(ApplicationEngine engine, byte attributeType, uint value)
+        /// <summary>
+        /// Sets the fee for attribute before Echidna hardfork.
+        /// </summary>
+        /// <param name="engine">The engine used to check committee witness and read data.</param>
+        /// <param name="attributeType">Attribute type excluding <see cref="TransactionAttributeType.NotaryAssisted"/></param>
+        /// <param name="value">Attribute fee value</param>
+        /// <returns>The fee for attribute.</returns>
+        [ContractMethod(true, Hardfork.HF_Echidna, CpuFee = 1 << 15, RequiredCallFlags = CallFlags.States, Name = "setAttributeFee")]
+        private void SetAttributeFeeV0(ApplicationEngine engine, byte attributeType, uint value)
         {
-            if (!Enum.IsDefined(typeof(TransactionAttributeType), attributeType)) throw new InvalidOperationException();
+            SetAttributeFee(engine, attributeType, value, false);
+        }
+
+        /// <summary>
+        /// Sets the fee for attribute after Echidna hardfork.
+        /// </summary>
+        /// <param name="engine">The engine used to check committee witness and read data.</param>
+        /// <param name="attributeType">Attribute type excluding <see cref="TransactionAttributeType.NotaryAssisted"/></param>
+        /// <param name="value">Attribute fee value</param>
+        /// <returns>The fee for attribute.</returns>
+        [ContractMethod(Hardfork.HF_Echidna, CpuFee = 1 << 15, RequiredCallFlags = CallFlags.States, Name = "setAttributeFee")]
+        private void SetAttributeFeeV1(ApplicationEngine engine, byte attributeType, uint value)
+        {
+            SetAttributeFee(engine, attributeType, value, true);
+        }
+
+        /// <summary>
+        /// Generic handler for SetAttributeFeeV0 and SetAttributeFeeV1 that
+        /// gets the fee for attribute.
+        /// </summary>
+        /// <param name="engine">The engine used to check committee witness and read data.</param>
+        /// <param name="attributeType">Attribute type</param>
+        /// <param name="value">Attribute fee value</param>
+        /// <param name="allowNotaryAssisted">Whether to support <see cref="TransactionAttributeType.NotaryAssisted"/> attribute type.</param>
+        /// <returns>The fee for attribute.</returns>
+        private void SetAttributeFee(ApplicationEngine engine, byte attributeType, uint value, bool allowNotaryAssisted)
+        {
+            if (!Enum.IsDefined(typeof(TransactionAttributeType), attributeType) || (!allowNotaryAssisted && attributeType == (byte)(TransactionAttributeType.NotaryAssisted)))
+                throw new InvalidOperationException($"Unsupported value {attributeType} of {nameof(attributeType)}");
             if (value > MaxAttributeFee) throw new ArgumentOutOfRangeException(nameof(value));
             if (!CheckCommittee(engine)) throw new InvalidOperationException();
 
-            engine.SnapshotCache.GetAndChange(CreateStorageKey(Prefix_AttributeFee).Add(attributeType), () => new StorageItem(DefaultAttributeFee)).Set(value);
+            engine.SnapshotCache.GetAndChange(CreateStorageKey(Prefix_AttributeFee, attributeType), () => new StorageItem(DefaultAttributeFee)).Set(value);
         }
 
         [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.States)]
@@ -194,7 +263,7 @@ namespace Neo.SmartContract.Native
         {
             if (IsNative(account)) throw new InvalidOperationException("It's impossible to block a native contract.");
 
-            var key = CreateStorageKey(Prefix_BlockedAccount).Add(account);
+            var key = CreateStorageKey(Prefix_BlockedAccount, account);
             if (snapshot.Contains(key)) return false;
 
             snapshot.Add(key, new StorageItem(Array.Empty<byte>()));
@@ -206,7 +275,7 @@ namespace Neo.SmartContract.Native
         {
             if (!CheckCommittee(engine)) throw new InvalidOperationException();
 
-            var key = CreateStorageKey(Prefix_BlockedAccount).Add(account);
+            var key = CreateStorageKey(Prefix_BlockedAccount, account);
             if (!engine.SnapshotCache.Contains(key)) return false;
 
             engine.SnapshotCache.Delete(key);

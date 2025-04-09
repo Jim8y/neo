@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // WitnessRule.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -19,6 +19,7 @@ using Neo.VM.Types;
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Array = Neo.VM.Types.Array;
 
 namespace Neo.Network.P2P.Payloads
 {
@@ -112,7 +113,7 @@ namespace Neo.Network.P2P.Payloads
 
         public StackItem ToStackItem(IReferenceCounter referenceCounter)
         {
-            return new VM.Types.Array(referenceCounter, new StackItem[]
+            return new Array(referenceCounter, new StackItem[]
             {
                 (byte)Action,
                 Condition.ToStackItem(referenceCounter)

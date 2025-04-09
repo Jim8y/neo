@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // ByteString.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -9,6 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.Extensions;
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -87,7 +88,7 @@ namespace Neo.VM.Types
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override BigInteger GetInteger()
         {
-            if (Size > Integer.MaxSize) throw new InvalidCastException($"Can not convert {nameof(ByteString)} to an integer, MaxSize of {nameof(Types.Integer)} is exceeded: {Size}/{Integer.MaxSize}.");
+            if (Size > Integer.MaxSize) throw new InvalidCastException($"Can not convert {nameof(ByteString)} to an integer, MaxSize of {nameof(Integer)} is exceeded: {Size}/{Integer.MaxSize}.");
             return new BigInteger(GetSpan());
         }
 
@@ -118,12 +119,14 @@ namespace Neo.VM.Types
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator ByteString(string value)
         {
-            return new ByteString(Utility.StrictUTF8.GetBytes(value));
+            return new ByteString(value.ToStrictUtf8Bytes());
         }
 
         public override string ToString()
         {
-            return GetSpan().TryGetString(out var str) ? $"\"{str}\"" : $"\"Base64: {Convert.ToBase64String(GetSpan())}\"";
+            return GetSpan().TryToStrictUtf8String(out var str)
+                ? $"\"{str}\""
+                : $"\"Base64: {Convert.ToBase64String(GetSpan())}\"";
         }
     }
 }

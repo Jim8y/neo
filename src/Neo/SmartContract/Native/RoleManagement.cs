@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // RoleManagement.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -52,15 +52,14 @@ namespace Neo.SmartContract.Native
                 throw new ArgumentOutOfRangeException(nameof(role));
             if (Ledger.CurrentIndex(snapshot) + 1 < index)
                 throw new ArgumentOutOfRangeException(nameof(index));
-            byte[] key = CreateStorageKey((byte)role).AddBigEndian(index).ToArray();
-            byte[] boundary = CreateStorageKey((byte)role).ToArray();
+            var key = CreateStorageKey((byte)role, index).ToArray();
+            var boundary = CreateStorageKey((byte)role).ToArray();
             return snapshot.FindRange(key, boundary, SeekDirection.Backward)
                 .Select(u => u.Value.GetInteroperable<NodeList>().ToArray())
-                .FirstOrDefault() ?? System.Array.Empty<ECPoint>();
+                .FirstOrDefault() ?? [];
         }
 
         [ContractMethod(CpuFee = 1 << 15, RequiredCallFlags = CallFlags.States | CallFlags.AllowNotify)]
-        [Obsolete]
         private void DesignateAsRole(ApplicationEngine engine, Role role, ECPoint[] nodes)
         {
             if (nodes.Length == 0 || nodes.Length > 32)
@@ -71,8 +70,8 @@ namespace Neo.SmartContract.Native
                 throw new InvalidOperationException(nameof(DesignateAsRole));
             if (engine.PersistingBlock is null)
                 throw new InvalidOperationException(nameof(DesignateAsRole));
-            uint index = engine.PersistingBlock.Index + 1;
-            var key = CreateStorageKey((byte)role).AddBigEndian(index);
+            var index = engine.PersistingBlock.Index + 1;
+            var key = CreateStorageKey((byte)role, index);
             if (engine.SnapshotCache.Contains(key))
                 throw new InvalidOperationException();
             NodeList list = new();
@@ -81,7 +80,7 @@ namespace Neo.SmartContract.Native
             engine.SnapshotCache.Add(key, new StorageItem(list));
             if (engine.IsHardforkEnabled(Hardfork.HF_Echidna))
             {
-                var oldNodes = new VM.Types.Array(engine.ReferenceCounter, GetDesignatedByRole(engine.Snapshot, role, index - 1).Select(u => (ByteString)u.EncodePoint(true)));
+                var oldNodes = new VM.Types.Array(engine.ReferenceCounter, GetDesignatedByRole(engine.SnapshotCache, role, index - 1).Select(u => (ByteString)u.EncodePoint(true)));
                 var newNodes = new VM.Types.Array(engine.ReferenceCounter, nodes.Select(u => (ByteString)u.EncodePoint(true)));
 
                 engine.SendNotification(Hash, "Designation", new VM.Types.Array(engine.ReferenceCounter, [(int)role, engine.PersistingBlock.Index, oldNodes, newNodes]));

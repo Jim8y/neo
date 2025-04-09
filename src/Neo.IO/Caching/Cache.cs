@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // Cache.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -17,21 +17,16 @@ using System.Threading;
 
 namespace Neo.IO.Caching
 {
-    public abstract class Cache<TKey, TValue>
-        (int max_capacity, IEqualityComparer<TKey>? comparer = null) : ICollection<TValue>, IDisposable
-        where TKey : notnull
+    public abstract class Cache<TKey, TValue>(int maxCapacity, IEqualityComparer<TKey>? comparer = null)
+        : ICollection<TValue>, IDisposable where TKey : notnull
     {
-        protected class CacheItem
-            (TKey key, TValue value)
+        protected record class CacheItem(TKey Key, TValue Value)
         {
-            public readonly TKey Key = key;
-            public readonly TValue Value = value;
             public readonly DateTime Time = DateTime.UtcNow;
         }
 
         protected readonly ReaderWriterLockSlim RwSyncRootLock = new(LockRecursionPolicy.SupportsRecursion);
-        protected readonly Dictionary<TKey, CacheItem> InnerDictionary = new Dictionary<TKey, CacheItem>(comparer);
-        private readonly int _max_capacity = max_capacity;
+        protected readonly Dictionary<TKey, CacheItem> InnerDictionary = new(comparer);
 
         public TValue this[TKey key]
         {
@@ -40,9 +35,9 @@ namespace Neo.IO.Caching
                 RwSyncRootLock.EnterReadLock();
                 try
                 {
-                    if (!InnerDictionary.TryGetValue(key, out CacheItem? item)) throw new KeyNotFoundException();
-                    OnAccess(item);
-                    return item.Value;
+                    if (!InnerDictionary.TryGetValue(key, out var cached)) throw new KeyNotFoundException();
+                    OnAccess(cached);
+                    return cached.Value;
                 }
                 finally
                 {
@@ -85,21 +80,21 @@ namespace Neo.IO.Caching
 
         private void AddInternal(TKey key, TValue item)
         {
-            if (InnerDictionary.TryGetValue(key, out CacheItem? cacheItem))
+            if (InnerDictionary.TryGetValue(key, out var cached))
             {
-                OnAccess(cacheItem);
+                OnAccess(cached);
             }
             else
             {
-                if (InnerDictionary.Count >= _max_capacity)
+                if (InnerDictionary.Count >= maxCapacity)
                 {
-                    //TODO: Perform a performance test on the PLINQ query to determine which algorithm is better here (parallel or not)
-                    foreach (var item_del in InnerDictionary.Values.AsParallel().OrderBy(p => p.Time).Take(InnerDictionary.Count - _max_capacity + 1))
+                    var removedCount = InnerDictionary.Count - maxCapacity + 1;
+                    foreach (var toDelete in InnerDictionary.Values.OrderBy(p => p.Time).Take(removedCount))
                     {
-                        RemoveInternal(item_del);
+                        RemoveInternal(toDelete);
                     }
                 }
-                InnerDictionary.Add(key, new CacheItem(key, item));
+                InnerDictionary.Add(key, new(key, item));
             }
         }
 
@@ -125,9 +120,9 @@ namespace Neo.IO.Caching
             RwSyncRootLock.EnterWriteLock();
             try
             {
-                foreach (var item_del in InnerDictionary.Values.ToArray())
+                foreach (var toDelete in InnerDictionary.Values.ToArray())
                 {
-                    RemoveInternal(item_del);
+                    RemoveInternal(toDelete);
                 }
             }
             finally
@@ -141,8 +136,8 @@ namespace Neo.IO.Caching
             RwSyncRootLock.EnterReadLock();
             try
             {
-                if (!InnerDictionary.TryGetValue(key, out CacheItem? cacheItem)) return false;
-                OnAccess(cacheItem);
+                if (!InnerDictionary.TryGetValue(key, out var cached)) return false;
+                OnAccess(cached);
                 return true;
             }
             finally
@@ -156,14 +151,24 @@ namespace Neo.IO.Caching
             return Contains(GetKeyForItem(item));
         }
 
-        public void CopyTo(TValue[] array, int arrayIndex)
+        public void CopyTo(TValue[] array, int startIndex)
         {
-            if (array == null) throw new ArgumentNullException();
-            if (arrayIndex < 0) throw new ArgumentOutOfRangeException();
-            if (arrayIndex + InnerDictionary.Count > array.Length) throw new ArgumentException();
-            foreach (var item in this)
+            if (array == null) throw new ArgumentNullException(nameof(array));
+            if (startIndex < 0) throw new ArgumentOutOfRangeException(nameof(startIndex));
+
+            RwSyncRootLock.EnterReadLock();
+            try
             {
-                array[arrayIndex++] = item;
+                if (startIndex + InnerDictionary.Count > array.Length)
+                    throw new ArgumentOutOfRangeException(nameof(startIndex));
+                foreach (var item in InnerDictionary.Values)
+                {
+                    array[startIndex++] = item.Value;
+                }
+            }
+            finally
+            {
+                RwSyncRootLock.ExitReadLock();
             }
         }
 
@@ -201,8 +206,8 @@ namespace Neo.IO.Caching
             RwSyncRootLock.EnterWriteLock();
             try
             {
-                if (!InnerDictionary.TryGetValue(key, out CacheItem? cacheItem)) return false;
-                RemoveInternal(cacheItem);
+                if (!InnerDictionary.TryGetValue(key, out var cached)) return false;
+                RemoveInternal(cached);
                 return true;
             }
             finally
@@ -232,10 +237,10 @@ namespace Neo.IO.Caching
             RwSyncRootLock.EnterReadLock();
             try
             {
-                if (InnerDictionary.TryGetValue(key, out CacheItem? cacheItem))
+                if (InnerDictionary.TryGetValue(key, out var cached))
                 {
-                    OnAccess(cacheItem);
-                    item = cacheItem.Value;
+                    OnAccess(cached);
+                    item = cached.Value;
                     return true;
                 }
             }

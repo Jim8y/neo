@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // UT_Unsafe.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -21,7 +21,7 @@ namespace Neo.Test
         [TestMethod]
         public void TestNotZero()
         {
-            Assert.IsFalse(new ReadOnlySpan<byte>(System.Array.Empty<byte>()).NotZero());
+            Assert.IsFalse(new ReadOnlySpan<byte>(Array.Empty<byte>()).NotZero());
             Assert.IsFalse(new ReadOnlySpan<byte>(new byte[4]).NotZero());
             Assert.IsFalse(new ReadOnlySpan<byte>(new byte[7]).NotZero());
             Assert.IsFalse(new ReadOnlySpan<byte>(new byte[8]).NotZero());

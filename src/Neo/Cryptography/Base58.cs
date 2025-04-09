@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // Base58.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -10,7 +10,6 @@
 // modifications are permitted.
 
 using System;
-using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -43,7 +42,8 @@ namespace Neo.Cryptography
         #pragma warning restore format
 
         /// <summary>
-        /// Converts the specified <see cref="string"/>, which encodes binary data as base-58 digits, to an equivalent byte array. The encoded <see cref="string"/> contains the checksum of the binary data.
+        /// Converts the specified <see cref="string"/>, which encodes binary data as base-58 digits, to an equivalent byte array.
+        /// The encoded <see cref="string"/> contains the checksum of the binary data.
         /// </summary>
         /// <param name="input">The <see cref="string"/> to convert.</param>
         /// <returns>A byte array that is equivalent to <paramref name="input"/>.</returns>

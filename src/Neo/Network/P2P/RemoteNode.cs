@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // RemoteNode.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -13,13 +13,10 @@ using Akka.Actor;
 using Akka.Configuration;
 using Akka.IO;
 using Neo.Cryptography;
-using Neo.Extensions;
 using Neo.IO;
 using Neo.IO.Actors;
 using Neo.IO.Caching;
-using Neo.Network.P2P.Capabilities;
 using Neo.Network.P2P.Payloads;
-using Neo.SmartContract.Native;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -84,8 +81,8 @@ namespace Neo.Network.P2P
         {
             this.system = system;
             this.localNode = localNode;
-            knownHashes = new HashSetCache<UInt256>(system.MemPool.Capacity * 2 / 5);
-            sentHashes = new HashSetCache<UInt256>(system.MemPool.Capacity * 2 / 5);
+            _knownHashes = new HashSetCache<UInt256>(system.MemPool.Capacity * 2 / 5);
+            _sentHashes = new HashSetCache<UInt256>(system.MemPool.Capacity * 2 / 5);
             localNode.RemoteNodes.TryAdd(Self, this);
         }
 
@@ -204,14 +201,7 @@ namespace Neo.Network.P2P
 
         private void OnStartProtocol()
         {
-            var capabilities = new List<NodeCapability>
-            {
-                new FullNodeCapability(NativeContract.Ledger.CurrentIndex(system.StoreView))
-            };
-
-            if (localNode.ListenerTcpPort > 0) capabilities.Add(new ServerCapability(NodeCapabilityType.TcpServer, (ushort)localNode.ListenerTcpPort));
-
-            SendMessage(Message.Create(MessageCommand.Version, VersionPayload.Create(system.Settings.Network, LocalNode.Nonce, LocalNode.UserAgent, capabilities.ToArray())));
+            SendMessage(Message.Create(MessageCommand.Version, VersionPayload.Create(system.Settings.Network, LocalNode.Nonce, LocalNode.UserAgent, localNode.GetNodeCapabilities())));
         }
 
         protected override void PostStop()
@@ -229,7 +219,9 @@ namespace Neo.Network.P2P
         private void SendMessage(Message message)
         {
             ack = false;
-            SendData(ByteString.FromBytes(message.ToArray()));
+            // Here it is possible that we dont have the Version message yet,
+            // so we need to send the message uncompressed
+            SendData(ByteString.FromBytes(message.ToArray(Version?.AllowCompression ?? false)));
             sentCommands[(byte)message.Command] = true;
         }
 

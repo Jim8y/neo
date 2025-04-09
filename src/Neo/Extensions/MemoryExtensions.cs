@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // MemoryExtensions.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -68,7 +68,7 @@ namespace Neo.Extensions
         /// <returns>The size of the array.</returns>
         public static int GetVarSize(this ReadOnlyMemory<byte> value)
         {
-            return UnsafeData.GetVarSize(value.Length) + value.Length;
+            return value.Length.GetVarSize() + value.Length;
         }
     }
 }

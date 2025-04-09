@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // InstructionBuilder.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -9,6 +9,7 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using Neo.Extensions;
 using System.Buffers.Binary;
 using System.Numerics;
 
@@ -96,7 +97,7 @@ namespace Neo.VM.Benchmark
 
         internal Instruction Push(string s)
         {
-            return Push(Utility.StrictUTF8.GetBytes(s));
+            return Push(s.ToStrictUtf8Bytes());
         }
 
         internal Instruction Push(byte[] data)

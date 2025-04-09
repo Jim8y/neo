@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // CalledByContractCondition.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -18,6 +18,7 @@ using Neo.VM.Types;
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Array = Neo.VM.Types.Array;
 
 namespace Neo.Network.P2P.Payloads.Conditions
 {
@@ -83,7 +84,7 @@ namespace Neo.Network.P2P.Payloads.Conditions
 
         public override StackItem ToStackItem(IReferenceCounter referenceCounter)
         {
-            var result = (VM.Types.Array)base.ToStackItem(referenceCounter);
+            var result = (Array)base.ToStackItem(referenceCounter);
             result.Add(Hash.ToArray());
             return result;
         }

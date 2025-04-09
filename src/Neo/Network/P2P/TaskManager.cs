@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // TaskManager.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -345,7 +345,7 @@ namespace Neo.Network.P2P
         {
             if (session.HasTooManyTasks) return;
 
-            DataCache snapshot = system.StoreView;
+            var snapshot = system.StoreView;
 
             // If there are pending tasks of InventoryType.Block we should process them
             if (session.AvailableTasks.Count > 0)
@@ -404,7 +404,7 @@ namespace Neo.Network.P2P
 
     internal class TaskManagerMailbox : PriorityMailbox
     {
-        public TaskManagerMailbox(Akka.Actor.Settings settings, Config config)
+        public TaskManagerMailbox(Settings settings, Config config)
             : base(settings, config)
         {
         }

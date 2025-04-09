@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // Benchmarks.StorageKey.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -25,19 +25,6 @@ namespace Neo.SmartContract.Benchmark
         public void KeyBuilder_AddInt()
         {
             var key = new KeyBuilder(1, 0)
-                .AddBigEndian(1)
-                .AddBigEndian(2)
-                .AddBigEndian(3);
-
-            var bytes = key.ToArray();
-            if (bytes.Length != prefixSize + 3 * sizeof(int))
-                throw new InvalidOperationException();
-        }
-
-        [Benchmark]
-        public void KeyBuilder_AddIntWithoutPrealloc()
-        {
-            var key = new KeyBuilder(1, 0, 0)
                 .AddBigEndian(1)
                 .AddBigEndian(2)
                 .AddBigEndian(3);

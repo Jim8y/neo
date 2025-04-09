@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // UT_ReferenceCounter.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -136,7 +136,7 @@ namespace Neo.Test
             sb.Emit(OpCode.DROP); //{}|{B[]}:1
             sb.Emit(OpCode.RET); //{}:0
 
-            using ExecutionEngine engine = new(new ReferenceCounterV2());
+            using ExecutionEngine engine = new();
             Debugger debugger = new(engine);
             engine.LoadScript(sb.ToArray());
             Assert.AreEqual(VMState.BREAK, debugger.StepInto());
@@ -158,9 +158,9 @@ namespace Neo.Test
             Assert.AreEqual(VMState.BREAK, debugger.StepInto());
             Assert.AreEqual(3, engine.ReferenceCounter.Count);
             Assert.AreEqual(VMState.BREAK, debugger.StepInto());
-            Assert.AreEqual(1, engine.ReferenceCounter.Count);
+            Assert.AreEqual(2, engine.ReferenceCounter.Count);
             Assert.AreEqual(VMState.HALT, debugger.Execute());
-            Assert.AreEqual(0, engine.ReferenceCounter.Count);
+            Assert.AreEqual(1, engine.ReferenceCounter.Count);
         }
 
         [TestMethod]
@@ -234,21 +234,20 @@ namespace Neo.Test
         {
             using ScriptBuilder sb = new();
             sb.Emit(OpCode.RET);
-            using ExecutionEngine engine = new(new ReferenceCounterV2());
+            using ExecutionEngine engine = new();
             engine.LoadScript(sb.ToArray());
             Assert.AreEqual(0, engine.ReferenceCounter.Count);
-            Array array = new(new StackItem[] { 1, 2, 3, 4 });
-            engine.CurrentContext.EvaluationStack.Push(array);
-            Assert.AreEqual(array.Count + 1, engine.ReferenceCounter.Count);
+            Array array = new(engine.ReferenceCounter, new StackItem[] { 1, 2, 3, 4 });
+            Assert.AreEqual(array.Count, engine.ReferenceCounter.Count);
             Assert.AreEqual(VMState.HALT, engine.Execute());
-            Assert.AreEqual(array.Count + 1, engine.ReferenceCounter.Count);
+            Assert.AreEqual(array.Count, engine.ReferenceCounter.Count);
         }
 
         [TestMethod]
         public void TestInvalidReferenceStackItem()
         {
-
-            var arr = new Array();
+            var reference = new ReferenceCounter();
+            var arr = new Array(reference);
             var arr2 = new Array();
 
             for (var i = 0; i < 10; i++)
@@ -256,13 +255,7 @@ namespace Neo.Test
                 arr2.Add(i);
             }
 
-            arr.Add(arr2);
-
-            var engine = new ExecutionEngine(new ReferenceCounterV2());
-            engine.LoadScript(new Script((byte[])[(byte)OpCode.NOP]));
-
-            engine.CurrentContext.EvaluationStack.Push(arr);
-            Assert.AreEqual(12, engine.ReferenceCounter.Count);
+            Assert.ThrowsExactly<InvalidOperationException>(() => arr.Add(arr2));
         }
     }
 }

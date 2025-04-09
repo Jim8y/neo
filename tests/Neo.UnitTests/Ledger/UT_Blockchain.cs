@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // UT_Blockchain.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -10,19 +10,14 @@
 // modifications are permitted.
 
 using Akka.TestKit;
-using Akka.TestKit.Xunit2;
+using Akka.TestKit.MsTest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Ledger;
 using Neo.Network.P2P.Payloads;
-using Neo.Persistence;
 using Neo.SmartContract;
 using Neo.SmartContract.Native;
 using Neo.VM;
-using Neo.Wallets;
-using Neo.Wallets.NEP6;
 using System;
-using System.Linq;
-using System.Numerics;
 
 namespace Neo.UnitTests.Ledger
 {
@@ -79,6 +74,29 @@ namespace Neo.UnitTests.Ledger
             senderProbe.ExpectMsg<Blockchain.RelayResult>(p => p.Result == VerifyResult.AlreadyInPool);
         }
 
+        [TestMethod]
+        public void TestInvalidTransaction()
+        {
+            var snapshot = TestBlockchain.TheNeoSystem.GetSnapshotCache();
+            var walletA = TestUtils.GenerateTestWallet("123");
+            var acc = walletA.CreateAccount();
+
+            // Fake balance
+
+            var key = new KeyBuilder(NativeContract.GAS.Id, 20).Add(acc.ScriptHash);
+            var entry = snapshot.GetAndChange(key, () => new StorageItem(new AccountState()));
+            entry.GetInteroperable<AccountState>().Balance = 100_000_000 * NativeContract.GAS.Factor;
+            snapshot.Commit();
+
+            // Make transaction
+
+            var tx = TestUtils.CreateValidTx(snapshot, walletA, acc.ScriptHash, 0);
+            tx.Signers = null;
+
+            senderProbe.Send(system.Blockchain, tx);
+            senderProbe.ExpectMsg<Blockchain.RelayResult>(p => p.Result == VerifyResult.Invalid);
+        }
+
         internal static StorageKey CreateStorageKey(byte prefix, byte[] key = null)
         {
             byte[] buffer = GC.AllocateUninitializedArray<byte>(sizeof(byte) + (key?.Length ?? 0));
@@ -121,7 +139,7 @@ namespace Neo.UnitTests.Ledger
             var tx2 = TestUtils.CreateValidTx(snapshot, walletA, accA.ScriptHash, 1);
             var tx3 = TestUtils.CreateValidTx(snapshot, walletB, accB.ScriptHash, 2);
 
-            tx1.Attributes = new TransactionAttribute[] { new Conflicts() { Hash = tx2.Hash }, new Conflicts() { Hash = tx3.Hash } };
+            tx1.Attributes = [new Conflicts() { Hash = tx2.Hash }, new Conflicts() { Hash = tx3.Hash }];
 
             // Persist tx1.
             var block = new Block
@@ -132,9 +150,9 @@ namespace Neo.UnitTests.Ledger
                     MerkleRoot = UInt256.Zero,
                     NextConsensus = UInt160.Zero,
                     PrevHash = UInt256.Zero,
-                    Witness = new Witness() { InvocationScript = Array.Empty<byte>(), VerificationScript = Array.Empty<byte>() }
+                    Witness = Witness.Empty,
                 },
-                Transactions = new Transaction[] { tx1 },
+                Transactions = [tx1],
             };
             byte[] onPersistScript;
             using (ScriptBuilder sb = new())

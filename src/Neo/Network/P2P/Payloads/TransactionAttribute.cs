@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // TransactionAttribute.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -96,6 +96,6 @@ namespace Neo.Network.P2P.Payloads
         /// <returns><see langword="true"/> if the verification passes; otherwise, <see langword="false"/>.</returns>
         public virtual bool Verify(DataCache snapshot, Transaction tx) => true;
 
-        public virtual long CalculateNetworkFee(DataCache snapshot, Transaction tx) => NativeContract.Policy.GetAttributeFee(snapshot, (byte)Type);
+        public virtual long CalculateNetworkFee(DataCache snapshot, Transaction tx) => NativeContract.Policy.GetAttributeFeeV1(snapshot, (byte)Type);
     }
 }

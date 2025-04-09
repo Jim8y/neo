@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // Store.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -13,6 +13,7 @@ using Neo.IO.Storage.LevelDB;
 using Neo.Persistence;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Neo.Plugins.Storage
 {
@@ -46,8 +47,8 @@ namespace Neo.Plugins.Storage
             _options.Dispose();
         }
 
-        public ISnapshot GetSnapshot() =>
-            new Snapshot(_db);
+        public IStoreSnapshot GetSnapshot() =>
+            new Snapshot(this, _db);
 
         public void Put(byte[] key, byte[] value) =>
             _db.Put(WriteOptions.Default, key, value);
@@ -58,17 +59,18 @@ namespace Neo.Plugins.Storage
         public bool Contains(byte[] key) =>
             _db.Contains(ReadOptions.Default, key);
 
-        public byte[] TryGet(byte[] key) =>
+        public byte[]? TryGet(byte[] key) =>
             _db.Get(ReadOptions.Default, key);
 
-        public bool TryGet(byte[] key, out byte[] value)
+        public bool TryGet(byte[] key, [NotNullWhen(true)] out byte[]? value)
         {
             value = _db.Get(ReadOptions.Default, key);
             return value != null;
         }
 
-        public IEnumerable<(byte[], byte[])> Seek(byte[] prefix, SeekDirection direction = SeekDirection.Forward) =>
-            _db.Seek(ReadOptions.Default, prefix, direction);
+        /// <inheritdoc/>
+        public IEnumerable<(byte[], byte[])> Find(byte[]? keyOrPrefix, SeekDirection direction = SeekDirection.Forward) =>
+            _db.Seek(ReadOptions.Default, keyOrPrefix, direction);
 
         public IEnumerator<KeyValuePair<byte[], byte[]>> GetEnumerator() =>
             _db.GetEnumerator();

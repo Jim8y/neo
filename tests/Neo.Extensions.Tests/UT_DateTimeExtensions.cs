@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // UT_DateTimeExtensions.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -9,7 +9,6 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
-using FluentAssertions;
 using System;
 
 namespace Neo.Extensions.Tests
@@ -26,7 +25,7 @@ namespace Neo.Extensions.Tests
             var expected = (uint)(time.ToUniversalTime() - unixEpoch).TotalSeconds;
             var actual = time.ToTimestamp();
 
-            actual.Should().Be(expected);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -36,7 +35,7 @@ namespace Neo.Extensions.Tests
             var expected = (ulong)(time.ToUniversalTime() - unixEpoch).TotalMilliseconds;
             var actual = time.ToTimestampMS();
 
-            actual.Should().Be(expected);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

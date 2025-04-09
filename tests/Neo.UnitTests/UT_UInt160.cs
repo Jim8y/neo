@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // UT_UInt160.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -9,11 +9,12 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
-using FluentAssertions;
+#pragma warning disable CS1718 // Comparison made to same variable
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Neo.Extensions;
+using Neo.IO;
 using System;
-using System.Security.Cryptography;
 
 namespace Neo.UnitTests.IO
 {
@@ -23,7 +24,7 @@ namespace Neo.UnitTests.IO
         [TestMethod]
         public void TestFail()
         {
-            Assert.ThrowsException<FormatException>(() => new UInt160(new byte[UInt160.Length + 1]));
+            Assert.ThrowsExactly<FormatException>(() => _ = new UInt160(new byte[UInt160.Length + 1]));
         }
 
         [TestMethod]
@@ -45,7 +46,7 @@ namespace Neo.UnitTests.IO
         {
             UInt160 uInt160 = "0xff00000000000000000000000000000000000001";
             Assert.IsNotNull(uInt160);
-            Assert.IsTrue(uInt160.ToString() == "0xff00000000000000000000000000000000000001");
+            Assert.AreEqual("0xff00000000000000000000000000000000000001", uInt160.ToString());
         }
 
         [TestMethod]
@@ -78,11 +79,11 @@ namespace Neo.UnitTests.IO
         public void TestParse()
         {
             Action action = () => UInt160.Parse(null);
-            action.Should().Throw<FormatException>();
+            Assert.ThrowsExactly<FormatException>(action);
             UInt160 result = UInt160.Parse("0x0000000000000000000000000000000000000000");
             Assert.AreEqual(UInt160.Zero, result);
             Action action1 = () => UInt160.Parse("000000000000000000000000000000000000000");
-            action1.Should().Throw<FormatException>();
+            Assert.ThrowsExactly<FormatException>(action1);
             UInt160 result1 = UInt160.Parse("0000000000000000000000000000000000000000");
             Assert.AreEqual(UInt160.Zero, result1);
         }
@@ -90,42 +91,42 @@ namespace Neo.UnitTests.IO
         [TestMethod]
         public void TestTryParse()
         {
-            Assert.AreEqual(false, UInt160.TryParse(null, out _));
-            Assert.AreEqual(true, UInt160.TryParse("0x0000000000000000000000000000000000000000", out var temp));
+            Assert.IsFalse(UInt160.TryParse(null, out _));
+            Assert.IsTrue(UInt160.TryParse("0x0000000000000000000000000000000000000000", out var temp));
             Assert.AreEqual("0x0000000000000000000000000000000000000000", temp.ToString());
             Assert.AreEqual(UInt160.Zero, temp);
-            Assert.AreEqual(true, UInt160.TryParse("0x1230000000000000000000000000000000000000", out temp));
+            Assert.IsTrue(UInt160.TryParse("0x1230000000000000000000000000000000000000", out temp));
             Assert.AreEqual("0x1230000000000000000000000000000000000000", temp.ToString());
-            Assert.AreEqual(false, UInt160.TryParse("000000000000000000000000000000000000000", out _));
-            Assert.AreEqual(false, UInt160.TryParse("0xKK00000000000000000000000000000000000000", out _));
-            Assert.AreEqual(false, UInt160.TryParse(" 1 2 3 45 000000000000000000000000000000", out _));
+            Assert.IsFalse(UInt160.TryParse("000000000000000000000000000000000000000", out _));
+            Assert.IsFalse(UInt160.TryParse("0xKK00000000000000000000000000000000000000", out _));
+            Assert.IsFalse(UInt160.TryParse(" 1 2 3 45 000000000000000000000000000000", out _));
         }
 
         [TestMethod]
         public void TestOperatorLarger()
         {
-            Assert.AreEqual(false, UInt160.Zero > UInt160.Zero);
+            Assert.IsFalse(UInt160.Zero > UInt160.Zero);
             Assert.IsFalse(UInt160.Zero > "0x0000000000000000000000000000000000000000");
         }
 
         [TestMethod]
         public void TestOperatorLargerAndEqual()
         {
-            Assert.AreEqual(true, UInt160.Zero >= UInt160.Zero);
+            Assert.IsTrue(UInt160.Zero >= UInt160.Zero);
             Assert.IsTrue(UInt160.Zero >= "0x0000000000000000000000000000000000000000");
         }
 
         [TestMethod]
         public void TestOperatorSmaller()
         {
-            Assert.AreEqual(false, UInt160.Zero < UInt160.Zero);
+            Assert.IsFalse(UInt160.Zero < UInt160.Zero);
             Assert.IsFalse(UInt160.Zero < "0x0000000000000000000000000000000000000000");
         }
 
         [TestMethod]
         public void TestOperatorSmallerAndEqual()
         {
-            Assert.AreEqual(true, UInt160.Zero <= UInt160.Zero);
+            Assert.IsTrue(UInt160.Zero <= UInt160.Zero);
             Assert.IsTrue(UInt160.Zero >= "0x0000000000000000000000000000000000000000");
         }
 
@@ -140,6 +141,16 @@ namespace Neo.UnitTests.IO
             var value = new UInt160(data);
             var span = value.GetSpan();
             Assert.IsTrue(span.SequenceEqual(value.ToArray()));
+
+            data = new byte[UInt160.Length];
+            value.Serialize(data.AsSpan());
+            CollectionAssert.AreEqual(data, value.ToArray());
+
+            data = new byte[UInt160.Length];
+            ((ISerializableSpan)value).Serialize(data.AsSpan());
+            CollectionAssert.AreEqual(data, value.ToArray());
         }
     }
 }
+
+#pragma warning restore CS1718 // Comparison made to same variable

@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // OpCode.LDSFLD.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -8,42 +8,26 @@
 //
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
-
+using System;
 namespace Neo.VM.Benchmark.OpCode
 {
     public class OpCode_LDSFLD : OpCodeBase
     {
-
-        protected override VM.OpCode Opcode => VM.OpCode.LDLOC0;
-
+        private const byte SFLdIndex = 8; // Use index > 6
+        protected override VM.OpCode Opcode => VM.OpCode.LDSFLD;
 
         protected override byte[] CreateOneOpCodeScript()
         {
-            var builder = new InstructionBuilder();
-            builder.AddInstruction(new Instruction { _opCode = VM.OpCode.INITSLOT, _operand = [1, 0] });
-            builder.Push(ItemCount);
-            builder.AddInstruction(VM.OpCode.STLOC0);
-
-            var loopBegin = new JumpTarget { _instruction = builder.AddInstruction(VM.OpCode.NOP) };
-            builder.AddInstruction(VM.OpCode.LDLOC0);
-            builder.AddInstruction(VM.OpCode.DROP);
-            builder.Jump(VM.OpCode.JMP, loopBegin);
-            return builder.ToArray();
+            var b = new InstructionBuilder();
+            b.AddInstruction(new Instruction { _opCode = VM.OpCode.INITSSLOT, _operand = new byte[] { SFLdIndex + 1 } }); // Ensure enough sfields
+            // Assuming static field is pre-loaded for benchmark simplicity.
+            // Add LDSFLD manually with operand
+            b.AddInstruction(new Instruction { _opCode = Opcode, _operand = new byte[] { SFLdIndex } });
+            b.AddInstruction(VM.OpCode.NOP);
+            return b.ToArray();
         }
 
-        protected override byte[] CreateOneGASScript()
-        {
-            var builder = new InstructionBuilder();
-            builder.AddInstruction(new Instruction { _opCode = VM.OpCode.INITSLOT, _operand = [1, 0] });
-            builder.Push(ItemCount);
-            builder.AddInstruction(VM.OpCode.STLOC0);
-
-            var loopBegin = new JumpTarget { _instruction = builder.AddInstruction(VM.OpCode.NOP) };
-            builder.AddInstruction(VM.OpCode.LDLOC0);
-            builder.AddInstruction(VM.OpCode.DROP);
-            builder.Jump(VM.OpCode.JMP, loopBegin);
-            return builder.ToArray();
-        }
+        protected override byte[] CreateOneGASScript() => CreateOneOpCodeScript();
     }
 }
 

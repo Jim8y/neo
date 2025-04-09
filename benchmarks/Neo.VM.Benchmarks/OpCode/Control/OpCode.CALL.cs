@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // OpCode.CALL.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -11,22 +11,37 @@
 
 namespace Neo.VM.Benchmark.OpCode
 {
+    // Corrected implementation for CALL (1-byte offset)
     public class OpCode_CALL : OpCodeBase
     {
+        private JumpTarget? _retTarget;
 
-        protected override VM.OpCode Opcode => VM.OpCode.PICKITEM;
+        protected override VM.OpCode Opcode => VM.OpCode.CALL;
 
-
+        // Setup a simple function (just RET) and call it
         protected override byte[] CreateOneOpCodeScript()
         {
             var builder = new InstructionBuilder();
-            builder.AddInstruction(Opcode);
+
+            // Target function (just RET) - Simplify object init
+            _retTarget = new JumpTarget { _instruction = builder.AddInstruction(VM.OpCode.RET) };
+
+            // CALL instruction targeting the RET (using 1-byte relative offset)
+            // Note: ScriptBuilder handles offset calculation if target is known.
+            builder.Jump(VM.OpCode.CALL, _retTarget);
+
+            // Add a NOP after the call for the benchmark engine to stop at
+            builder.AddInstruction(VM.OpCode.NOP);
+
             return builder.ToArray();
         }
 
         protected override byte[] CreateOneGASScript()
         {
-            throw new NotImplementedException();
+            // TODO: Implement GAS benchmark if needed, requires careful setup
+            // For now, focusing on OpCode benchmark
+            return CreateOneOpCodeScript(); // Reuse script for now, Bench_OneGAS will measure CALL + RET
+            // throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // OpCode.ASSERTMSG.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -8,25 +8,23 @@
 //
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
-
+using System;
 namespace Neo.VM.Benchmark.OpCode
 {
     public class OpCode_ASSERTMSG : OpCodeBase
     {
-
-        protected override VM.OpCode Opcode => VM.OpCode.PICKITEM;
-
+        protected override VM.OpCode Opcode => VM.OpCode.ASSERTMSG;
 
         protected override byte[] CreateOneOpCodeScript()
         {
-            var builder = new InstructionBuilder();
-            builder.AddInstruction(Opcode);
-            return builder.ToArray();
+            var b = new InstructionBuilder();
+            b.Push("Assert test message");
+            b.Push(true);
+            b.AddInstruction(Opcode);
+            b.AddInstruction(VM.OpCode.NOP);
+            return b.ToArray();
         }
 
-        protected override byte[] CreateOneGASScript()
-        {
-            throw new NotImplementedException();
-        }
+        protected override byte[] CreateOneGASScript() => CreateOneOpCodeScript();
     }
 }

@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // OpCode.ABORTMSG.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -8,25 +8,21 @@
 //
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
-
+using System;
 namespace Neo.VM.Benchmark.OpCode
 {
     public class OpCode_ABORTMSG : OpCodeBase
     {
-
-        protected override VM.OpCode Opcode => VM.OpCode.PICKITEM;
-
+        protected override VM.OpCode Opcode => VM.OpCode.ABORTMSG;
 
         protected override byte[] CreateOneOpCodeScript()
         {
-            var builder = new InstructionBuilder();
-            builder.AddInstruction(Opcode);
-            return builder.ToArray();
+            var b = new InstructionBuilder();
+            b.Push("Abort test message");
+            b.AddInstruction(Opcode);
+            return b.ToArray();
         }
 
-        protected override byte[] CreateOneGASScript()
-        {
-            throw new NotImplementedException();
-        }
+        protected override byte[] CreateOneGASScript() => CreateOneOpCodeScript();
     }
 }

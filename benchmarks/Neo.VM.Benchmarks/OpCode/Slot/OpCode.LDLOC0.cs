@@ -1,4 +1,4 @@
-// Copyright (C) 2015-2024 The Neo Project.
+// Copyright (C) 2015-2025 The Neo Project.
 //
 // OpCode.LDLOC0.cs file belongs to the neo project and is free
 // software distributed under the MIT software license, see the
@@ -9,24 +9,30 @@
 // Redistribution and use in source and binary forms with or without
 // modifications are permitted.
 
+using System;
+
 namespace Neo.VM.Benchmark.OpCode
 {
     public class OpCode_LDLOC0 : OpCodeBase
     {
-
-        protected override VM.OpCode Opcode => VM.OpCode.PICKITEM;
-
+        protected override VM.OpCode Opcode => VM.OpCode.LDLOC0;
 
         protected override byte[] CreateOneOpCodeScript()
         {
             var builder = new InstructionBuilder();
-            builder.AddInstruction(Opcode);
+            // Need to initialize locals and store something first
+            builder.AddInstruction(new Instruction { _opCode = VM.OpCode.INITSLOT, _operand = new byte[] { 1, 0 } });
+            builder.Push(1); // Use builder.Push helper
+            builder.AddInstruction(VM.OpCode.STLOC0); // Store value in local 0
+            builder.AddInstruction(Opcode);     // The actual opcode to benchmark (LDLOC0)
+            builder.AddInstruction(VM.OpCode.NOP); // NOP to stop benchmark engine
             return builder.ToArray();
         }
 
         protected override byte[] CreateOneGASScript()
         {
-            throw new NotImplementedException();
+            // TODO: Implement accurate GAS measurement if needed
+            return CreateOneOpCodeScript(); // Placeholder
         }
     }
 }
